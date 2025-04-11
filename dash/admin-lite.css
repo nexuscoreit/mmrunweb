@@ -1,0 +1,238 @@
+/* ============================
+   🌐 GLOBAL STYLES
+============================ */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background: linear-gradient(to bottom, #f0f4ff, #d7f2f0);
+    color: #333;
+  }
+  
+  /* ============================
+     🔝 HEADER
+  ============================ */
+  header {
+    background: linear-gradient(90deg, #1a2a6c, #4fc3f7);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  
+  header h1 {
+    margin: 0;
+    font-weight: 600;
+  }
+  
+  /* ============================
+     🎛️ TOP CONTROLS
+  ============================ */
+  .controls {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .controls select,
+  .controls button {
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .controls select {
+    background: white;
+    border: 1px solid #ccc;
+  }
+  
+  .controls button {
+    background: linear-gradient(135deg, #42a5f5, #26c6da);
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .controls button:hover {
+    background: linear-gradient(135deg, #1e88e5, #00acc1);
+  }
+  
+  /* ============================
+     📊 TABLE CONTAINER
+  ============================ */
+  .table-container {
+    overflow-x: auto;
+    background: white;
+    margin: 0 auto;
+    border-radius: 10px;
+    width: 95%;
+    max-width: 1400px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    padding: 20px;
+    position: relative; /* 🔧 importante */
+
+  }
+  
+  /* ============================
+     📋 TABLE STYLES
+  ============================ */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+  }
+  
+  th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  th {
+    background: linear-gradient(to right, #26c6da, #42a5f5);
+    color: white;
+    font-weight: 600;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .loading {
+    text-align: center;
+    color: #777;
+  }
+  
+ /* === TOOLBAR (SELECT + BUSCADOR) === */
+.table-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+    padding: 0 5px; /* 🔁 para que no se pegue a los bordes */
+    flex-wrap: wrap;
+    box-sizing: border-box;
+  }
+  
+  .toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+  
+  #registrosPorPagina,
+  #buscador {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  
+  /* ============================
+     📄 PAGINATION
+  ============================ */
+  .pagination-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 0 20px;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .pagination-info {
+    font-weight: 400;
+  }
+  
+  .pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .pagination-controls button {
+    background: #009688;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .pagination-controls button:hover {
+    background: #00796b;
+  }
+  
+  .pagination-controls button:disabled {
+    background: #b2dfdb;
+    cursor: not-allowed;
+  }
+  
+  .pagination-controls span {
+    font-weight: 500;
+  }
+  
+  /* ============================
+     👣 FOOTER
+  ============================ */
+  footer {
+    text-align: center;
+    padding: 20px;
+    color: #999;
+    font-size: 14px;
+  }
+  /* === FILTER + BUTTONS - FLEX SEPARADO === */
+.controls-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 20px;
+    margin: 20px auto;
+    max-width: 1400px;
+    box-sizing: border-box;
+  }
+  
+  .left-controls select {
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: white;
+  }
+  
+  .right-controls {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .right-controls button {
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+    background: linear-gradient(135deg, #42a5f5, #26c6da);
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .right-controls button:hover {
+    background: linear-gradient(135deg, #1e88e5, #00acc1);
+  }
+  

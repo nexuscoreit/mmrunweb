@@ -1,0 +1,17 @@
+{
+  "name": "mmrun-2024-main",
+  "version": "1.0.0",
+  "description": "Sitio web oficial para inscripciones de la carrera Mari Menuco Run 2024. Desarrollado con ASP.NET Core y Razor Pages, incluye landing, formulario de inscripción y panel administrativo para gestionar participantes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "sqlite3": "^5.1.7"
+  }
+}

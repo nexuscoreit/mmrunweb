@@ -397,11 +397,34 @@ async function getFormData() {
   try {
     const response = await fetch(url, options);
     spinner.classList.add("no-display");
+  
     if (response.ok) {
       subButton.disabled = true;
       const data = await response.json();
-      // console.info("📃"+data)
       console.log(data.init_point);
+  
+      // 👇 Guardar en backend MMRun antes de redirigir
+      await fetch("http://localhost:3000/api/inscripciones", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          nombre: form.firstname.value,
+          apellido: form.lastname.value,
+          dni: form.dni.value,
+          genero: form.runnerGenre.value,
+          fechaNacimiento: `${form.year.value}-${form.month.value.padStart(2, '0')}-${form.day.value.padStart(2, '0')}`,
+          email: form.email.value,
+          telefono: form.phone.value,
+          ciudad: form.city.value,
+          categoria: form.catValue.value,
+          talle: form.tshirtSize.value,
+          descuento: form["partnerID"]?.value || ""
+        })
+      });
+  
+      // ✅ Redirigir a Mercado Pago
       window.location.href = data.init_point;
     }
   } catch (error) {
@@ -414,7 +437,7 @@ async function getFormData() {
       icon: "error",
       confirmButtonText: "Ok",
     });
-  }
+  }  
 }
 
 function handleQueryParamChange() {
