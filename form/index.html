@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscripción | MMRUN24</title>
+    <link rel="icon" type="image/x-icon" href="./MMR.ico">
+
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body class="no-overflow">
+    <div id="page" class="site">
+        <div class="container">
+            <div class="form-box">
+                <div class="progress">
+                    <div class="logo">
+                        <img src="../assets/MMR24b.png" alt="">
+                        <!-- <h1>mm<span class="ar">r</span><span class="twenty-four">24</span></h1> -->
+                    </div>
+                    <ul class="progress-steps">
+                        <li class="step active">
+                            <span>1</span>
+                            <p>Datos Personales</p>
+                        </li>
+                        <li class="step">
+                            <span>2</span>
+                            <p>Contacto</p>
+                        </li>
+                        <li class="step">
+                            <span>3</span>
+                            <p>Datos de Inscripción</p>
+                        </li>
+                        <li class="step">
+                            <span>4</span>
+                            <p>Resumen y Pago</p>
+                        </li>
+                    </ul>
+                </div>
+                <form action="" id="form">
+
+                    <!-- Datos Personales -->
+                    <div class="form-one form-step active">
+                        <div class="bg-svg"></div>
+                        <h2>Datos Personales</h2>
+                        <p>Ingresá tu información personal</p>
+                        <div>
+                            <label>Nombre</label>
+                            <input type="text" name="firstname" class="items" placeholder="Nombre">
+                        </div>
+                        <div>
+                            <label>Apellido</label>
+                            <input type="text" name="lastname" class="items" placeholder="Apellido">
+                        </div>
+                        <div>
+                            <label>DNI</label>
+                            <input type="text" pattern="[0-9]*" name="dni" value="" min="0" max="99999999"
+                                placeholder="00000000" class="items">
+                        </div>
+                        <div>
+                            <label>Genero</label>
+                            <select name="runnerGenre" class="items" placeholder="Genero" selectedIndex="0">
+                                <option value="Femenino">Femenino</option>
+                                <option value="Masculino">Masculino</option>
+                            </select>
+                        </div>
+
+                        <div class="birth">
+                            <label>Fecha de nacimiento</label>
+                            <div class="grouping">
+                                <input type="number" pattern="[0-9]*" id="day" class="items" name="day" value="" min="0"
+                                    max="31" placeholder="DD">
+                                <input type="number" pattern="[0-9]*" id="month" class="items" name="month" value=""
+                                    min="0" max="12" placeholder="MM">
+                                <input type="number" pattern="[0-9]*" id="year" class="items" name="year" value=""
+                                    min="0" max="2024" placeholder="YYYY">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Datos de contacto -->
+                    <div class="form-two form-step">
+                        <div class="bg-svg"></div>
+                        <h2>Contacto</h2>
+                        <p>Ingresa tus datos de contacto</p>
+                        <div>
+                            <label>Email</label>
+                            <input type="email" class="items" name="email" placeholder="email@mail.com">
+                        </div>
+                        <div>
+                            <label>Teléfono</label>
+                            <input type="tel" class="items" name="phone" placeholder="299xxxxxxx">
+                        </div>
+                        <div>
+                            <label>Ciudad</label>
+                            <input type="text" class="items" name="city" placeholder="Ingresa Ciudad">
+                        </div>
+                    </div>
+
+                    <!-- Datos de inscripción -->
+                    <div class="form-three form-step">
+                        <div class="bg-svg"></div>
+                        <h2>Datos de Inscripción</h2>
+                        <p>Ingresá tu información de inscripción</p>
+                        <div>
+                            <label>Circuito</label>
+                            <select name="catValue" id="category" class="items" placeholder="Circuito"
+                                selectedIndex="-1">
+                                <!-- Categoría: title -->
+                            </select>
+                        </div>
+                        <div>
+                            <label>Talle Camiseta</label>
+                            <select name="tshirtSize" class="items" placeholder="Talle Camiseta" selectedIndex="0">
+                                <option value="talle_s">Camiseta Talle S</option>
+                                <option value="talle_m">Camiseta Talle M</option>
+                                <option value="talle_l">Camiseta Talle L</option>
+                                <option value="talle_xl">Camiseta Talle XL</option>
+                                <option value="talle_xxl">Camiseta Talle XXL</option>
+                            </select>
+                        </div>
+                        <div class="img-container">
+                            <img id="myImg" class="myImg" src="./talles.PNG" alt="">
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" class="items" name="check-partner">
+                            <label>Tengo un codigo de descuento</label>
+                            <div>
+                                <label>Codigo de descuento</label>
+                                <input type="text" class="items" name="partnerID" disabled
+                                    placeholder="Ingrese codigo de descuento">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Datos finales -->
+                    <div class="form-four form-step">
+                        <div class="bg-svg"></div>
+                        <h2 id="next-element">Resumen y Pago</h2>
+                    </div>
+
+
+                    <div class="btn-group">
+                        <button type="button" class="btn-prev" disabled>Anterior</button>
+                        <button type="button" class="btn-next">Siguiente</button>
+                        <button type="button" class="btn-submit" id="btn-submit"
+                            onclick="getFormData()">Confirmar</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <div class="full-screen no-display" id="spinner">
+            <span class="loader"></span>
+        </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+    </div>
+    <script src="./script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  mmrun-api:
+    build:
+      context: /root/proyectos/mmrun
+      dockerfile: DockerfileAPI
+    container_name: mmrun-api
+    restart: unless-stopped
+    ports:
+      - "3087:3087"
+    volumes:
+      - /root/proyectos/mmrun/dist:/usr/src/app
+      - /root/proyectos/mmrun/dist/.env:/usr/src/app/.env
+
+  mmrun-mp:
+    build:
+      context: /root/proyectos/mmrun/mercadopago
+      dockerfile: DockerfileMP
+    container_name: mmrun-mp
+    restart: unless-stopped
+    ports:
+      - "3088:3088"
+    volumes:
+      - /root/proyectos/mmrun/mercadopago/dist:/usr/src/app
+      - /root/proyectos/mmrun/mercadopago/dist/.env:/usr/src/app/.env
+    depends_on:
+      - mmrun-api

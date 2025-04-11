@@ -1,0 +1,3326 @@
+[
+  {
+    "Nombre": "ABARZUA ISABEL ROSA",
+    "Socio": 100
+  },
+  {
+    "Nombre": "ACUÑA ROBERTO DANIEL",
+    "Socio": 905
+  },
+  {
+    "Nombre": "AGUERIA ALEX GUSTAVO",
+    "Socio": 689
+  },
+  {
+    "Nombre": "ALFARO CESAR DAVID",
+    "Socio": 750
+  },
+  {
+    "Nombre": "ALFIERI DANIEL OSVALDO",
+    "Socio": 103
+  },
+  {
+    "Nombre": "ALFIERI DIONISIO MARIA",
+    "Socio": 559
+  },
+  {
+    "Nombre": "ALFIERI FEDERICO DANIEL",
+    "Socio": 639
+  },
+  {
+    "Nombre": "ALFIERI JOSE",
+    "Socio": 105
+  },
+  {
+    "Nombre": "ALLARIA ALBERTO MIGUEL",
+    "Socio": 703
+  },
+  {
+    "Nombre": "ALLEMANNI RAUL ALBERTO",
+    "Socio": 106
+  },
+  {
+    "Nombre": "ALLENDE OSCAR RUBÉN",
+    "Socio": 579
+  },
+  {
+    "Nombre": "ALMARZA CRISTIAN HECTOR",
+    "Socio": 893
+  },
+  {
+    "Nombre": "ALONSO LUIS ADRIAN",
+    "Socio": 803
+  },
+  {
+    "Nombre": "ALVAREZ GUILLERMO FERNANDO",
+    "Socio": 847
+  },
+  {
+    "Nombre": "ANDRES AMANDA MARINA",
+    "Socio": 734
+  },
+  {
+    "Nombre": "ARACAMA MARIA ISABEL",
+    "Socio": 115
+  },
+  {
+    "Nombre": "ARGAT JORGE MARIO",
+    "Socio": 421
+  },
+  {
+    "Nombre": "ARGUELLO ANDREA SILVIA",
+    "Socio": 453
+  },
+  {
+    "Nombre": "ARRUÑADA NICOLAS",
+    "Socio": 570
+  },
+  {
+    "Nombre": "ASPRA VICTOR MANUEL",
+    "Socio": 800
+  },
+  {
+    "Nombre": "ASQUINAZI REBECA YUDITH",
+    "Socio": 668
+  },
+  {
+    "Nombre": "AVILA MARCELO ADRIAN",
+    "Socio": 393
+  },
+  {
+    "Nombre": "AVILES RAUL ALBERTO",
+    "Socio": 391
+  },
+  {
+    "Nombre": "AVILES SANTIAGO RAÚL",
+    "Socio": 392
+  },
+  {
+    "Nombre": "BACCI MARIA VICTORIA",
+    "Socio": 626
+  },
+  {
+    "Nombre": "BACCI VIVIANA ESTHER",
+    "Socio": 625
+  },
+  {
+    "Nombre": "BAGLIONI OSVALDO OMAR",
+    "Socio": 420
+  },
+  {
+    "Nombre": "BALCO MARCELO ADRIAN",
+    "Socio": 885
+  },
+  {
+    "Nombre": "BALCO MARIANO ARIEL",
+    "Socio": 886
+  },
+  {
+    "Nombre": "BARROS NESTOR FABIAN",
+    "Socio": 369
+  },
+  {
+    "Nombre": "BERARDO CLAUDIO ALEJANDRO",
+    "Socio": 562
+  },
+  {
+    "Nombre": "BLANCO PABLO MIGUEL",
+    "Socio": 492
+  },
+  {
+    "Nombre": "BOSSETTO LILIANA DEL VALLE",
+    "Socio": 447
+  },
+  {
+    "Nombre": "BOYANO JORGE ALEJANDRO",
+    "Socio": 608
+  },
+  {
+    "Nombre": "BRITOS JULIO CESAR",
+    "Socio": 916
+  },
+  {
+    "Nombre": "BRUNSKOLE DANIEL OMAR",
+    "Socio": 868
+  },
+  {
+    "Nombre": "CABANAY JOSE JAVIER",
+    "Socio": 399
+  },
+  {
+    "Nombre": "CABEZAS VALENZUELA MANUEL ANTO",
+    "Socio": 605
+  },
+  {
+    "Nombre": "CALDENTEY JUAN ALBERTO",
+    "Socio": 597
+  },
+  {
+    "Nombre": "CALOGERO MIGUEL ANGEL",
+    "Socio": 139
+  },
+  {
+    "Nombre": "CALOGERO RODOLFO ALBERTO",
+    "Socio": 861
+  },
+  {
+    "Nombre": "CALVI MARINA CECILIA DEL CARME",
+    "Socio": 140
+  },
+  {
+    "Nombre": "CAMPI JUAN IGNACIO",
+    "Socio": 890
+  },
+  {
+    "Nombre": "CAMPI JUAN MARIO CESAR",
+    "Socio": 791
+  },
+  {
+    "Nombre": "CAMPI MARIA NOELIA LAURA",
+    "Socio": 887
+  },
+  {
+    "Nombre": "CAPARROS FRANCISCO JUAN",
+    "Socio": 382
+  },
+  {
+    "Nombre": "CARABALLO MARIA GENOVEVA",
+    "Socio": 762
+  },
+  {
+    "Nombre": "CAROZZA OMAR ALEJANDRO",
+    "Socio": 537
+  },
+  {
+    "Nombre": "CARPINELLO JUAN CARLOS",
+    "Socio": 145
+  },
+  {
+    "Nombre": "CASTRO NELSON MATIAS",
+    "Socio": 903
+  },
+  {
+    "Nombre": "CAVANNA MARTIN SEBASTIAN",
+    "Socio": 897
+  },
+  {
+    "Nombre": "CAZAUX BOLOGNINI JUAN CARLOS",
+    "Socio": 555
+  },
+  {
+    "Nombre": "CECCHI GERMAN RODOLFO",
+    "Socio": 809
+  },
+  {
+    "Nombre": "CEPEDA ANDREA PAOLA",
+    "Socio": 873
+  },
+  {
+    "Nombre": "CHAPARRO MARTIN ANDRES",
+    "Socio": 909
+  },
+  {
+    "Nombre": "COLAVITA GRACIELA MARIA",
+    "Socio": 610
+  },
+  {
+    "Nombre": "CORRADI ENRIQUE EDUARDO",
+    "Socio": 869
+  },
+  {
+    "Nombre": "DALMAU MARCELO",
+    "Socio": 802
+  },
+  {
+    "Nombre": "DALMAU PABLO EDUARDO",
+    "Socio": 552
+  },
+  {
+    "Nombre": "DE DIEGO MARIA CRISTINA",
+    "Socio": 606
+  },
+  {
+    "Nombre": "DE MONTE KARINA ELSA",
+    "Socio": 926
+  },
+  {
+    "Nombre": "DE MONTE SERGIO FABIAN",
+    "Socio": 913
+  },
+  {
+    "Nombre": "DE ZAVALETA MARIA CRISTINA",
+    "Socio": 387
+  },
+  {
+    "Nombre": "DEBIAGGI RAUL ENRIQUE",
+    "Socio": 422
+  },
+  {
+    "Nombre": "DEBIAGGI RUBEN ANGEL",
+    "Socio": 322
+  },
+  {
+    "Nombre": "DIAZ GABRIELA ALEJANDRA",
+    "Socio": 711
+  },
+  {
+    "Nombre": "DIRIÉ LUIS ALBERTO",
+    "Socio": 309
+  },
+  {
+    "Nombre": "DORCAZBERRO MARTA SUSANA",
+    "Socio": 384
+  },
+  {
+    "Nombre": "ETCHEGORRY MARCELO EDUARDO",
+    "Socio": 160
+  },
+  {
+    "Nombre": "FANELLO ALFREDO",
+    "Socio": 548
+  },
+  {
+    "Nombre": "FERNANDEZ DANIEL GUSTAVO",
+    "Socio": 717
+  },
+  {
+    "Nombre": "FERNANDEZ JORGE ALBERTO",
+    "Socio": 344
+  },
+  {
+    "Nombre": "FERNANDEZ MARCOS ANDRES",
+    "Socio": 313
+  },
+  {
+    "Nombre": "FERNANDEZ MARIA VERONICA",
+    "Socio": 788
+  },
+  {
+    "Nombre": "FERNANDEZ RAUL HECTOR",
+    "Socio": 164
+  },
+  {
+    "Nombre": "FERRECCIO JORGE LUIS",
+    "Socio": 856
+  },
+  {
+    "Nombre": "FERREYRA DANIEL ALFREDO",
+    "Socio": 783
+  },
+  {
+    "Nombre": "FERRONI ARIEL RICARDO",
+    "Socio": 166
+  },
+  {
+    "Nombre": "FODARO FRANCISCO JAVIER",
+    "Socio": 904
+  },
+  {
+    "Nombre": "FRANCISCO FABIANA INES",
+    "Socio": 508
+  },
+  {
+    "Nombre": "GALLEGO WALTER ULISES",
+    "Socio": 877
+  },
+  {
+    "Nombre": "GARCIA RODOLFO LUIS",
+    "Socio": 596
+  },
+  {
+    "Nombre": "GARRITANO PABLO DANIEL",
+    "Socio": 646
+  },
+  {
+    "Nombre": "GIL GUSTAVO CARLOS",
+    "Socio": 507
+  },
+  {
+    "Nombre": "GIMENEZ CARLOS EDUARDO",
+    "Socio": 177
+  },
+  {
+    "Nombre": "GOMEZ  JUAN MANUEL",
+    "Socio": 634
+  },
+  {
+    "Nombre": "GOMEZ FERNANDO ROBERTO",
+    "Socio": 915
+  },
+  {
+    "Nombre": "GONZALEZ GILDA NOEMI",
+    "Socio": 729
+  },
+  {
+    "Nombre": "GONZALEZ GRACIELA ESTHER",
+    "Socio": 120
+  },
+  {
+    "Nombre": "GORDO FERNANDO SEBASTIAN",
+    "Socio": 530
+  },
+  {
+    "Nombre": "GOSENDE PEDRO",
+    "Socio": 860
+  },
+  {
+    "Nombre": "GRANADOS GARCIA DOMINGO",
+    "Socio": 912
+  },
+  {
+    "Nombre": "GROSVALD GUILLERMO",
+    "Socio": 472
+  },
+  {
+    "Nombre": "GUTIERREZ LAURA CORINA",
+    "Socio": 876
+  },
+  {
+    "Nombre": "HARASIMIUK SERGIO IVAN",
+    "Socio": 415
+  },
+  {
+    "Nombre": "HETHERINGTON RAMON",
+    "Socio": 702
+  },
+  {
+    "Nombre": "HOLTZ GLORIA MARINA",
+    "Socio": 832
+  },
+  {
+    "Nombre": "IBAÑEZ BRUNILDA",
+    "Socio": 857
+  },
+  {
+    "Nombre": "IGLESIAS EVELYN NANCY",
+    "Socio": 580
+  },
+  {
+    "Nombre": "IRAIRA CARLOS DANIEL",
+    "Socio": 859
+  },
+  {
+    "Nombre": "ITAUE ANA MARIA",
+    "Socio": 545
+  },
+  {
+    "Nombre": "IZQUIERDO NELSON DANIEL",
+    "Socio": 736
+  },
+  {
+    "Nombre": "JARA JORGE OMAR",
+    "Socio": 785
+  },
+  {
+    "Nombre": "JORGEVICH JORGE LUIS",
+    "Socio": 769
+  },
+  {
+    "Nombre": "JUAN MARIA CELIA",
+    "Socio": 917
+  },
+  {
+    "Nombre": "JUAN MARIANO DIEGO ANDRES",
+    "Socio": 920
+  },
+  {
+    "Nombre": "JUAN MARTIN LUIS OSCAR",
+    "Socio": 493
+  },
+  {
+    "Nombre": "JUAN MATIAS IGNACIO RAFAEL",
+    "Socio": 919
+  },
+  {
+    "Nombre": "KAHALE KOUZO GABRIEL TUFIK",
+    "Socio": 190
+  },
+  {
+    "Nombre": "KLOBERDANZ ABELARDO AURELIO",
+    "Socio": 341
+  },
+  {
+    "Nombre": "KOUKHARSKY NICOLÁS ANTONIO",
+    "Socio": 286
+  },
+  {
+    "Nombre": "KUBLI CAROLINA MARÍA",
+    "Socio": 842
+  },
+  {
+    "Nombre": "LABOLLITA HECTOR AMADEO",
+    "Socio": 192
+  },
+  {
+    "Nombre": "LABRIN RAUL SANDRO",
+    "Socio": 784
+  },
+  {
+    "Nombre": "LIZAMA FIGUEROA RAUL ALBERTO",
+    "Socio": 753
+  },
+  {
+    "Nombre": "LIZASO MARÍA  ALEJANDRA",
+    "Socio": 792
+  },
+  {
+    "Nombre": "LIZASO ROSMARI",
+    "Socio": 899
+  },
+  {
+    "Nombre": "LOPEZ MARIA DEL CARMEN",
+    "Socio": 491
+  },
+  {
+    "Nombre": "MAINO LILIANA ROSA",
+    "Socio": 440
+  },
+  {
+    "Nombre": "MANDALARI CLAUDIO JUAN JOSE",
+    "Socio": 490
+  },
+  {
+    "Nombre": "MANSO MARIA EUGENIA",
+    "Socio": 807
+  },
+  {
+    "Nombre": "MANSO MARIA LAURA",
+    "Socio": 864
+  },
+  {
+    "Nombre": "MARINO HORACIO EDUARDO",
+    "Socio": 845
+  },
+  {
+    "Nombre": "MARTINEZ SERGIO DANIEL",
+    "Socio": 370
+  },
+  {
+    "Nombre": "MARZOCCHI MARIO ENRIQUE",
+    "Socio": 484
+  },
+  {
+    "Nombre": "MATO EDGARDO ARIEL",
+    "Socio": 356
+  },
+  {
+    "Nombre": "MEDER MILTON MAURO",
+    "Socio": 643
+  },
+  {
+    "Nombre": "MEDINA MARIO MIGUEL",
+    "Socio": 204
+  },
+  {
+    "Nombre": "MEDINA PABLO SEBASTIAN",
+    "Socio": 806
+  },
+  {
+    "Nombre": "MENA JORGE ERNESTO",
+    "Socio": 429
+  },
+  {
+    "Nombre": "MENA JOSE RICARDO",
+    "Socio": 205
+  },
+  {
+    "Nombre": "MERCADO JUAN EMILIO",
+    "Socio": 499
+  },
+  {
+    "Nombre": "METZGER CRISTIAN CARLOS",
+    "Socio": 713
+  },
+  {
+    "Nombre": "MOLL ROSARIO",
+    "Socio": 539
+  },
+  {
+    "Nombre": "MONTESINO LUCIANO MARCIAL",
+    "Socio": 652
+  },
+  {
+    "Nombre": "MUÑOZ CARLOS ALBERTO",
+    "Socio": 214
+  },
+  {
+    "Nombre": "MUÑOZ JOSE LUIS",
+    "Socio": 505
+  },
+  {
+    "Nombre": "MUÑOZ LUIS ANGEL",
+    "Socio": 333
+  },
+  {
+    "Nombre": "NASIF EZEQUIEL",
+    "Socio": 780
+  },
+  {
+    "Nombre": "OLIVA NORBERTO ARIEL",
+    "Socio": 728
+  },
+  {
+    "Nombre": "OLIVERO JORGE ALBERTO",
+    "Socio": 385
+  },
+  {
+    "Nombre": "ORTUÑO BLAS SANTIAGO",
+    "Socio": 882
+  },
+  {
+    "Nombre": "ORTUÑO LOPEZ BLAS",
+    "Socio": 601
+  },
+  {
+    "Nombre": "OSTERTAG ANDREA LAURA",
+    "Socio": 910
+  },
+  {
+    "Nombre": "OTTONE RUBEN ANTONIO",
+    "Socio": 223
+  },
+  {
+    "Nombre": "PAEZ GUILLERMO ADRIAN",
+    "Socio": 901
+  },
+  {
+    "Nombre": "PAPARINI LIDIA ADA",
+    "Socio": 774
+  },
+  {
+    "Nombre": "PASCUAL JUAN IGNACIO",
+    "Socio": 923
+  },
+  {
+    "Nombre": "PASO JORGE MANUEL",
+    "Socio": 485
+  },
+  {
+    "Nombre": "PENSADO OSVALDO JESUS",
+    "Socio": 822
+  },
+  {
+    "Nombre": "PEREZ ALBERTO",
+    "Socio": 229
+  },
+  {
+    "Nombre": "PEREZ MIGUEL ANGEL",
+    "Socio": 230
+  },
+  {
+    "Nombre": "PERINO LUCIANA FERNANDA",
+    "Socio": 844
+  },
+  {
+    "Nombre": "PETRIS EDUARDO FEDERICO",
+    "Socio": 906
+  },
+  {
+    "Nombre": "PEÑATE ALEJANDRO",
+    "Socio": 840
+  },
+  {
+    "Nombre": "PEÑATE YURCIC MARIA LAURA",
+    "Socio": 889
+  },
+  {
+    "Nombre": "PILI EDUARDO DANIEL",
+    "Socio": 752
+  },
+  {
+    "Nombre": "PLANAS JUAN PABLO",
+    "Socio": 486
+  },
+  {
+    "Nombre": "PLANISCIG ANGEL RAMON",
+    "Socio": 235
+  },
+  {
+    "Nombre": "PLASTINA HERNAN SERGIO",
+    "Socio": 858
+  },
+  {
+    "Nombre": "POJMAEVICH DANILO ALBERTO",
+    "Socio": 571
+  },
+  {
+    "Nombre": "POSCA LUIS ALBERTO",
+    "Socio": 237
+  },
+  {
+    "Nombre": "PUENTES JUAN JOSE",
+    "Socio": 866
+  },
+  {
+    "Nombre": "PUJOL ALEJANDRO OSCAR",
+    "Socio": 851
+  },
+  {
+    "Nombre": "QUINTERNO NORA VIVIANA",
+    "Socio": 153
+  },
+  {
+    "Nombre": "REDES ZORAIDA BERNARDA",
+    "Socio": 475
+  },
+  {
+    "Nombre": "RETAMAL MIGUEL ANGEL",
+    "Socio": 894
+  },
+  {
+    "Nombre": "RIMADA SEBASTIAN ADOLFO",
+    "Socio": 825
+  },
+  {
+    "Nombre": "RIMMELE MARTIN HUGO LUIS",
+    "Socio": 865
+  },
+  {
+    "Nombre": "RINALDI PATRICIA ROXANA",
+    "Socio": 773
+  },
+  {
+    "Nombre": "RIOS HORACIO PABLO",
+    "Socio": 794
+  },
+  {
+    "Nombre": "RIOS JOSE DANIEL",
+    "Socio": 793
+  },
+  {
+    "Nombre": "RIOS MARIA NATALIA",
+    "Socio": 751
+  },
+  {
+    "Nombre": "RODRIGUEZ ALFREDO",
+    "Socio": 731
+  },
+  {
+    "Nombre": "RODRIGUEZ GUILLERMO EDUARDO",
+    "Socio": 880
+  },
+  {
+    "Nombre": "RODRIGUEZ JORGE CESAR",
+    "Socio": 789
+  },
+  {
+    "Nombre": "RODRIGUEZ MASCHIO EDUARDO",
+    "Socio": 547
+  },
+  {
+    "Nombre": "ROOS SERAFIN AGUSTIN",
+    "Socio": 246
+  },
+  {
+    "Nombre": "ROSANIGO OSVALDO HECTOR",
+    "Socio": 613
+  },
+  {
+    "Nombre": "ROSETTI PABLO DANIEL",
+    "Socio": 850
+  },
+  {
+    "Nombre": "RUBIO PEREZ MIGUEL",
+    "Socio": 756
+  },
+  {
+    "Nombre": "RUIZ FABIO DAMIAN",
+    "Socio": 914
+  },
+  {
+    "Nombre": "RUSJAN MARIO RICARDO",
+    "Socio": 577
+  },
+  {
+    "Nombre": "RUSJAN SILVANO DARIO",
+    "Socio": 900
+  },
+  {
+    "Nombre": "RUSSO PAULO CARLOS",
+    "Socio": 388
+  },
+  {
+    "Nombre": "SABAS OTTA OSCAR EDUARDO",
+    "Socio": 744
+  },
+  {
+    "Nombre": "SAGREDO JORGELINA",
+    "Socio": 902
+  },
+  {
+    "Nombre": "SALVATIERRA MATIAS",
+    "Socio": 922
+  },
+  {
+    "Nombre": "SALVATIERRA MAXIMILIANO",
+    "Socio": 730
+  },
+  {
+    "Nombre": "SAN MARTIN DIOGENES",
+    "Socio": 824
+  },
+  {
+    "Nombre": "SAN MARTIN LORENA ELIZABETH",
+    "Socio": 812
+  },
+  {
+    "Nombre": "SANCHEZ DIEGO ROBERTO ANDRES",
+    "Socio": 433
+  },
+  {
+    "Nombre": "SANFILIPPO GUSTAVO ADRIÁN",
+    "Socio": 250
+  },
+  {
+    "Nombre": "SANFILIPPO RUBÉN OSVALDO",
+    "Socio": 251
+  },
+  {
+    "Nombre": "SANTUCHO MIGUEL ANGEL",
+    "Socio": 797
+  },
+  {
+    "Nombre": "SCETTA MIGUEL ANGEL",
+    "Socio": 255
+  },
+  {
+    "Nombre": "SCETTA NÉSTOR RUBÉN",
+    "Socio": 302
+  },
+  {
+    "Nombre": "SCHLAPFFER HORACIO DANIEL",
+    "Socio": 835
+  },
+  {
+    "Nombre": "SCHLAPFFER MARIA ALICIA",
+    "Socio": 834
+  },
+  {
+    "Nombre": "SCHMIT MARCELO EDGARDO",
+    "Socio": 494
+  },
+  {
+    "Nombre": "SCIANCA RODRIGO ESTEBAN",
+    "Socio": 323
+  },
+  {
+    "Nombre": "SEBESTA JORGE HORACIO",
+    "Socio": 782
+  },
+  {
+    "Nombre": "SEGURA PATRICIA VIVIANA",
+    "Socio": 843
+  },
+  {
+    "Nombre": "SILVERO GILBERTO OSCAR",
+    "Socio": 883
+  },
+  {
+    "Nombre": "SKRUTA PEDRO EDUARDO JAVIER",
+    "Socio": 790
+  },
+  {
+    "Nombre": "SOSA ALEJANDRO DOMINGO",
+    "Socio": 838
+  },
+  {
+    "Nombre": "SOTO JORGE ALBERTO",
+    "Socio": 828
+  },
+  {
+    "Nombre": "SUKAREVICIUS NORBERTO FEDERICO",
+    "Socio": 604
+  },
+  {
+    "Nombre": "SURIANI RICARDO VICENTE",
+    "Socio": 924
+  },
+  {
+    "Nombre": "TOLEDO RUBÉN OSCAR",
+    "Socio": 265
+  },
+  {
+    "Nombre": "TORRES RUBEN ALEJANDRO",
+    "Socio": 551
+  },
+  {
+    "Nombre": "TORRESAN BRUNO JOSE LUIS",
+    "Socio": 911
+  },
+  {
+    "Nombre": "URDIALES FABIANA",
+    "Socio": 395
+  },
+  {
+    "Nombre": "URIBE MARIA SOLEDAD",
+    "Socio": 925
+  },
+  {
+    "Nombre": "URQUIZU CELINA BEATRIZ",
+    "Socio": 811
+  },
+  {
+    "Nombre": "VARELA ALICIA BEATRIZ",
+    "Socio": 346
+  },
+  {
+    "Nombre": "VARELA GLADYS ALICIA",
+    "Socio": 907
+  },
+  {
+    "Nombre": "VEGA RUBÉN DARIO",
+    "Socio": 432
+  },
+  {
+    "Nombre": "VELAZQUEZ OSCAR ENRIQUE",
+    "Socio": 697
+  },
+  {
+    "Nombre": "VERDUGO DIAZ RODRIGO ALEJANDRO",
+    "Socio": 921
+  },
+  {
+    "Nombre": "VIALE GUSTAVO RICARDO",
+    "Socio": 854
+  },
+  {
+    "Nombre": "VILCHEZ BARROS PAULA",
+    "Socio": 896
+  },
+  {
+    "Nombre": "VILCHEZ HECTOR LUIS",
+    "Socio": 609
+  },
+  {
+    "Nombre": "VILCHEZ WALTER ANTONIO",
+    "Socio": 520
+  },
+  {
+    "Nombre": "VILLEMUR HÉCTOR HUGO",
+    "Socio": 273
+  },
+  {
+    "Nombre": "VIVAS IGNACIO LUIS",
+    "Socio": 389
+  },
+  {
+    "Nombre": "VOLONTÉ ESTER EMILIA",
+    "Socio": 664
+  },
+  {
+    "Nombre": "WAHLER HUMBERTO TEODORO",
+    "Socio": 743
+  },
+  {
+    "Nombre": "ZURITA VICTOR RICARDO",
+    "Socio": 848
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 17
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 20
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 22
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 29
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 30
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 32
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 33
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 38
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 39
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 42
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 45
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 48
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 56
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 57
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 59
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 61
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 63
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 65
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 69
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 70
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 72
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 73
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 74
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 76
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 80
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 82
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 89
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 98
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 101
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 103
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 104
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 121
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 124
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 125
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 127
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 129
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 133
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 137
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 138
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 141
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 143
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 144
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 146
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 152
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 157
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 159
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 160
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 164
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 168
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 169
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 171
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 172
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 179
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 181
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 182
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 184
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 187
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 188
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 197
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 202
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 203
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 208
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 210
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 213
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 215
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 223
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 229
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 230
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 233
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 234
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 235
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 241
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 242
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 243
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 249
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 257
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 259
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 270
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 272
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 279
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 296
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 298
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 300
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 302
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 300
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 313
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 317
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 318
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 324
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 326
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 335
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 341
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 342
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 348
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 350
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 354
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 357
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 359
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 364
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 367
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 369
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 373
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 374
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 378
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 382
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 396
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 405
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 408
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 418
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 422
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 431
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 433
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 438
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 439
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 444
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 448
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 449
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 452
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 453
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 455
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 460
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 470
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 481
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 485
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 491
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 505
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 507
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 511
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 514
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 515
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 516
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 531
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 532
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 537
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 538
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 544
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 547
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 549
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 553
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 557
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 558
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 562
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 567
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 568
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 570
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 578
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 583
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 584
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 603
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 609
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 610
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 611
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 613
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 614
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 615
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 618
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 621
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 627
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 630
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 636
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 649
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 651
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 653
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 657
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 661
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 663
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 664
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 668
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 669
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 670
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 674
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 675
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 677
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 678
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 680
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 681
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 682
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 690
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 692
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 694
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 696
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 699
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 701
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 711
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 713
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 715
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 717
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 720
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 723
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 728
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 735
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 736
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 757
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 773
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 774
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 776
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 778
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 780
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 781
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 789
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 791
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 794
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 795
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 796
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 797
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 799
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 803
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 806
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 808
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 810
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 811
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 813
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 814
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 820
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 823
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 826
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 831
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 835
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 844
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 846
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 848
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 849
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 850
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 853
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 855
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 856
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 859
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 861
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 868
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 869
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 870
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 873
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 874
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 875
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 876
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 877
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 878
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 883
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 885
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 890
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 891
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 895
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 896
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 898
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 902
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 903
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 906
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 908
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 912
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 914
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 915
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 917
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 920
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 921
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 922
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 923
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 927
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 930
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 934
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 934
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 934
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 935
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 942
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 943
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 946
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 950
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 951
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 952
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 953
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 954
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 956
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 957
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 965
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 966
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 967
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 968
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 970
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 971
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 972
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 974
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 977
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 979
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 982
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 983
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 984
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 987
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 988
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 989
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 991
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 995
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 996
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 997
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 998
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1000
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1003
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1004
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1012
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1014
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1012
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1018
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1019
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1020
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1021
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1022
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1023
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1025
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1026
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1028
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1032
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1033
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1034
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1036
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1039
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1040
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1041
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1043
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1045
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1047
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1050
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1051
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1054
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1055
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1061
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1063
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1068
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1069
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1070
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1071
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1075
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1076
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1078
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1079
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1081
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1082
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1083
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1084
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1086
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1087
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1092
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1093
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1094
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1095
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1096
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1097
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1098
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1100
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1102
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1103
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1104
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1107
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1108
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1109
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1110
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1111
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1112
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1116
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1117
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1119
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1121
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1124
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1125
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1126
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1127
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1128
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1131
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1133
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1136
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1138
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1141
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1144
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1145
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1146
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1147
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1148
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1149
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1151
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1153
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1154
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1156
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1158
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1159
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1160
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1161
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1163
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1164
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1165
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1167
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1170
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1171
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1173
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1174
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1175
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1176
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1178
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1179
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1180
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1181
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1182
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1183
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1187
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1188
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1190
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1191
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1192
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1194
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1195
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1196
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1197
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1198
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1199
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1200
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1201
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1202
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1203
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1204
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1205
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1208
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1209
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1211
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1212
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1215
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1216
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1217
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1220
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1223
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1224
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1225
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1226
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1227
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1228
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1230
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1231
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1232
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1237
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1238
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1239
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1240
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1241
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1243
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1244
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1245
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1246
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1248
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1249
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1250
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1251
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1254
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1255
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1256
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1257
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1258
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1259
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1260
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1261
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1262
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1263
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1266
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1267
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1268
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1269
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1270
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1271
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1273
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1275
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1277
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1279
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1280
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1281
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1282
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1284
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1286
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1287
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1288
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1289
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1290
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1291
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1292
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1295
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1296
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1297
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1298
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1299
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1301
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1302
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1304
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1305
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1306
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1307
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1308
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1309
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1310
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1311
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1312
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1313
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1314
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1315
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1316
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1317
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1318
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1319
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1320
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1323
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1324
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1325
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1327
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1328
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1329
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1330
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1331
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1332
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1334
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1336
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1337
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1338
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1339
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1340
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1341
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1343
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1344
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1345
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1346
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1347
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1348
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1350
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1351
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1352
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1353
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1354
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1355
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1357
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1358
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1359
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1360
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1361
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1362
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1363
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1364
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1365
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1366
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1367
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1368
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1369
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1370
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1371
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1372
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1373
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1374
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1376
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1377
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1378
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1379
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1380
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1381
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1382
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1383
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1384
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1385
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1386
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1387
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1388
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1389
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1390
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1391
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1392
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1393
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1395
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1396
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1397
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1398
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1399
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1400
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1401
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1402
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1403
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1404
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1405
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1406
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1407
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1408
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1409
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1410
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1411
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1412
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1413
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1414
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1415
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1416
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1417
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1418
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1419
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1420
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1421
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1423
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1424
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1425
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1426
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1427
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1428
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1429
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1430
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1431
+  },
+  {
+    "Nombre": "Socio Lago Marimenuco",
+    "Socio": 1432
+  }
+]

@@ -1,0 +1,10 @@
+# Dockerfile para MMRUN-API
+FROM node:20.11.1
+
+WORKDIR /usr/src/app
+
+COPY ./dist /usr/src/app
+
+CMD ["node", "main.js"]
+
+EXPOSE 3087

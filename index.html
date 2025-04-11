@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMRun'24</title>
+
+    <link rel="icon" type="image/x-icon" href="./MMR.ico">
+
+    <!-- styles propios -->
+    <link rel="stylesheet" href="./public/styles.css">
+    
+    <!-- styles importados -->
+    <link href="./public/bootsrap/css/bootstrap.min.css" rel="stylesheet">
+
+ 
+
+    
+</head>
+<body>
+
+<!-- NAV -->
+    <header id="header">
+        <h1>mm<span class="ar">r</span><span class="twenty-four">24</span></h1>
+
+        <!-- mobile -->
+        <div id="mbtn" class="menu-button" onclick="openMenu()">
+            Menu
+            <ion-icon class="open-icon" id="mbars" name="menu"></ion-icon>
+            <ion-icon class="close-icon inactive" id="mclose" name="close"></ion-icon>
+        </div>
+
+        <!-- desktop -->
+        <nav id="nav">
+            <a href="#home" class="active">Inicio</a>
+            <a href="#about">La Carrera</a>
+            <a href="#cat-sect">circuitos</a>
+            <a href="/form/index.html">Inscribirse</a>
+            <a href="#footer">Descargas</a>
+            <a href="#footer">Contacto</a>
+        </nav>
+    </header>
+    
+    <!-- mobile navigation -->
+    <div id="mmenu" class="mobile-nav">
+        <a href="#home">Inicio</a>
+        <a href="#about">La Carrera</a>
+        <a href="#cat-sect">Circuitos</a>
+        <a href="#"><span onclick="register()">Inscribirse</span></a>
+        <a href="#footer">Descargas</a>
+        <a href="#footer">Contacto</a>
+    </div>
+
+
+    <!-- Home -->
+    <section id="home" class="home">
+        <img src="./assets/mount2.png" class="mount2">
+        
+        <img src="./assets/mount1.png" class="mount1">
+        
+        <!-- suscribe icon -->      
+        <div id="suscribe-btn" onclick="register()" class="suscribe-btn">
+            Inscribirse
+        </div>
+
+
+        <img id="logo" src="./assets/MMR24b.png" alt="" class="logo">
+        
+        <img src="./assets/bush2.png" class="bush2">
+        <p id="logo-subtitle">tercera edicion. <span>Septiembre 2024</span></p>
+        <img src="./assets/bush4.png" class="bush1">
+
+        <!-- 4624 x 2600 -->
+        
+
+    </section>
+
+    <!-- la carrera -->
+    <section id="about" class="about">
+        <div class="about-container">
+            <div class="column-1">
+                <h2>Mari Menuco Run:</h2>
+                <h1>Una carrera para todos</h1>
+                <div class="separator"></div>
+                <br>
+                <p>La tercera edición de la Mari Menuco Run se acerca, y promete ser una experiencia inolvidable para corredores y caminantes de todos los niveles. El evento se llevará a cabo el <strong>domingo 29 de septiembre de 2024 en la Villa del Club Mari Menuco</strong>, Neuquén, Argentina. Con distancias de <strong>5km, 10km, 20km y 30km</strong>, la carrera ofrece un desafío para todos los participantes. Además, habrá una categoría <strong>KIDS</strong> para niños de 4 a 12 años, con juegos y actividades que fomentarán su participación en el deporte y la vida al aire libre.</p>
+                <br>
+                <p>Mari Menuco Run también invita a quienes deseen disfrutar de un paseo por los hermosos paisajes del lugar a participar de una <strong>caminata gratuita</strong> por los terrenos del Club Mari Menuco. Esta es una excelente oportunidad para pasar un día en familia en contacto con la naturaleza.
+                </p><br><p>La carrera se desarrollará dentro de los terrenos del Club Mari Menuco y sus alrededores, respetando todos los protocolos y medidas de seguridad vigentes para garantizar la protección y tranquilidad de los participantes.
+                    No te pierdas esta oportunidad única de disfrutar de un día deportivo y recreativo en un entorno natural impresionante. <strong>¡Inscríbete ya en Mari Menuco Run!</strong></p>
+            
+            </div>
+            <div class="column-2">
+                <img src="./assets/MDM_86862.png" alt="">
+            </div>
+        </div>
+        <div class="stats">
+            <div class="stat">
+                <h1 class="number">
+                    500+
+                </h1>
+                <p class="detail">
+                    Corredorres
+                </p>
+            </div>
+
+            <div class="stat">
+                <h1 class="number">
+                    4+
+                </h1>
+                <p class="detail">
+                    Circuitos
+                </p>
+            </div>
+
+            <div class="stat">
+                <h1 class="number">
+                    6+
+                </h1>
+                <p class="detail">
+                    Categorias
+                </p>
+            </div>
+        </div>
+
+       </section>
+
+       <!-- circuitos -->
+       <section id="cat-sect" class="categories">
+        <h1 class="cat-title">Circuitos</h1>
+        <!-- sponsors -->
+       </section>
+       <section class="sponsors">
+        <div class="nav-cover"><h1>sponsors</h1></div>
+        <div class="sponsors-container">
+            <img src="./assets/Logo_OSDE_2020.png" alt="logo sponsor osde mmrun carrera">
+            <img src="./assets/global.png" alt="logo sponsor farmacias global mmrun carrera">
+            <img src="./assets/divanni.png" alt="logo divanni mmrun carrera">
+        </div>
+
+       </section>
+       <footer id="footer">
+        <div class="logo-container">
+            <img src="./assets/logo-violeta.png" alt="">
+            <p>Tercera Edicion | <span>Septiembre '24</span></p>
+        </div>
+        <div class="social-media-container">
+            <!-- <h4>Nuestras redes</h4> -->
+            <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+            <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+            <a href="#"><ion-icon name="logo-tiktok"></ion-icon></a>
+            <a href="#"><ion-icon name="mail"></ion-icon></a>
+            
+        </div>
+        <div class="social-media-container documents">
+            <h4>Descargas</h4>
+            <!-- <br> -->
+            <a href="./public/documents/REGLAMENTO_GENERAL.pdf" download><ion-icon name="document-text"></ion-icon>  Reglamento General</a>
+            <a href="./public/documents/Autorización_para_Menor_de_Edad_y_Deslinde_de_Responsabilidad.pdf" download><ion-icon name="document-text"></ion-icon>  Autorización Menores de Edad</a>
+            <a href="./public/documents/Deslinde_de_Responsabilidades_para_MariMenucoRun2024.pdf" download><ion-icon name="document-text"></ion-icon>  Deslinde de responsabilidades</a>
+            <a href="./public/documents/Planilla_de_acompañantes.pdf" download><ion-icon name="document-text"></ion-icon>  Planilla de acompañantes</a>
+            
+        </div>
+        <div class="separator">
+
+        </div>
+        <div class="hvdevs">
+            <p>Desarrollado con <span><ion-icon name="heart"></ion-icon></span> por <a class="hvdevs-a" href="#">HVDevs</a> <span class="rocket"><ion-icon name="rocket-outline"></ion-icon></span></p>
+            <img src="./assets/hvdevslogo.png" alt="" class="hvdevs-logo">
+        </div>
+       </footer>
+
+
+
+
+    
+    
+    
+    <script src="./public/index.js"></script>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="./public/bootsrap/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <!-- ionic icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+
+</body>
+</html>
