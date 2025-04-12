@@ -24,7 +24,8 @@
             <li class="step"><span>2</span><p>Contacto</p></li>
             <li class="step"><span>3</span><p>Datos de Inscripción</p></li>
             <li class="step"><span>4</span><p>Resumen</p></li>
-            <li class="step"><span>5</span><p>Confirmación</p></li>
+            <li class="step"><span>5</span><p>Pago</p></li>
+            <li class="step"><span>6</span><p>Confirmación</p></li>
           </ul>
         </div>
 
@@ -99,38 +100,64 @@
             </div>
           </div>
 
-          <!-- Paso 4: Resumen generado dinámicamente -->
-          <!-- Paso 4 -->
-<div class="form-four form-step">
-    <div class="bg-svg"></div>
-    <h2>Resumen</h2>
-    <p>📝 Verificá todos los datos antes de confirmar</p>
-    <div id="payment-status"></div> <!-- Resumen generado por JS -->
-  </div>
-  
+          <!-- Paso 4: Resumen -->
+          <div class="form-four form-step">
+            <div class="bg-svg"></div>
+            <h2>Resumen</h2>
+            <p>📝 Verificá todos los datos antes de confirmar</p>
+            <div id="payment-status"></div> <!-- Resumen generado por JS -->
+            <p><a href="../public/documents/REGLAMENTO_GENERAL.pdf" target="_blank">Términos y Condiciones</a></p>
+          </div>
 
-          <!-- Paso 5: Confirmación -->
-          <!-- Paso 5 -->
-<div class="form-five form-step">
-    <div class="bg-svg"></div>
-    <h2>Confirmación</h2>
-    <p>💪 Estás a un paso de vivir el espíritu MMRUN 💜</p>
-  
-    <div class="checkbox-group">
-      <div class="checkbox">
-        <input type="checkbox" id="aceptaReglamento" required />
-        <label for="aceptaReglamento">
-          Acepto el <a href="../public/documents/REGLAMENTO_GENERAL.pdf" target="_blank">reglamento</a> y los términos y condiciones
-        </label>
-      </div>
-  
-      <div class="checkbox">
-        <input type="checkbox" id="esMenorEdad" name="menorEdad" />
-        <label for="esMenorEdad">Soy menor de edad</label>
-      </div>
-    </div>
-  </div>
-  
+          <!-- Paso 5: Pago -->
+          <div class="form-five form-step">
+            <div class="bg-svg"></div>
+            <h2>Pago</h2>
+            <p>Seleccioná tu método de pago para completar la inscripción.</p>
+            <div>
+              <label>Selecciona un método de pago:</label>
+              <select name="paymentMethod" class="items" required>
+                <option value="">Seleccione</option>
+                <option value="mercadoPago">Mercado Pago</option>
+                <!-- Agregar otros métodos de pago si es necesario -->
+              </select>
+            </div>
+            <div id="mercadoPagoButton">
+              <!-- Aquí iría el botón de pago de Mercado Pago -->
+              <button type="button" class="btn-submit" id="btn-pagar">Pagar ahora</button>
+            </div>
+            <div class="checkbox-group">
+              <div class="checkbox">
+                <input type="checkbox" id="aceptaReglamento" required />
+                <label for="aceptaReglamento">
+                  Acepto el <a href="../public/documents/REGLAMENTO_GENERAL.pdf" target="_blank">reglamento</a> y los términos y condiciones
+                </label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="esMenorEdad" name="menorEdad" />
+                <label for="esMenorEdad">Soy menor de edad</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paso 6: Confirmación -->
+          <div class="form-six form-step">
+            <div class="bg-svg"></div>
+            <h2>Confirmación</h2>
+            <p>💪 Estás a un paso de vivir el espíritu MMRUN 💜</p>
+            <div class="checkbox-group">
+              <div class="checkbox">
+                <input type="checkbox" id="aceptaReglamentoFinal" required />
+                <label for="aceptaReglamentoFinal">
+                  Acepto el <a href="../public/documents/REGLAMENTO_GENERAL.pdf" target="_blank">reglamento</a> y los términos y condiciones
+                </label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="esMenorEdadFinal" name="menorEdadFinal" />
+                <label for="esMenorEdadFinal">Soy menor de edad</label>
+              </div>
+            </div>
+          </div>
 
           <!-- Navegación -->
           <div class="btn-group">
