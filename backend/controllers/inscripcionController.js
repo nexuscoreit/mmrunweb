@@ -24,7 +24,7 @@ const guardarInscripcion = (req, res) => {
     }
 
     if (row) {
-      return res.status(400).json({ error: 'Ya existe una inscripción con este DNI' });
+      return res.status(400).json({ error: 'Ya existe una inscripción con este DNI' }); //FALTARIA VALIDAR MAIL Y CUENTA DE MERCADO PAGO TIENEN QUE COINCIDIR Y EL CODIGO DE DESCUENTO
     }
 
     // Si no existe, insertar

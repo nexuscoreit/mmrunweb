@@ -1,27 +1,15 @@
-const nextButton = document.querySelector(".btn-next");
-const prevButton = document.querySelector(".btn-prev");
-const subButton = document.getElementById("btn-submit");
-const steps = document.querySelectorAll(".step");
-const form_steps = document.querySelectorAll(".form-step");
+document.addEventListener("DOMContentLoaded", initForm);
 
-const partnerCheckbox = document.querySelector('input[name="check-partner"]');
-const partnerNumberInput = document.querySelector('input[name="partnerID"]');
+let categories = [];
+let discounts = [];
+let active = 1;
 
-let labels = [
-  "Nombre",
-  "Apellido",
-  "DNI",
-  "Género",
-  "Fecha de nacimiento",
-  "Email",
-  "Teléfono",
-  "Ciudad",
-  "Circuito",
-  "Talle camiseta",
-  "Codigo de descuento",
+const labels = [
+  "Nombre", "Apellido", "DNI", "Género", "Fecha de nacimiento",
+  "Email", "Teléfono", "Ciudad", "Circuito", "Talle camiseta", "Código de descuento"
 ];
 
-let talles = [
+const talles = [
   { id: "talle_s", value: "Camiseta Talle S" },
   { id: "talle_m", value: "Camiseta Talle M" },
   { id: "talle_l", value: "Camiseta Talle L" },
@@ -29,482 +17,298 @@ let talles = [
   { id: "talle_xxl", value: "Camiseta Talle XXL" },
 ];
 
-let categories;
+function initForm() {
+  getCategories();
+  getDiscounts();
+  setupNavigation();
+  dateListener();
+  handleQueryParamChange();
+  setupModal();
+  document.getElementById("btn-submit").addEventListener("click", () => {
+    getFormData();
+  });  
+}
 
-
-let discounts;
-
-
-//! Obtenemos las categorías
 async function getCategories() {
   try {
-    const response = await fetch("https://api.mmrun.hvdevs.com/categories");
-    // Obtenemos las categorías
-    categories = await response.json();
-    // Las colocamos en el select
-    const selectElement = document.getElementById("category");
-
-    // Eliminar opciones existentes
-    selectElement.innerHTML = "";
-
-    // Recorrer los datos y crear opciones
-    categories.forEach((category) => {
+    const res = await fetch("http://localhost:3000/api/categories");
+    categories = await res.json();
+    const select = document.getElementById("category");
+    if (!select) return;
+    select.innerHTML = "";
+    categories.forEach(cat => {
       const option = document.createElement("option");
-      option.value = category.title; // El valor de la opción será el título de la categoría
-      option.textContent = `Circuito: ${
-        category.title
-      } $ ${(+category.precio).toFixed(2)}`; // Texto visible para el usuario
-      selectElement.appendChild(option);
+      option.value = cat.title;
+      option.textContent = `Circuito: ${cat.title} - $${(+cat.precio).toFixed(2)}`;
+      select.appendChild(option);
     });
-  } catch (error) {
-    console.log(error);
+  } catch (e) {
+    console.error("Error al obtener categorías:", e);
   }
 }
-//! Llamamos la fx
-getCategories();
 
-//! Obtenemos los codigos de descuento
 async function getDiscounts() {
   try {
-    const response = await fetch("https://api.mmrun.hvdevs.com/discounts");
-    // Obtenemos los descuentos
-    discounts = await response.json();
-    
+    const res = await fetch("http://localhost:3000/api/discounts");
+    discounts = await res.json();
+  } catch (e) {
+    console.error("Error al obtener descuentos:", e);
   }
-  catch (error) {
-    console.log(error)
-  }   
 }
-//! Llamamos la fx
-getDiscounts();
 
-let active = 1;
+function setupNavigation() {
+  const steps = document.querySelectorAll(".step");
+  const formSteps = document.querySelectorAll(".form-step");
+  const nextBtn = document.querySelector(".btn-next");
+  const prevBtn = document.querySelector(".btn-prev");
+  const submitBtn = document.querySelector(".btn-submit");
 
-nextButton.addEventListener("click", () => {
-  const inputs = document.getElementsByClassName("items");
-  let next = true;
-  switch (active) {
-    case 1: {
-      for (let i = 0; i < 7; i++) {
+  const partnerCheckbox = document.querySelector('input[name="check-partner"]');
+  const partnerNumberInput = document.querySelector('input[name="partnerID"]');
+
+  nextBtn.addEventListener("click", () => {
+    const inputs = document.getElementsByClassName("items");
+    let valid = true;
+
+    const validationRanges = [[0, 7], [7, 10]];
+    if (active <= validationRanges.length) {
+      for (let i = validationRanges[active - 1][0]; i < validationRanges[active - 1][1]; i++) {
         if (!inputs[i].value) {
           inputs[i].classList.add("error");
-          next = false;
-          return;
+          valid = false;
         } else {
           inputs[i].classList.remove("error");
         }
       }
-      break;
     }
-    case 2: {
-      for (let i = 7; i < 10; i++) {
-        if (!inputs[i].value) {
-          inputs[i].classList.add("error");
-          next = false;
-          return;
-        } else {
-          inputs[i].classList.remove("error");
-        }
-      }
-      break;
+
+    if (!valid) {
+      Swal.fire({
+        title: "¡Error!",
+        text: "¡Falta completar algunos campos!",
+        icon: "error",
+        confirmButtonText: "Ok"
+      });
+      return;
     }
-  }
-  if (next) {
-    active++;
-    if (active > steps.length) {
-      active = steps.length;
-    }
-    updateProgress();
-  } else {
-    Swal.fire({
-      title: "¡Error!",
-      text: "¡Falta completar algunos campos!",
-      icon: "error",
-      confirmButtonText: "Ok",
-    });
-  }
-});
 
-prevButton.addEventListener("click", () => {
-  active--;
-  if (active < 1) {
-    active = 1;
-  }
-  updateProgress();
-});
+    active = Math.min(active + 1, steps.length);
+    updateProgress(steps, formSteps, prevBtn, nextBtn, submitBtn);
+  });
 
-const updateProgress = () => {
-  /* toggle .active class for each list item */
+  prevBtn.addEventListener("click", () => {
+    active = Math.max(active - 1, 1);
+    updateProgress(steps, formSteps, prevBtn, nextBtn, submitBtn);
+  });
 
+  partnerCheckbox.addEventListener("change", () => {
+    partnerNumberInput.disabled = !partnerCheckbox.checked;
+    if (!partnerCheckbox.checked) partnerNumberInput.value = "";
+  });
+
+  updateProgress(steps, formSteps, prevBtn, nextBtn, submitBtn);
+}
+
+function updateProgress(steps, formSteps, prevBtn, nextBtn, submitBtn) {
   steps.forEach((step, i) => {
-    if (i == active - 1) {
-      step.classList.add("active");
-      if (form_steps[i]) {
-        form_steps[i].classList.add("active");
-      }
-    } else {
-      step.classList.remove("active");
-      if (form_steps[i]) {
-        form_steps[i].classList.remove("active");
-      }
-    }
+    step.classList.toggle("active", i === active - 1);
+    formSteps[i].classList.toggle("active", i === active - 1);
   });
 
-  if (active === 1) {
-    prevButton.disabled = true;
-  } else if (active === steps.length) {
-    nextButton.disabled = true;
-    showData();
-  } else {
-    prevButton.disabled = false;
-    nextButton.disabled = false;
+  prevBtn.disabled = active === 1;
+  nextBtn.disabled = active === steps.length;
+
+  // ✅ Mostrar resumen SOLO en paso 4
+  if (active === 4) showData();
+
+  // ✅ Mostrar botón Confirmar solo en paso 5
+  const confirmBtn = document.querySelector(".btn-submit");
+  if (confirmBtn) {
+    confirmBtn.style.display = active === 5 ? "inline-block" : "none";
   }
-};
-
-updateProgress();
-
-/* campo de texto del checkbox */
-
-partnerCheckbox.addEventListener("change", () => {
-  if (partnerCheckbox.checked) {
-    partnerNumberInput.disabled = false;
-  } else {
-    partnerNumberInput.disabled = true;
-    partnerNumberInput.value = "";
-  }
-});
-
-
-
-
-/** @description Cada input tiene un rango de entrada, pasa al siguiente con focus */
-function dateListener() {
-  const dayInput = document.getElementById("day");
-  const monthInput = document.getElementById("month");
-  const yearInput = document.getElementById("year");
-
-  // Función para mover el enfoque al siguiente campo de entrada
-  function moveFocus(currentInput, nextInput) {
-    if (currentInput.value.length === 2) {
-      nextInput.focus();
-    }
-  }
-
-  // Agregar event listeners a los campos de entrada
-  dayInput.addEventListener("input", function () {
-    moveFocus(dayInput, monthInput);
-  });
-  
-  monthInput.addEventListener("input", function () {
-    moveFocus(monthInput, yearInput);
-  });
-  
-  yearInput.addEventListener("input", function () {
-    if (yearInput.value.length === 4) {
-      nextButton.focus();
-    }
-  });
 }
 
-dateListener();
-let discountApplied = false
+function dateListener() {
+  const day = document.getElementById("day");
+  const month = document.getElementById("month");
+  const year = document.getElementById("year");
+  const moveFocus = (from, to, len) => from.addEventListener("input", () => from.value.length === len && to.focus());
+
+  moveFocus(day, month, 2);
+  moveFocus(month, year, 2);
+  moveFocus(year, document.querySelector(".btn-next"), 4);
+}
 
 function showData() {
-  let percentaje = 0
-  let multiplier = 1
-  const status = document.getElementById("payment-status");
-  if (status) status.remove();
   const inputs = document.getElementsByClassName("items");
-  var nextEl = document.getElementById("next-element");
-  var div = document.createElement("div");
-  div.id = "payment-status";
-  let row = document.createElement("div");
-  row.className = "row";
-  let j = 0;
+  const partnerCheckbox = document.querySelector('input[name="check-partner"]');
+  const partnerInput = document.querySelector('input[name="partnerID"]');
+  const nextEl = document.querySelector(".form-four");
 
-  if(partnerCheckbox.checked === true) {
-    console.log(discounts)
-    const code = partnerNumberInput.value
-    for (let i = 0; i < discounts.length; i++) {
-      const e = discounts[i];
-      if(code.toUpperCase() === e.discountName) {
-        console.log("match")
-        percentaje = e.percentage / 100
-        
-        console.log(percentaje)
-      }
-      else {
-        console.log("NOT match")
-        inputs[13].value = "Codigo no existe"
-      }
-    }
+  let multiplier = 1;
+  const discountCode = partnerInput.value.toUpperCase();
+  const matchedDiscount = discounts.find(d => d.discountName === discountCode);
+  if (partnerCheckbox.checked && matchedDiscount) {
+    multiplier -= matchedDiscount.percentage / 100;
   }
 
-  multiplier = multiplier - percentaje
+  const category = categories.find(c => c.title === inputs[10].value);
+  const precioFinal = category ? (category.precio * multiplier).toFixed(2) : "No asignado";
 
-  
+  const resumenHTML = `
+    <div id="payment-status" class="resumen-box">
+      <h3 class="resumen-title">🧾 Resumen de inscripción</h3>
+      <div class="resumen-section">
+        <h4>🧍 Datos personales</h4>
+        <div class="resumen-grid">
+          <div><strong>Nombre:</strong> ${inputs[0].value}</div>
+          <div><strong>Apellido:</strong> ${inputs[1].value}</div>
+          <div><strong>DNI:</strong> ${inputs[2].value}</div>
+          <div><strong>Género:</strong> ${inputs[3].value}</div>
+          <div><strong>Fecha de nacimiento:</strong> ${inputs[4].value}/${inputs[5].value}/${inputs[6].value}</div>
+        </div>
+      </div>
+      <div class="resumen-section">
+        <h4>📱 Contacto</h4>
+        <div class="resumen-grid">
+          <div><strong>Email:</strong> ${inputs[7].value}</div>
+          <div><strong>Teléfono:</strong> ${inputs[8].value}</div>
+          <div><strong>Ciudad:</strong> ${inputs[9].value}</div>
+        </div>
+      </div>
+      <div class="resumen-section">
+        <h4>🎽 Datos de inscripción</h4>
+        <div class="resumen-grid">
+          <div><strong>Circuito:</strong> ${inputs[10].value}</div>
+          <div><strong>Talle camiseta:</strong> ${(() => {
+            const talle = talles.find(t => t.id === inputs[11].value);
+            return talle ? talle.value : "No asignado";
+          })()}</div>
+          <div><strong>Código de descuento:</strong> ${inputs[12].checked ? inputs[13].value : "No aplica"}</div>
+        </div>
+      </div>
+      <hr />
+      <div class="resumen-total">
+        <span><strong>Total a pagar:</strong></span>
+        <span><strong>$ ${precioFinal}</strong></span>
+      </div>
+    </div>
+  `;
 
-  for (i = 0; i < inputs.length; i++) {
-    let hr = document.createElement("hr");
-    if (i === 0 || i === 7 || i === 10) {
-      var title = document.createElement("h3");
-      title.textContent =
-        i === 0
-          ? "Datos personales"
-          : i === 7
-          ? "Contacto"
-          : "Datos de la inscripción";
-      div.appendChild(title);
-      div.appendChild(hr);
-    }
-    if (i !== 5 && i !== 6 && i !== 12) {
-      // Crear el elemento div con la clase "col col-sm col-md col-lg"
-      var col = document.createElement("div");
-      col.className = "col col-sm col-md col-lg";
+  const existing = document.getElementById("payment-status");
+  if (existing) existing.remove();
 
-      // col.className = "col col-lg";
-
-      // Crear el elemento h3 con el texto del label
-      var heading = document.createElement("h3");
-      heading.textContent = labels[j];
-      j++;
-
-      let talle;
-      if (i === 11) {
-        talle = talles.find((item) => item.id === inputs[11].value);
-      }
-
-      
-
-      // Crear el elemento p con el texto del valor
-      var paragraph = document.createElement("p");
-      paragraph.textContent =
-        i === 4
-          ? inputs[i].value +
-            "/" +
-            inputs[i + 1].value +
-            "/" +
-            inputs[i + 2].value
-          : i === 13
-          ? inputs[12].checked
-            ? inputs[13].value
-            : "No aplica"
-          : i === 11
-          ? talle
-            ? talle.value
-            : "No asignado"
-          : inputs[i].value;
-
-      // Agregar los elementos al div de la columna
-      col.appendChild(heading);
-      col.appendChild(paragraph);
-
-      // Agregar la columna al div de la fila
-      row.appendChild(col);
-      if (i === 4 || i === 9 || i === 13) {
-        div.appendChild(row);
-        row = document.createElement("div");
-        row.className = "row";
-      }
-    }
-  }
-  const hr = document.createElement("hr");
-  div.appendChild(hr);
-  const total = document.createElement("div");
-  total.className = "total";
-  const h3 = document.createElement("h3");
-  h3.textContent = "Total:";
-  const p = document.createElement("p");
-  var category = categories.find((item) => item.title === inputs[10].value);
-
-  if(category.title !== "Caminata" && discountApplied === false){
-    if(!partnerCheckbox.checked) {
-      multiplier = 1
-      category.precio = category.precio
-    }
-    category.precio = category.precio * multiplier
-    discountApplied = true
-  }
-  
-  p.textContent = `$ ${
-    category ? (+category.precio).toFixed(2) : "No asignado"
-  }`;
-  total.appendChild(h3);
-  total.appendChild(p);
-  div.appendChild(total);
-  const hr2 = document.createElement("hr");
-  div.appendChild(hr2);
-  nextEl.insertAdjacentElement("afterend", div);
+  nextEl.insertAdjacentHTML("beforeend", resumenHTML);
 }
 
 async function getFormData() {
   const spinner = document.getElementById("spinner");
   spinner.classList.remove("no-display");
+  const form = document.getElementById("form");
   const inputs = document.getElementsByClassName("items");
-  const category = categories.find((item) => item.title === inputs[10].value);
-  var formulario = document.getElementById("form");
-  var formData = new FormData(formulario);
-  let name = "";
-  let runnerBirthDate = "";
-  for (const entry of formData.entries()) {
-    if (entry[0] === "firstname") name = entry[1];
-    if (entry[0] === "lastname") name = name + " " + entry[1];
-    if (entry[0] === "day") runnerBirthDate = entry[1];
-    if (entry[0] === "month")
-      runnerBirthDate = runnerBirthDate + "/" + entry[1];
-    if (entry[0] === "year") runnerBirthDate = runnerBirthDate + "/" + entry[1];
-  }
-  formData.delete("firstname");
-  formData.delete("lastname");
-  formData.delete("day");
-  formData.delete("month");
-  formData.delete("year");
+  const formData = new FormData(form);
+
+  const name = `${form.firstname.value} ${form.lastname.value}`;
+  const nacimiento = `${form.day.value}/${form.month.value}/${form.year.value}`;
+  const category = categories.find(c => c.title === form.category.value);
+
+  const fecha = new Date(+form.year.value, +form.month.value - 1, +form.day.value);
+  const hoy = new Date();
+  const edad = Math.floor((hoy - fecha) / (1000 * 60 * 60 * 24 * 365.25));
+
   formData.append("name", name);
-  formData.append("runnerBirthDate", runnerBirthDate);
-
-  //* Calculamos la edad
-  const numbers = runnerBirthDate.split("/");
-  const date = new Date(+numbers[2], +numbers[1] - 1, numbers[0]);
-  const today = new Date();
-  var difference = today.getTime() - date.getTime();
-  var age = Math.floor(difference / (1000 * 60 * 60 * 24 * 365.25));
-  formData.append("runnerAge", age);
-
-
-
-  //* agregamos el item para crear la preferencia:
-  //! Some random item (test only)
+  formData.append("runnerBirthDate", nacimiento);
+  formData.append("runnerAge", edad);
   formData.append("title", "MMRUN'2024");
-  formData.append("description", category ? category.title : "No especificado");
+  formData.append("description", category?.title || "No especificado");
   formData.append("quantity", 1);
   formData.append("currency_id", "ARS");
-  formData.append("unit_price", category ? category.precio : 0);
-
-  for (const entry of formData.entries()) {
-    console.log(entry[0], entry[1]);
-  }
-
-  const url =
-    "https://mp.mmrun.hvdevs.com/api/mercadopago/create-preference";
-
-  // const devUrl = "http://localhost:3088/api/mercadopago/create-preference"
-
-  const options = {
-    method: "POST",
-    body: formData,
-  };
+  formData.append("unit_price", category?.precio || 0);
 
   try {
-    const response = await fetch(url, options);
+    const response = await fetch("http://localhost:3000/api/mercadopago/create-preference", {
+      method: "POST",
+      body: formData,
+    });
+
     spinner.classList.add("no-display");
-  
+
     if (response.ok) {
-      subButton.disabled = true;
       const data = await response.json();
-      console.log(data.init_point);
-  
-      // 👇 Guardar en backend MMRun antes de redirigir
       await fetch("http://localhost:3000/api/inscripciones", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           nombre: form.firstname.value,
           apellido: form.lastname.value,
           dni: form.dni.value,
           genero: form.runnerGenre.value,
-          fechaNacimiento: `${form.year.value}-${form.month.value.padStart(2, '0')}-${form.day.value.padStart(2, '0')}`,
+          fechaNacimiento: `${form.year.value}-${form.month.value.padStart(2, "0")}-${form.day.value.padStart(2, "0")}`,
           email: form.email.value,
           telefono: form.phone.value,
           ciudad: form.city.value,
-          categoria: form.catValue.value,
+          categoria: form.category.value,
           talle: form.tshirtSize.value,
           descuento: form["partnerID"]?.value || ""
-        })
+        }),
       });
-  
-      // ✅ Redirigir a Mercado Pago
+
       window.location.href = data.init_point;
     }
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
+    console.error(err);
     spinner.classList.add("no-display");
-    subButton.disabled = false;
     Swal.fire({
       title: "Error",
       text: "Algo salió mal con la petición",
       icon: "error",
       confirmButtonText: "Ok",
     });
-  }  
+  }
 }
 
 function handleQueryParamChange() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const paramValue = urlParams.get("status");
-  const walkParam = urlParams.get("runner_id");
-  console.log(paramValue);
+  const params = new URLSearchParams(window.location.search);
+  const status = params.get("status");
+  const runnerId = params.get("runner_id");
 
-  let text = "El pago fue acreditado con éxito. Puede inscribir otro corredor, o volver a la página principal."
+  let msg = "El pago fue acreditado con éxito.";
+  if (runnerId !== null) msg = "Participante inscripto con éxito.";
 
-  if(walkParam !== null ) {
-    console.info("🥇"+walkParam)
-    text = "Participante inscripto con con éxito. Puede inscribir otro corredor, o volver a la página principal."
-  }
-
-  switch (paramValue) {
-    case "approved": {
-      Swal.fire({
-        title: "Éxito",
-        text: text,
-        icon: "success",
-        showDenyButton: true,
-        confirmButtonText: "Inscribir otro corredor",
-        denyButtonText: "Volver a la web principal",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          window.location.href = "https://mmrun.com.ar/form/index.html";
-        } else {
-          window.location.href = "https://mmrun.com.ar/";
-        }
-      });
-      break;
-    }
-    case "rejected": {
-      Swal.fire({
-        title: "Error",
-        text: "Algo salió mal con la petición",
-        icon: "error",
-        confirmButtonText: "Ok",
-      });
-      break;
-    }
+  if (status === "approved") {
+    Swal.fire({
+      title: "Éxito",
+      text: msg,
+      icon: "success",
+      showDenyButton: true,
+      confirmButtonText: "Inscribir otro corredor",
+      denyButtonText: "Volver a la web principal",
+    }).then((r) => {
+      if (r.isConfirmed) window.location.href = "https://mmrun.com.ar/form/index.html";
+      else window.location.href = "https://mmrun.com.ar/";
+    });
+  } else if (status === "rejected") {
+    Swal.fire({
+      title: "Error",
+      text: "El pago fue rechazado.",
+      icon: "error",
+      confirmButtonText: "Ok",
+    });
   }
 }
 
-// Get the modal
-var modal = document.getElementById("myModal");
+function setupModal() {
+  const modal = document.getElementById("myModal");
+  const img = document.getElementById("myImg");
+  const modalImg = document.getElementById("img01");
+  const closeBtn = document.getElementsByClassName("close")[0];
 
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById("myImg");
-var modalImg = document.getElementById("img01");
-// var captionText = document.getElementById("caption");
-img.onclick = function(){
-  modal.style.display = "block";
-  modalImg.src = this.src;
-  // captionText.innerHTML = this.alt;
+  img.onclick = () => {
+    modal.style.display = "block";
+    modalImg.src = img.src;
+  };
+
+  closeBtn.onclick = () => {
+    modal.style.display = "none";
+  };
 }
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() { 
-  modal.style.display = "none";
-}
-
-// EventListener para detectar cambios en la URL
-window.addEventListener("popstate", handleQueryParamChange);
-
-handleQueryParamChange();
