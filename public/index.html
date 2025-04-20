@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MMRun'24</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/assets/img/favicon-mmrun.ico" />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="/assets/css/index.css" />
+  <link rel="stylesheet" href="/assets/css/bootstrap/css/bootstrap.min.css" />
+
+  <!-- Scripts -->
+  <script src="/assets/js/index.js" defer></script>
+  <script src="/assets/js/bootstrap/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <span><ion-icon name="mail-outline"></ion-icon> contacto@mmrun.com.ar</span>
+      <span><ion-icon name="location-outline"></ion-icon> Club Mari Menuco, Neuquén</span>
+    </div>
+    <div class="topbar-right">
+      <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+      <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+      <a href="#"><ion-icon name="logo-tiktok"></ion-icon></a>
+      <a href="#"><ion-icon name="mail-outline"></ion-icon></a>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="main-navbar" id="mainNavbar">
+    <div class="logo-area">
+      <img src="/assets/img/logo-mmrun-principal.png" alt="MMRun Logo" />
+    </div>
+
+    <!-- Menu desktop -->
+    <nav class="menu desktop-only">
+      <a href="#home" class="active">Inicio</a>
+      <a href="#about">La Carrera</a>
+      <a href="#cat-sect">Circuitos</a>
+      <a href="/form/distancias.html">Inscribirse</a>
+      <a href="#footer">Descargas</a>
+      <a href="#footer">Contacto</a>
+    </nav>
+
+    <!-- Botón inscribirse + menu toggle -->
+    <div class="icons">
+      <a class="btn-inscribirse" href="/form/distancias.html">Inscribirme</a>
+      <button class="hamburger-btn mobile-only" onclick="toggleMobileMenu()">
+        <ion-icon name="menu-outline"></ion-icon> Menú
+      </button>
+    </div>
+  </header>
+
+  <!-- MENU DESPLEGABLE MOBILE -->
+  <div id="mobileDropdown" class="mobile-dropdown">
+    <nav class="mobile-nav">
+      <a href="#home">Inicio</a>
+      <a href="#about">La Carrera</a>
+      <a href="#cat-sect">Circuitos</a>
+      <a href="/form/distancias.html">Inscribirse</a>
+      <a href="#footer">Descargas</a>
+      <a href="#footer">Contacto</a>
+    </nav>
+
+    <a class="btn-inscribirse" href="/form/distancias.html">Inscribirme</a>
+
+    <div class="mobile-icons">
+      <ion-icon name="logo-instagram"></ion-icon>
+      <ion-icon name="logo-facebook"></ion-icon>
+      <ion-icon name="logo-tiktok"></ion-icon>
+      <ion-icon name="search-outline"></ion-icon>
+    </div>
+
+    <div class="mobile-contact">
+      <p><ion-icon name="mail-outline"></ion-icon> contacto@mmrun.com.ar</p>
+      <p><ion-icon name="location-outline"></ion-icon> Club Mari Menuco, Neuquén</p>
+    </div>
+  </div>
+
+  <!-- HOME -->
+  <section id="home" class="home">
+    <img src="./assets/img/decor-montana-2.png" class="mount2" />
+    <img src="./assets/img/decor-montana-1.png" class="mount1" />
+    <a href="/form/distancias.html" class="suscribe-btn">Inscribirse</a>
+    <img id="logo" src="./assets/img/logo-mmrun-principal.png" alt="Logo" class="logo" />
+    <img src="./assets/img/decor-bush-2.png" class="bush2" />
+    <p id="logo-subtitle">Tercera Edición. <span>Septiembre 2024</span></p>
+    <img src="./assets/img/decor-bush-4.png" class="bush1" />
+  </section>
+
+  <!-- LA CARRERA -->
+  <section id="about" class="about">
+    <div class="about-container">
+      <div class="column-1">
+        <h2>Mari Menuco Run:</h2>
+        <h1>Una carrera para todos</h1>
+        <div class="separator"></div>
+        <br />
+        <p>La tercera edición de la Mari Menuco Run se acerca, y promete ser una experiencia inolvidable para corredores y caminantes de todos los niveles. El evento se llevará a cabo el <strong>domingo 29 de septiembre de 2024 en la Villa del Club Mari Menuco</strong>, Neuquén, Argentina. Con distancias de <strong>5km, 10km, 20km y 30km</strong>, la carrera ofrece un desafío para todos los participantes. Además, habrá una categoría <strong>KIDS</strong> para niños de 4 a 12 años, con juegos y actividades que fomentarán su participación en el deporte y la vida al aire libre.</p>
+        <br />
+        <p>Mari Menuco Run también invita a quienes deseen disfrutar de un paseo por los hermosos paisajes del lugar a participar de una <strong>caminata gratuita</strong> por los terrenos del Club Mari Menuco.</p>
+        <br />
+        <p>La carrera se desarrollará dentro de los terrenos del Club Mari Menuco y sus alrededores, respetando todos los protocolos y medidas de seguridad vigentes. <strong>¡Inscríbete ya en Mari Menuco Run!</strong></p>
+      </div>
+      <div class="column-2">
+        <img src="./assets/img/evento-2024-foto-3.jpg" alt="Foto evento" />
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><h1 class="number">500+</h1><p class="detail">Corredores</p></div>
+      <div class="stat"><h1 class="number">4+</h1><p class="detail">Circuitos</p></div>
+      <div class="stat"><h1 class="number">6+</h1><p class="detail">Categorías</p></div>
+    </div>
+  </section>
+
+  <!-- CIRCUITOS -->
+  <section id="cat-sect" class="categories">
+    <h1 class="cat-title">Circuitos</h1>
+  </section>
+
+  <section class="sponsors">
+    <div class="nav-cover"><h1>sponsors</h1></div>
+    <div class="sponsors-container">
+      <img src="/assets/img/logo-osde.png" alt="logo sponsor osde mmrun carrera" />
+      <img src="./assets/img/decor-global.png" alt="logo sponsor farmacias global mmrun carrera" />
+      <img src="./assets/img/logo-sponsor-divanni.png" alt="logo divanni mmrun carrera" />
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="logo-container">
+      <img src="./assets/img/logo-mmrun-violeta.png" alt="logo violeta mmrun" />
+      <p>Tercera Edición | <span>Septiembre '24</span></p>
+    </div>
+    <div class="social-media-container">
+      <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+      <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+      <a href="#"><ion-icon name="logo-tiktok"></ion-icon></a>
+      <a href="#"><ion-icon name="mail"></ion-icon></a>
+    </div>
+    <div class="social-media-container documents">
+      <h4>Descargas</h4>
+      <a href="./documents/REGLAMENTO_GENERAL.pdf" download><ion-icon name="document-text"></ion-icon> Reglamento General</a>
+      <a href="./documents/Autorización_para_Menor_de_Edad_y_Deslinde_de_Responsabilidad.pdf" download><ion-icon name="document-text"></ion-icon> Autorización Menores</a>
+      <a href="./documents/Deslinde_de_Responsabilidades_para_MariMenucoRun2024.pdf" download><ion-icon name="document-text"></ion-icon> Deslinde</a>
+      <a href="./documents/Planilla_de_acompañantes.pdf" download><ion-icon name="document-text"></ion-icon> Planilla</a>
+    </div>
+    <div class="separator"></div>
+    <div class="hvdevs">
+      <p>Desarrollado con <span><ion-icon name="heart"></ion-icon></span> por <a class="hvdevs-a" href="#">HVDevs</a> <span class="rocket"><ion-icon name="rocket-outline"></ion-icon></span></p>
+      <img src="./assets/img/logo-hvdevs.png" alt="Logo HVDevs" class="hvdevs-logo" />
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="./assets/js/index.js" defer></script>
+  <script src="/assets/js/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileDropdown');
+      menu.classList.toggle('active');
+    }
+
+    window.addEventListener("scroll", function () {
+      const navbar = document.getElementById("mainNavbar");
+      const topbar = document.querySelector(".topbar");
+
+      if (window.scrollY > 0) {
+        navbar.classList.add("scrolled");
+        topbar.classList.add("hidden");
+      } else {
+        navbar.classList.remove("scrolled");
+        topbar.classList.remove("hidden");
+      }
+    });
+  </script>
+</body>
+</html>

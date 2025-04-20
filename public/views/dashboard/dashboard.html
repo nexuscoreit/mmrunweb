@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel de Inscriptos | MMRun</title>
+  <link rel="stylesheet" href="/assets/css/dashboard.css" />
+
+  <!-- Ícono -->
+  <link rel="icon" href="/assets/img/favicon-mmrun.ico" />
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    if (localStorage.getItem("adminLoggedIn") !== "true") {
+      window.location.href = "/login/login.html";
+    }
+  </script>
+</head>
+<body>
+  <header class="admin-header">
+    <div class="admin-header-content">
+      <img src="../assets/logo-violeta.png" alt="Logo MMRun" class="mmrun-logo" />
+
+      <div class="user-controls">
+       <!-- CAMBIO: agregamos id="notificationIcon" -->
+<div class="notification-icon" id="notificationIcon">
+  <div class="bell-wrapper" id="bellWrapper">
+    <i data-lucide="bell" class="bell-icon"></i>
+    <span class="badge" id="notificationCount">0</span>
+  </div>
+</div>
+
+        
+        
+        
+
+        <div class="notification-panel" id="notificationPanel">
+          <div class="notification-header">🔔 Notificaciones</div>
+          <ul id="notificationList" class="notification-list"></ul>
+        </div>
+
+        <div class="user-avatar" onclick="toggleUserMenu()">
+          <img src="../assets/icon-user-admin.webp" alt="Usuario" />
+        </div>
+        <div class="user-menu" id="userMenu">
+          <div class="user-profile-section">
+            <div class="avatar-name">
+              <img src="../assets/icon-user-admin.webp" alt="Usuario" class="profile-avatar" />
+              <span class="username" id="adminUsername">Cargando...</span>
+            </div>
+            <!-- <button class="view-profile-btn">👥 Ver perfil</button> -->
+          </div>
+          <ul class="user-menu-list">
+            <li><i data-lucide="settings"></i> Configuración y privacidad</li>
+            <li><i data-lucide="life-buoy"></i> Ayuda y soporte técnico</li>
+            <li><i data-lucide="moon"></i> Pantalla y accesibilidad</li>
+            <li><i data-lucide="message-square"></i> Enviar comentarios</li>
+            <li class="logout" onclick="cerrarSesion()">
+              <i data-lucide="log-out"></i> Cerrar sesión
+            </li> 
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="controls-bar">
+        <div class="left-controls">
+          <select id="filtroCategoria">
+            <option value="todos">Todas las categorías</option>
+            <option value="5K">5K</option>
+            <option value="10K">10K</option>
+            <option value="20K">20K</option>
+            <option value="30K">30K</option>
+          </select>
+        </div>
+        <div class="right-controls">
+          <button onclick="cargarInscriptos()">🔄 Actualizar</button>
+          <button onclick="exportarExcel()">📅 Exportar Excel</button>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <div class="table-toolbar">
+          <div class="toolbar-right">
+            <label for="registrosPorPagina">Mostrar</label>
+            <select id="registrosPorPagina">
+              <option value="10">10</option>
+              <option value="15" selected>15</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+            </select>
+            <input type="text" id="buscador" placeholder="Buscar..." />
+          </div>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>DNI</th>
+              <th>Email</th>
+              <th>Teléfono</th>
+              <th>Ciudad</th>
+              <th>Categoría</th>
+              <th>Talle</th>
+              <th>Registrado</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-inscriptos">
+            <tr><td colspan="10" class="loading">Cargando inscriptos...</td></tr>
+          </tbody>
+        </table>
+
+        <div class="pagination-bar">
+          <div class="pagination-info" id="paginationSummary">Mostrando resultados...</div>
+          <div class="pagination-controls">
+            <button id="btnPrev" title="Anterior"><span>&laquo;</span></button>
+            <span id="pageInfo">Página 1</span>
+            <button id="btnNext" title="Siguiente"><span>&raquo;</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2024 MMRun - Panel Administrativo</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script src="/assets/js/dashboard.js"></script>
+
+  <script>
+    function cerrarSesion() {
+      localStorage.removeItem("adminLoggedIn");
+      window.location.href = "/login/login.html";
+    }
+
+    function toggleUserMenu() {
+      const menu = document.getElementById("userMenu");
+      menu.classList.toggle("active");
+    }
+
+    document.addEventListener('click', function (event) {
+      const isClickInside = document.querySelector('.user-controls').contains(event.target);
+      if (!isClickInside) {
+        document.getElementById("userMenu").classList.remove("active");
+        document.getElementById("notificationPanel").classList.remove("active");
+      }
+    });
+  </script>
+  <script>
+    function cerrarSesion() {
+      localStorage.removeItem("adminLoggedIn");
+      localStorage.removeItem("adminEmail"); // ✅ Limpiamos también el email
+      window.location.href = "/login/login.html";
+    }
+  
+    document.addEventListener("DOMContentLoaded", () => {
+      const username = localStorage.getItem("adminEmail");
+      const usernameSpan = document.getElementById("adminUsername");
+  
+      if (username && usernameSpan) {
+        usernameSpan.textContent = username;
+      }
+    });
+  </script>
+  
+</body>
+</html>
