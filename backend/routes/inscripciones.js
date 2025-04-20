@@ -1,8 +1,11 @@
 const express = require('express');
-const router = express.Router(); // ✅ Esta línea es clave
 const { guardarInscripcion, listarInscriptos } = require('../controllers/inscripcionController');
 
-router.post('/', guardarInscripcion);
-router.get('/', listarInscriptos);
+module.exports = (io) => {
+  const router = express.Router();
 
-module.exports = router;
+  router.post('/', (req, res) => guardarInscripcion(req, res, io));
+  router.get('/', listarInscriptos);
+
+  return router;
+};

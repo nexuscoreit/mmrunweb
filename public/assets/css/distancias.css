@@ -1,142 +1,299 @@
-/* === GLOBAL === */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+/* Reset + fuentes */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Layout base */
+html, body {
+  height: 100%;
+}
+
 body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(to bottom, #d0f4ff, #e1f5fe);
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #ddabfb 0%, #e0f7ff 80%, #ffffff 100%);
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 150px;
+  padding-bottom: 60px;
+}
+
+/* Topbar */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #3b3291;
+  color: white;
+  font-size: 0.85rem;
+  padding: 5px 30px;
+}
+
+.topbar-left span {
+  margin-right: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.topbar-right a {
+  color: white;
+  margin-left: 12px;
+  font-size: 1.2rem;
+}
+
+/* Navbar */
+.main-navbar {
+  background: linear-gradient(to right, #3b3291, #ddabfb);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 30px;
+  flex-wrap: wrap;
+  z-index: 999;
+  position: relative;
+}
+
+.main-navbar .logo-area img {
+  height: 50px;
+}
+
+.main-navbar .menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  flex: 1;
+}
+
+.main-navbar .menu a {
+  text-transform: uppercase;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.main-navbar .menu a.active,
+.main-navbar .menu a:hover {
+  color: #00faba;
+}
+
+.main-navbar .icons {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.main-navbar .icons ion-icon {
+  font-size: 1.3rem;
+  color: white;
+}
+
+.main-navbar .btn-inscribirse {
+  background: #00faba;
+  color: #3b3291;
+  padding: 6px 14px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+/* Responsive Navbar */
+@media (max-width: 1023px) {
+  .main-navbar .menu,
+  .main-navbar .icons > ion-icon,
+  .main-navbar .icons > .btn-inscribirse {
+    display: none;
   }
-  /* === HEADER DE DISTANCIAS === */
-.distancia-header {
-    background: linear-gradient(to right, #b3e5fc, #e1f5fe);
-    padding: 30px 0;
-    margin-bottom: 40px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    border-radius: 0 0 20px 20px;
-  }
-  
-  .title {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    font-size: 2.5em;
-    font-weight: 700;
-    color: #003366;
+
+  .hamburger-btn {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  
-  .title ion-icon {
-    font-size: 32px;
-    color: #ff6f00;
-  }
-  
-  /* === CONTAINER === */
-  .container {
-    text-align: center;
-    max-width: 960px;
-    padding: 0 20px;
-  }
-  
-  .title {
-    font-size: 2.5em;
+    background-color: #00faba;
+    color: #3b3291;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
     font-weight: 700;
-    color: #003366;
-    margin-bottom: 40px;
+    font-style: italic;
+    z-index: 2000;
+    margin-left: auto;
+    margin-right: 16px;
+    transition: background 0.3s ease;
+    gap: 8px;
+  }
+
+  .hamburger-btn .menu-icon {
+    font-size: 1.4rem;
+    color: #3b3291 !important;
+  }
+
+  .mobile-dropdown {
+    display: none;
+    flex-direction: column;
+    background: #3b3291;
+    padding: 20px 20px 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 9999;
+    overflow-y: auto;
+    animation: slideDown 0.3s ease forwards;
+  }
+
+  .mobile-dropdown.active {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
   }
-  
-  .title ion-icon {
-    font-size: 28px;
+
+  body.menu-open {
+    overflow: hidden;
   }
-  
-  /* === GRID DE TARJETAS === */
-  .grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  
-  /* === TARJETAS DE DISTANCIAS === */
-  .card-distancia {
-    background: linear-gradient(to right, #29b6f6, #4dd0e1);
+
+  .close-mobile-menu {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 1.4rem;
+    background: none;
+    border: none;
     color: white;
-    padding: 25px 30px;
-    border-radius: 15px;
-    width: 180px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    z-index: 10000;
     cursor: pointer;
-    transition: all 0.3s ease;
+  }
+
+  .mobile-dropdown nav.mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 60px;
+    align-items: center;
+  }
+
+  .mobile-dropdown nav.mobile-nav a {
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    padding: 6px 12px;
+    border-radius: 20px;
+  }
+
+  .mobile-dropdown nav.mobile-nav a.active {
+    background-color: #5247b9;
+    color: #00faba;
+    padding: 8px 16px;
+  }
+
+  .mobile-dropdown .btn-inscribirse {
+    background-color: #00faba;
+    color: #3b3291;
+    font-weight: bold;
+    text-align: center;
+    margin: 24px auto 32px;
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 1rem;
+    text-transform: uppercase;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  .mobile-footer {
+    margin-top: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 12px;
   }
-  
-  .card-distancia:hover {
-    transform: translateY(-5px);
-    background: linear-gradient(to right, #0288d1, #00acc1);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-  }
-  
-  .card-distancia ion-icon {
-    font-size: 32px;
-    margin-bottom: 8px;
+
+  .mobile-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 1.2rem;
     color: white;
   }
-  
-  .card-distancia h2 {
-    margin: 0;
-    font-size: 24px;
-    font-weight: 700;
+
+  .mobile-contact {
+    text-align: center;
+    font-size: 0.85rem;
+    color: white;
   }
-  
-  /* === ESTILO DEL PRECIO === */
-  .precio {
-    font-weight: bold;
-    font-size: 18px;
-    margin: 6px 0;
+
+  .mobile-contact p {
+    margin: 4px 0;
   }
-  
-  /* Precio "Gratis" con estilo verde */
-  .card-distancia[data-precio="Gratis"] {
-    background: linear-gradient(to right, #b2f7ef, #a3fbc1);
-    color: #004d40;
-  }
-  
-  .card-distancia[data-precio="Gratis"] ion-icon {
-    color: #004d40;
-  }
-  
-  .card-distancia[data-precio="Gratis"] h2 {
-    color: #004d40;
-  }
-  
-  .card-distancia[data-precio="Gratis"] .precio {
-    color: #2e7d32;
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 4px 8px;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 16px;
-  }
-  
-  .card-distancia[data-precio="Gratis"] .detalle {
-    color: #388e3c;
-    font-weight: 500;
-  }
-  
-  /* === DETALLE FECHA DE PAGO === */
-  .detalle {
-    font-size: 14px;
-    opacity: 0.95;
-    color: #f0f0f0;
-  }
-  
+}
+
+/* Título principal */
+.header-distancia-gradient {
+  background: linear-gradient(to right, #00faba, #6ff2d4);
+  color: #3b3291;
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+/* Cards Grid */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Card especial KIDS */
+.card-kids {
+  background: linear-gradient(to bottom right, #b6f7c1, #5df8c5);
+  color: #1c3f2b;
+  box-shadow: 0 4px 16px rgba(93, 248, 197, 0.3);
+  border: 2px solid #00faba;
+}
+
+.card-kids h2,
+.card-kids .precio {
+  color: #0e6946;
+}
+
+.card-kids .detalle {
+  color: #1c3f2b;
+  font-style: italic;
+}

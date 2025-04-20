@@ -1,0 +1,160 @@
+:root {
+    --color-bg: #ffffff;
+    --color-border: #e0e0e0;
+    --color-title: #003366;
+    --color-highlight: #00faba;
+    --color-accent: #3b3291;
+    --color-detail: #666;
+    --color-green: #2e7d32;
+    --radius: 16px;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Modal general */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Contenido del modal */
+  .modal-content {
+    background: var(--color-bg);
+    border-radius: var(--radius);
+    max-width: 920px;
+    width: 100%;
+    padding: 32px 36px 40px;
+    box-shadow: var(--shadow);
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Botón cerrar */
+  .close-modal {
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    font-size: 1.2rem;
+    color: var(--color-accent);
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Título */
+  .modal-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--color-title);
+    margin-bottom: 32px;
+  }
+  
+  /* Grid de tarjetas */
+  .grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 24px;
+  }
+  
+  /* Tarjetas */
+  .card-distancia {
+    background: linear-gradient(to right, #29b6f6, #4dd0e1);
+    color: white;
+    padding: 24px 18px;
+    border-radius: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+  }
+  
+  .card-distancia:hover {
+    transform: translateY(-4px);
+    background: linear-gradient(to right, #0288d1, #00acc1);
+  }
+  
+  .card-distancia h2 {
+    margin: 6px 0 4px;
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+  
+  .card-distancia .precio {
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 4px 0;
+  }
+  
+  .card-distancia .detalle {
+    font-size: 0.85rem;
+    color: #f0f0f0;
+  }
+  
+  /* Gratis */
+  .card-distancia[data-precio="Gratis"] {
+    background: linear-gradient(to right, #b2f7ef, #a3fbc1);
+    color: #004d40;
+  }
+  
+  .card-distancia[data-precio="Gratis"] h2,
+  .card-distancia[data-precio="Gratis"] .precio {
+    color: #004d40;
+  }
+  
+  .card-distancia[data-precio="Gratis"] .detalle {
+    color: var(--color-green);
+  }
+  
+  /* Enlace a pantalla completa */
+  .ver-pantalla-completa {
+    margin-top: 32px;
+    font-size: 0.9rem;
+    width: 100%;
+    text-align: right;
+  }
+  
+  .ver-pantalla-completa a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+  
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .modal-content {
+      padding: 24px 20px;
+    }
+  
+    .grid {
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 20px;
+    }
+  
+    .modal-title {
+      font-size: 1.4rem;
+      margin-bottom: 24px;
+    }
+  
+    .card-distancia {
+      padding: 20px;
+    }
+  
+    .ver-pantalla-completa {
+      text-align: center;
+      margin-top: 24px;
+    }
+  }
+  

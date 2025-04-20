@@ -1,33 +1,59 @@
 const express = require('express');
+const http = require('http');
 const cors = require('cors');
+const path = require('path');
+const socketIO = require('socket.io');
+
 const app = express();
+const server = http.createServer(app);
+const io = socketIO(server, {
+  cors: {
+    origin: '*'
+  }
+});
+
 const PORT = process.env.PORT || 3000;
 
-// Conexión a la base de datos SQLite
+// 1. Conexión y creación de tablas
 const db = require('./models/db');
+require('./models/initDB');
 
-// Middleware
+// 2. Middlewares
 app.use(cors());
 app.use(express.json());
 
-// Rutas
-const inscripcionesRoutes = require('./routes/inscripciones');
+// Servir archivos estáticos del frontend
+app.use(express.static(path.join(__dirname, '../public')));
+app.use('/assets', express.static(path.join(__dirname, '../assets')));
+
+// 3. Rutas de API (pasamos IO dinámicamente solo acá)
+const inscripcionesRoutes = require('./routes/inscripciones')(io);
 const categoriesRoutes = require('./routes/categories');
 const discountsRoutes = require('./routes/discounts');
 const mercadopagoRoutes = require('./routes/mercadopago');
+const authRoutes = require('./routes/auth');
 
-// Usar rutas
 app.use('/api/inscripciones', inscripcionesRoutes);
 app.use('/api/categories', categoriesRoutes);
 app.use('/api/discounts', discountsRoutes);
 app.use('/api/mercadopago', mercadopagoRoutes);
+app.use('/api/auth', authRoutes);
 
-// Ruta base de prueba
+// Ruta base
 app.get('/', (req, res) => {
   res.send('Servidor MMRun funcionando 🎉');
 });
 
-// Iniciar servidor
-app.listen(PORT, () => {
-  console.log(`Servidor escuchando en http://localhost:${PORT}`);
+// 4. WebSocket: conexión
+io.on('connection', (socket) => {
+  console.log('🟢 Usuario conectado al panel admin');
+
+  socket.on('disconnect', () => {
+    console.log('🔴 Usuario desconectado');
+  });
+});
+
+// 5. Iniciar servidor
+server.listen(PORT, () => {
+  console.log(`Servidor en tiempo real escuchando en http://localhost:${PORT}`);
 });

@@ -4,14 +4,19 @@
   "description": "Sitio web oficial para inscripciones de la carrera Mari Menuco Run 2024. Desarrollado con ASP.NET Core y Razor Pages, incluye landing, formulario de inscripción y panel administrativo para gestionar participantes.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon backend/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "express": "^5.1.0",
+    "socket.io": "^4.8.1",
     "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
   }
 }

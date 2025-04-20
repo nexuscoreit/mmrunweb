@@ -11,6 +11,7 @@
   <!-- Estilos -->
   <link rel="stylesheet" href="/assets/css/index.css" />
   <link rel="stylesheet" href="/assets/css/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/assets/css/modal.css" />
 
   <!-- Scripts -->
   <script src="/assets/js/index.js" defer></script>
@@ -39,55 +40,62 @@
     </div>
 
     <!-- Menu desktop -->
-    <nav class="menu desktop-only">
+    <nav class="menu">
       <a href="#home" class="active">Inicio</a>
       <a href="#about">La Carrera</a>
       <a href="#cat-sect">Circuitos</a>
-      <a href="/form/distancias.html">Inscribirse</a>
+      <a href="./views/form/distancias.html">Inscribirse</a>
       <a href="#footer">Descargas</a>
       <a href="#footer">Contacto</a>
-    </nav>
+    </nav>    
 
     <!-- Botón inscribirse + menu toggle -->
     <div class="icons">
-      <a class="btn-inscribirse" href="/form/distancias.html">Inscribirme</a>
+      <a class="btn-inscribirse" href="./views/form/distancias.html">Inscribirme</a>
       <button class="hamburger-btn mobile-only" onclick="toggleMobileMenu()">
-        <ion-icon name="menu-outline"></ion-icon> Menú
-      </button>
+        <ion-icon name="menu-outline" class="menu-icon"></ion-icon> Menú
+      </button>       
     </div>
   </header>
 
   <!-- MENU DESPLEGABLE MOBILE -->
   <div id="mobileDropdown" class="mobile-dropdown">
+    <button id="closeMobileMenu" class="close-mobile-menu">✖</button>
+    <img src="/assets/img/logo-mmrun-principal.png" alt="Logo MMRun" class="mobile-logo" />
+
+    <!-- 1. Opciones de navegación -->
     <nav class="mobile-nav">
-      <a href="#home">Inicio</a>
+      <a href="#home" class="active">Inicio</a>
       <a href="#about">La Carrera</a>
       <a href="#cat-sect">Circuitos</a>
-      <a href="/form/distancias.html">Inscribirse</a>
+      <a href="./views/form/distancias.html">Inscribirse</a>
       <a href="#footer">Descargas</a>
       <a href="#footer">Contacto</a>
     </nav>
-
-    <a class="btn-inscribirse" href="/form/distancias.html">Inscribirme</a>
-
-    <div class="mobile-icons">
-      <ion-icon name="logo-instagram"></ion-icon>
-      <ion-icon name="logo-facebook"></ion-icon>
-      <ion-icon name="logo-tiktok"></ion-icon>
-      <ion-icon name="search-outline"></ion-icon>
+  
+    <!-- 2. Footer: íconos + contacto -->
+    <div class="mobile-footer">
+      <div class="mobile-icons">
+        <ion-icon name="logo-instagram"></ion-icon>
+        <ion-icon name="logo-facebook"></ion-icon>
+        <ion-icon name="logo-tiktok"></ion-icon>
+        <ion-icon name="search-outline"></ion-icon>
+      </div>
+      <div class="mobile-contact">
+        <p><ion-icon name="mail-outline"></ion-icon> contacto@mmrun.com.ar</p>
+        <p><ion-icon name="location-outline"></ion-icon> Club Mari Menuco, Neuquén</p>
+      </div>
     </div>
-
-    <div class="mobile-contact">
-      <p><ion-icon name="mail-outline"></ion-icon> contacto@mmrun.com.ar</p>
-      <p><ion-icon name="location-outline"></ion-icon> Club Mari Menuco, Neuquén</p>
-    </div>
+  
+    <!-- 3. Botón CTA al final -->
+    <a class="btn-inscribirse" href="./views/form/distancias.html">Inscribirme</a>
   </div>
 
   <!-- HOME -->
   <section id="home" class="home">
     <img src="./assets/img/decor-montana-2.png" class="mount2" />
     <img src="./assets/img/decor-montana-1.png" class="mount1" />
-    <a href="/form/distancias.html" class="suscribe-btn">Inscribirse</a>
+    <a href="./views/form/distancias.html" class="suscribe-btn">Inscribirse</a>
     <img id="logo" src="./assets/img/logo-mmrun-principal.png" alt="Logo" class="logo" />
     <img src="./assets/img/decor-bush-2.png" class="bush2" />
     <p id="logo-subtitle">Tercera Edición. <span>Septiembre 2024</span></p>
@@ -154,21 +162,88 @@
     </div>
     <div class="separator"></div>
     <div class="hvdevs">
-      <p>Desarrollado con <span><ion-icon name="heart"></ion-icon></span> por <a class="hvdevs-a" href="#">HVDevs</a> <span class="rocket"><ion-icon name="rocket-outline"></ion-icon></span></p>
+      <p>Una solución tecnológica de <a class="hvdevs-a" href="#">Nexus Core</a> <span><ion-icon name="rocket-outline"></ion-icon></span></p>
       <img src="./assets/img/logo-hvdevs.png" alt="Logo HVDevs" class="hvdevs-logo" />
     </div>
   </footer>
 
+  <!-- MODAL DE DISTANCIAS -->
+  <div id="distanciaModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeDistanciaModal">&times;</span>
+
+      <h2 class="modal-title">
+        <ion-icon name="walk-outline"></ion-icon>
+        Elegí tu distancia para inscribirte
+      </h2>
+
+      <div class="grid">
+        <div class="card-distancia" data-distancia="CF" data-precio="$8.000" data-detalle="Hasta el 31 de julio">
+          <ion-icon name="walk-outline"></ion-icon>
+          <h2>CF</h2>
+          <p class="precio">$8.000</p>
+          <p class="detalle">Hasta el 31 de julio</p>
+        </div>
+
+        <div class="card-distancia" data-distancia="KIDS" data-precio="Gratis" data-detalle="Sin fecha límite">
+          <ion-icon name="happy-outline"></ion-icon>
+          <h2>KIDS</h2>
+          <p class="precio">Gratis</p>
+          <p class="detalle">Sin fecha límite</p>
+        </div>
+
+        <div class="card-distancia" data-distancia="8K" data-precio="$7.000" data-detalle="Hasta el 31 de julio">
+          <ion-icon name="fitness-outline"></ion-icon>
+          <h2>8K</h2>
+          <p class="precio">$7.000</p>
+          <p class="detalle">Hasta el 31 de julio</p>
+        </div>
+
+        <div class="card-distancia" data-distancia="15K" data-precio="$8.000" data-detalle="Hasta el 31 de julio">
+          <ion-icon name="pulse-outline"></ion-icon>
+          <h2>15K</h2>
+          <p class="precio">$8.000</p>
+          <p class="detalle">Hasta el 31 de julio</p>
+        </div>
+
+        <div class="card-distancia" data-distancia="25K" data-precio="$9.000" data-detalle="Hasta el 31 de julio">
+          <ion-icon name="trail-sign-outline"></ion-icon>
+          <h2>25K</h2>
+          <p class="precio">$9.000</p>
+          <p class="detalle">Hasta el 31 de julio</p>
+        </div>
+      </div>
+
+      <div class="ver-pantalla-completa">
+        <a href="/views/form/distancias.html" target="_blank">Ver en pantalla completa</a>
+      </div>
+    </div>
+  </div>
+
   <!-- SCRIPTS -->
   <script src="./assets/js/index.js" defer></script>
+  <script src="/assets/js/modal.js" defer></script>
   <script src="/assets/js/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script>
     function toggleMobileMenu() {
       const menu = document.getElementById('mobileDropdown');
-      menu.classList.toggle('active');
+      const isOpen = menu.classList.toggle('active');
+      document.body.classList.toggle('menu-open', isOpen);
     }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const closeBtn = document.getElementById("closeMobileMenu");
+      const mobileMenu = document.getElementById("mobileDropdown");
+
+      if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+          mobileMenu.classList.remove("active");
+          document.body.classList.remove("menu-open");
+        });
+      }
+    });
 
     window.addEventListener("scroll", function () {
       const navbar = document.getElementById("mainNavbar");
@@ -183,5 +258,6 @@
       }
     });
   </script>
+
 </body>
 </html>
