@@ -351,6 +351,6 @@ main {
   background: rgba(0, 0, 0, 0.45);
   border-radius: 20px;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(10px); /* 🔥 Desenfoque para efecto vidrio */
+  backdrop-filter: blur(10px); /* Desenfoque para efecto vidrio */
   -webkit-backdrop-filter: blur(10px); /* Safari support */
 }
