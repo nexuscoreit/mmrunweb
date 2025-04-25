@@ -1,214 +1,148 @@
-let screenSize = window.innerWidth;
+// index.js
 
-var home = document.getElementById("home");
-var circuits = [];
-
-window.onload = async function () {
-  let response = await fetch("https://api.mmrun.hvdevs.com/categories", {
-    mode: "cors",
-  });
-  let result = await response.json();
-  for (let i = 0; i < result.length; i++) {
-    circuits.push(result[i]);
-  }
-  addCategories(circuits);
-};
-
-// redirect to register
-function register() {
-  let url = "https://mmrun.hvdevs.com/registro";
-  window.open(url, "_blank").focus();
-}
-
-// Responsive nav setup
+// Variables globales y selectores DOM
+const screenSize = window.innerWidth;
+const circuits = [];
+const home = document.getElementById("home");
 const header = document.getElementById("header");
 const nav = document.getElementById("nav");
 const menubutton = document.getElementById("mbtn");
 const mcloseIcon = document.getElementById("mclose");
 const mopenIcon = document.getElementById("mbars");
 const mobileMenu = document.getElementById("mmenu");
-const suscribeBtn = document.getElementById("suscribe-btn");
-const catSection = document.getElementById("cat-sect");
-
-if (screenSize < 450) {
-  nav.classList.add("mobile");
-} else {
-  menubutton.classList.add("desktop");
-  suscribeBtn.classList.add("desktop");
-}
-
-// display mobile menu
-let menuOpen = false;
-
-function openMenu() {
-  if (!menuOpen) {
-    menuOpen = true;
-    menubutton.classList.add("active");
-    mopenIcon.classList.add("inactive");
-    mcloseIcon.classList.remove("inactive");
-    mobileMenu.classList.add("active");
-  } else {
-    menuOpen = false;
-    menubutton.classList.remove("active");
-    mopenIcon.classList.remove("inactive");
-    mcloseIcon.classList.add("inactive");
-    mobileMenu.classList.remove("active");
-  }
-}
-
-// parallax effect
+const suscribeBtn = document.querySelector(".suscribe-btn");
 const logo = document.getElementById("logo");
 const subtitle = document.getElementById("logo-subtitle");
-
-document.addEventListener("scroll", function () {
-  let val = window.scrollY;
-
-  // Cierra menú si está abierto al hacer scroll
-  if (menuOpen === true) {
-    menuOpen = false;
-    menubutton.classList.remove("active");
-    mopenIcon.classList.remove("inactive");
-    mcloseIcon.classList.add("inactive");
-    mobileMenu.classList.remove("active");
-  }
-});
-
-if (screenSize > 600) {
-  document.addEventListener("scroll", function () {
-    let value = window.scrollY;
-    if (value < 750) {
-      logo.style.marginTop = value + "px";
-      subtitle.style.marginTop = value + "px";
-    }
-  });
-}
-
 const categorySection = document.getElementById("cat-sect");
 
-function addCategories(arrayOfCategories) {
-  for (let i = 0; i < arrayOfCategories.length; i++) {
-    const e = arrayOfCategories[i];
-    var category = document.createElement("div");
+let menuOpen = false;
+let divExpanded;
+let expanded = false;
+let activeCard = false;
+
+// Carga de categorías desde API
+window.onload = async function () {
+  try {
+    const response = await fetch("https://api.mmrun.hvdevs.com/categories", { mode: "cors" });
+    const result = await response.json();
+    circuits.push(...result);
+    addCategories(circuits);
+  } catch (error) {
+    console.error("Error al cargar las categorías:", error);
+  }
+};
+
+function register() {
+  window.open("https://mmrun.hvdevs.com/registro", "_blank")?.focus();
+}
+
+if (screenSize < 450) {
+  nav?.classList.add("mobile");
+} else {
+  menubutton?.classList.add("desktop");
+  suscribeBtn?.classList.add("desktop");
+}
+
+function openMenu() {
+  menuOpen = !menuOpen;
+  menubutton?.classList.toggle("active", menuOpen);
+  mopenIcon?.classList.toggle("inactive", menuOpen);
+  mcloseIcon?.classList.toggle("inactive", !menuOpen);
+  mobileMenu?.classList.toggle("active", menuOpen);
+}
+
+document.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+  
+    if (menuOpen) openMenu();
+
+  });
+  document.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+    const btn = document.getElementById("comenzarBtn");
+    const subtitle = document.getElementById("logo-subtitle");
+  
+    if (!btn || !subtitle) return;
+  
+    if (scrollY > 100) {
+      btn.classList.add("hidden");
+      subtitle.classList.add("move-up");
+    } else {
+      btn.classList.remove("hidden");
+      subtitle.classList.remove("move-up");
+    }
+  });
+
+function addCategories(array) {
+  array.forEach((e, i) => {
+    const category = document.createElement("div");
     category.classList.add("category");
+    category.id = "category" + i;
 
-    var km = document.createElement("div");
+    const km = document.createElement("div");
     km.classList.add("km");
+    km.id = "km" + i;
 
-    var catInfoCont = document.createElement("div");
-    catInfoCont.classList.add("cat-info-container");
-
-    var title = document.createElement("h1");
+    const title = document.createElement("h1");
     title.textContent = e.title;
     km.appendChild(title);
     category.appendChild(km);
-    category.appendChild(catInfoCont);
-    categorySection.appendChild(category);
 
-    catInfoCont.setAttribute("id", "cat-info" + i);
-    category.setAttribute("id", "category" + i);
-    km.setAttribute("id", "km" + i);
+    const catInfoCont = document.createElement("div");
+    catInfoCont.classList.add("cat-info-container");
+    catInfoCont.id = "cat-info" + i;
 
-    var suscBtn = document.createElement("div");
+    const ul = document.createElement("ul");
+    ul.id = "ul" + i;
+    ul.style.display = "none";
+
+    const liData = [
+      { text: "Largada", value: e.largada },
+      { text: "Kit Corredor", value: e.kit_corredor },
+      { text: "Categorias", value: e.categories },
+      { text: "Circuito", value: e.circuito },
+      { text: "Precio", value: "$ " + e.precio + ".00", isPrice: true },
+    ];
+
+    liData.forEach(({ text, value, isPrice }) => {
+      const li = document.createElement("li");
+      li.textContent = text;
+      if (isPrice) li.classList.add("price");
+      const p = document.createElement("p");
+      p.textContent = value;
+      li.appendChild(p);
+      ul.appendChild(li);
+    });
+
+    const suscBtn = document.createElement("div");
     suscBtn.classList.add("suscribe-btn");
+    suscBtn.id = "suscBtn" + i;
     suscBtn.textContent = "Inscribirse";
-    suscBtn.setAttribute("id", "suscBtn" + i);
-    suscBtn.onclick = function () {
-      register();
-    };
-
-    let ul = document.createElement("ul");
-    let liCategories = document.createElement("li");
-    let liCircuito = document.createElement("li");
-    let liKitCorredor = document.createElement("li");
-    let liLargada = document.createElement("li");
-    let liPrecio = document.createElement("li");
-
-    ul.setAttribute("id", "ul" + i);
-    ul.appendChild(liLargada);
-    ul.appendChild(liKitCorredor);
-    ul.appendChild(liCategories);
-    ul.appendChild(liCircuito);
-    ul.appendChild(liPrecio);
+    suscBtn.style.display = "none";
+    suscBtn.onclick = register;
 
     catInfoCont.appendChild(ul);
     catInfoCont.appendChild(suscBtn);
-    liPrecio.classList.add("price");
 
-    let largadaP = document.createElement("p");
-    largadaP.textContent = e.largada;
-    liLargada.textContent = "Largada";
-    liLargada.appendChild(largadaP);
+    category.appendChild(catInfoCont);
+    categorySection?.appendChild(category);
 
-    let kitCorredorP = document.createElement("p");
-    kitCorredorP.textContent = e.kit_corredor;
-    liKitCorredor.textContent = "Kit Corredor";
-    liKitCorredor.appendChild(kitCorredorP);
-
-    let categoriesP = document.createElement("p");
-    categoriesP.textContent = e.categories;
-    liCategories.textContent = "Categorias";
-    liCategories.appendChild(categoriesP);
-
-    let circuitoP = document.createElement("p");
-    circuitoP.textContent = e.circuito;
-    liCircuito.textContent = "Circuito";
-    liCircuito.appendChild(circuitoP);
-
-    let precioP = document.createElement("p");
-    precioP.textContent = "$ " + e.precio + ".00";
-    liPrecio.textContent = "Precio";
-    liPrecio.appendChild(precioP);
-
-    ul.style.display = "none";
-    suscBtn.style.display = "none";
-
-    category.onclick = function () {
-      expandCat(i);
-    };
-  }
-}
-
-var divExpanded;
-var expanded = false;
-var activeCard = false;
-
-function collapseCat(numb) {
-  expanded = false;
-  activeCard = false;
-
-  let cate = document.getElementById("category" + numb);
-  let km = document.getElementById("km" + numb);
-  let u = document.getElementById("ul" + numb);
-  let btn = document.getElementById("suscBtn" + numb);
-
-  cate.style.height = "100px";
-  km.style.top = "50%";
-  u.style.display = "none";
-  btn.style.display = "none";
-
-  if (screenSize > 600) {
-    cate.style.height = "200px";
-    cate.style.width = "50%";
-    cate.style.margin = "auto 0";
-  }
+    category.onclick = () => expandCat(i);
+  });
 }
 
 function expandCat(numb) {
-  let cate = document.getElementById("category" + numb);
-  let km = document.getElementById("km" + numb);
-  let u = document.getElementById("ul" + numb);
-  let btn = document.getElementById("suscBtn" + numb);
+  const cate = document.getElementById("category" + numb);
+  const km = document.getElementById("km" + numb);
+  const u = document.getElementById("ul" + numb);
+  const btn = document.getElementById("suscBtn" + numb);
 
   divExpanded = numb;
 
   if (!expanded) {
-    for (let i = 0; i < circuits.length; i++) {
-      collapseCat(i);
-    }
-
+    circuits.forEach((_, i) => collapseCat(i));
     cate.style.height = "100%";
     window.scrollTo(0, screenSize > 600 ? 1700 : 1645);
-
     u.style.display = "flex";
     btn.style.display = "flex";
     km.style.top = "10%";
@@ -223,11 +157,30 @@ function expandCat(numb) {
   }
 }
 
+function collapseCat(numb) {
+  const cate = document.getElementById("category" + numb);
+  const km = document.getElementById("km" + numb);
+  const u = document.getElementById("ul" + numb);
+  const btn = document.getElementById("suscBtn" + numb);
+
+  expanded = false;
+  activeCard = false;
+
+  cate.style.height = "100px";
+  km.style.top = "50%";
+  u.style.display = "none";
+  btn.style.display = "none";
+
+  if (screenSize > 600) {
+    cate.style.height = "200px";
+    cate.style.width = "50%";
+    cate.style.margin = "auto 0";
+  }
+}
+
 function handleResponsiveMenu() {
   const screenWidth = window.innerWidth;
-  const nav = document.getElementById("nav");
-  const menubutton = document.getElementById("mbtn");
-  const mobileMenu = document.getElementById("mmenu");
+  if (!nav || !menubutton || !mobileMenu) return;
 
   if (screenWidth < 1024) {
     nav.style.display = "none";
@@ -243,23 +196,60 @@ function handleResponsiveMenu() {
 window.addEventListener("DOMContentLoaded", handleResponsiveMenu);
 window.addEventListener("resize", handleResponsiveMenu);
 
-function toggleMobileMenu() {
-  const menu = document.getElementById("mobileDropdown");
-  const isOpen = menu.classList.toggle("active");
-
-  document.body.classList.toggle("menu-open", isOpen);
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   const mobileLinks = document.querySelectorAll(".mobile-nav a");
+  const closeBtn = document.getElementById("closeMobileMenu");
+  const mobileMenu = document.getElementById("mobileDropdown");
 
   mobileLinks.forEach((link) => {
     link.addEventListener("click", () => {
-      document.getElementById("mobileDropdown").classList.remove("active");
+      mobileMenu?.classList.remove("active");
       document.body.classList.remove("menu-open");
-
       mobileLinks.forEach((l) => l.classList.remove("active"));
       link.classList.add("active");
     });
   });
+
+  if (closeBtn && mobileMenu) {
+    closeBtn.addEventListener("click", () => {
+      mobileMenu.classList.remove("active");
+      document.body.classList.remove("menu-open");
+    });
+  }
 });
+
+function toggleMobileMenu() {
+  const menu = document.getElementById("mobileDropdown");
+  const isOpen = menu?.classList.toggle("active");
+  document.body.classList.toggle("menu-open", isOpen);
+}
+
+// Fijar navbar arriba al hacer scroll
+window.addEventListener("scroll", () => {
+    const navbar = document.getElementById("mainNavbar");
+    const topbar = document.querySelector(".topbar");
+  
+    if (window.scrollY > 0) {
+      navbar?.classList.add("scrolled");
+      topbar?.classList.add("hidden");
+    } else {
+      navbar?.classList.remove("scrolled");
+      topbar?.classList.remove("hidden");
+    }
+  });
+  
+  document.addEventListener("scroll", function () {
+    const home = document.querySelector("#home");
+    const button = document.querySelector(".btn-comenzar");
+    const subtitle = document.querySelector("#logo-subtitle");
+    const rect = home.getBoundingClientRect();
+  
+    if (rect.bottom < 100 || rect.top < -200) {
+      button.classList.add("hidden");
+      subtitle.classList.add("move-up");
+    } else {
+      button.classList.remove("hidden");
+      subtitle.classList.remove("move-up");
+    }
+  });
+  
