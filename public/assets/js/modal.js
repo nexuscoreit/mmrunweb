@@ -31,10 +31,20 @@ document.addEventListener("DOMContentLoaded", () => {
         sessionStorage.setItem("distanciaSeleccionada", distancia);
         modal.style.display = "none";
         document.body.classList.remove("menu-open");
-  
-        // Redireccionar si querés que se abra el formulario:
-        // window.location.href = "/views/form/index.html";
+    
+        // Redirige al formulario
+        window.location.href = "/views/form/index.html";
       });
-    });
+    });    
   });
   
+  const comenzarBtn = document.getElementById("comenzarBtn");
+
+  if (comenzarBtn) {
+    comenzarBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const modal = document.getElementById("distanciaModal");
+      modal.style.display = "flex";
+      document.body.classList.add("menu-open");
+    });
+  }
