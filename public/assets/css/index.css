@@ -1,15 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
 }
-
-
 
 /* mobile */
 header {
@@ -73,6 +70,7 @@ header .menu-button ion-icon {
     font-size: 1.2em;
     margin: 2px;
 }
+
 header .menu-button ion-icon.inactive {
     display: none;
 }
@@ -104,16 +102,17 @@ header .menu-button ion-icon.inactive {
     height: auto;
 }
 
-
-
-
-
 /* home */
-
 .home {
     display: flex;
     height: 100dvh;
-    background: linear-gradient(to top, #3b3291 40%, #ddabfb);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(59, 50, 145, 0.7)),
+    url('../img/nuevo-diseno/runners-trail-mountain.jpg') no-repeat center 50% / cover;
+  color: white;
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  position: relative;
 }
 
 .home img {
@@ -160,24 +159,29 @@ header .menu-button ion-icon.inactive {
     margin: auto;
 }
 
+@media (min-width: 1024px) {
+  .home {
+    background-position: center 5%;
+  }
+}
 
-
-
+@media (max-width: 768px) {
+  .home {
+    background-position: center 15%;
+  }
+}
 
 .home .suscribe-btn.desktop {
     display: none;
 }
 
 /* la carrera */
-
 .about {
-    position: relative;
-    background: #3b3291;
-    width: 100%;
-    padding: 100px 40px 10px 40px;
-    color: #fff;
-    z-index: 100;
-
+    background: url('/assets/img/textura-clara.png');
+    background-color: #3b3291;
+    background-blend-mode: multiply;
+    background-size: cover;
+    color: white;
 }
 
 .about .about-container .column-1 {
@@ -236,7 +240,7 @@ header .menu-button ion-icon.inactive {
 
 /* circuitos */
 section.categories {
-    background-image: url("/assets/img/DSC_0022.jpg");
+    background-image: url("/assets/img/evento-2024-foto-1.jpg");
     /* height: 100%; */
     min-height: 100%;
     background-attachment: fixed;
@@ -249,9 +253,8 @@ section.categories {
     flex-direction: column;
     justify-content: space-around;
     position: relative;
-
-
 }
+
 section.categories h1.cat-title {
     width: 100%;
     margin: 48px auto 16px auto;
@@ -333,17 +336,13 @@ section.categories .category .cat-info-container ul li {
     background: #3b3291;
     color: #00FABA;
     border-radius: 2px 2px 5px 5px;
-    padding: 4px 8px;
-    
-    
+    padding: 4px 8px; 
 }
 
 section.categories .category .cat-info-container ul li.price {
     margin-top: 32px;
     text-align: center;
     font-size: 1.4em;
-    
-    
 }
 
 section.categories .category .cat-info-container ul li.price p {
@@ -394,14 +393,11 @@ section.categories .sponsors-bar h1 {
     bottom: 0;
     left: 50%;
     transform: translate(-50%, 0);
-
 }
 
-
-/* sponsors */
-
+/* SPONSORS */
 section.sponsors {
-    background-image: url("/assets/img/MDM_9012f.jpg");
+    background-image: url("/assets/img/evento-2024-foto-2.jpg");
     height: 140dvh;
     min-height: 100%;
     background-attachment: fixed;
@@ -413,8 +409,6 @@ section.sponsors {
     flex-direction: column;
     justify-content: flex-start;
 }
-
-
 
 section.sponsors .nav-cover {
     width: 100%;
@@ -445,7 +439,6 @@ section.sponsors .sponsors-container {
     width: 100%;
     height: 100vh;
 }
-
 
 section.sponsors .sponsors-container img {
     margin: 8px 0;
@@ -493,8 +486,6 @@ footer .documents h4 {
     margin: 12px 0px;
     font-size: 1.5em;
     text-align: center;
-
-
 }
 
 footer .documents a {
@@ -525,7 +516,6 @@ footer .logo-container p {
 
 footer .logo-container p span {
     font-weight: 600;
-
 }
 
 footer .hvdevs {
@@ -541,8 +531,6 @@ footer .hvdevs {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
-
 }
 
 footer .hvdevs p {
@@ -557,23 +545,14 @@ footer .hvdevs img {
     display: none;
 }
 
-
-
 footer .hvdevs p a {
     font-weight: 600;
     color: #fff;
     text-decoration: none;
 }
 
-
-/* 1920 x 1282 */
-
-
-
 /* desktop */
-
 @media (min-width:1024px) {
-
     header nav {
         display: flex;
         gap: 8px;
@@ -644,7 +623,6 @@ footer .hvdevs p a {
     .about .stats .stat p.detail {
         font-size: 1em;
     }
-    
 
     /* circuitos */
     section.categories {
@@ -655,8 +633,7 @@ footer .hvdevs p a {
         height: 100%;
         position: relative;
     }
-    
-    
+
     section.categories h1.cat-title {
         margin: auto 0px;
         font-size: 3em;
@@ -666,9 +643,7 @@ footer .hvdevs p a {
         margin: auto 0px;
         cursor: pointer;
         height: 200px;
-        width: 50%;
-
-        
+        width: 50%;  
     }
 
     section.categories .category .cat-info-container ul {
@@ -680,16 +655,12 @@ footer .hvdevs p a {
         margin: 8px 0px;
         text-align: start;
         font-size: 1.1em;
-        
-        
     }
     
     section.categories .category .cat-info-container ul li.price {
         margin-top: 32px;
         text-align: center;
         font-size: 1.4em;
-        
-        
     }
     
     section.categories .category .cat-info-container ul li.price p {
@@ -707,7 +678,6 @@ footer .hvdevs p a {
         border-radius: 2px 2px 5px 5px;
     }
 
-
     section.categories .sponsors-bar {
         width: 100%;
         height: 120px;
@@ -718,7 +688,6 @@ footer .hvdevs p a {
         text-align: center;
     }
 
-    
     section.categories .sponsors-bar h1 {
         font-weight: 800;
         color: #fff;
@@ -727,13 +696,11 @@ footer .hvdevs p a {
         bottom: 0;
         left: 50%;
         transform: translate(-50%, 0);
-
     }
 
     section.sponsors {
         height: 100vh;
         display: flex;
-
     }
 
     section.sponsors .sponsors-container {
@@ -741,8 +708,7 @@ footer .hvdevs p a {
         flex-direction: row;
         height: 50vh;
     }
-    
-    
+
     section.sponsors .sponsors-container img {
         width: 300px;
     }
@@ -756,7 +722,7 @@ footer .hvdevs p a {
     }
 
     footer {
-        height: 250px;
+        height: 270px;
         padding: 0px 8px;
         display: flex;
         flex-direction: row;
@@ -767,8 +733,6 @@ footer .hvdevs p a {
         padding: 8px;
         width: 20%;
         max-height: 100%;
-
-
     }
 
     footer .separator {
@@ -842,8 +806,6 @@ footer .hvdevs p a {
         display: block;
         width: 200px;
     }
-
-
 }
 
 @media (min-width:1281px) {
@@ -853,7 +815,6 @@ footer .hvdevs p a {
         gap: 12px;
     }
 
-    
     header nav a {
         text-decoration: none;
         text-transform: uppercase;
@@ -899,8 +860,6 @@ footer .hvdevs p a {
         font-size: 1.4em;
     }
 
-
-
     .about .about-container {
         display: flex;
         flex-direction: row;
@@ -930,7 +889,6 @@ footer .hvdevs p a {
 
     .about .about-container .column-1 p {
         font-size: 1.2em;
-
     }
 
     .about .about-container .column-2 {
@@ -940,13 +898,11 @@ footer .hvdevs p a {
         flex-direction: row;
         align-items: center;
         justify-content: center;
-
     }
 
     section.sponsors {
         height: 120vh;
         display: flex;
-
     }
 
     section.sponsors .sponsors-container {
@@ -954,8 +910,7 @@ footer .hvdevs p a {
         flex-direction: row;
         height: 50vh;
     }
-    
-    
+
     section.sponsors .sponsors-container img {
         width: 240px;
     }
@@ -970,13 +925,11 @@ footer .hvdevs p a {
         overflow: hidden
     }
 
-
     section.categories .category .cat-info-container ul {
         margin-top: 10%;
         max-height: 90%;
         overflow-y: auto;
         box-sizing: border-box;
-
     }
 
     section.categories .category .cat-info-container .suscribe-btn {
@@ -1022,6 +975,7 @@ footer .hvdevs p a {
     align-items: center;
     padding: 12px 30px;
     flex-wrap: wrap;
+    z-index: 998;
   }
   
   .main-navbar .logo-area img {
@@ -1071,7 +1025,7 @@ footer .hvdevs p a {
     font-size: 0.85rem;
     text-decoration: none;
   }
-  
+
 /* Oculta el menú desktop y los íconos en mobile */
 @media (max-width: 1023px) {
     .main-navbar .menu,
@@ -1268,4 +1222,225 @@ footer .hvdevs p a {
     padding: 8px 16px;
     border-radius: 20px;
   }
+
+  .btn-inscribirse {
+    position: relative;
+    overflow: hidden;
+    background-color: #00faba;
+    color: #3b3291;
+    font-weight: bold;
+    padding: 10px 26px;
+    border-radius: 50px;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 0 rgba(0, 250, 186, 0.7);
+    animation: pulse-glow 2s infinite;
+  }
+
+  .btn-inscribirse::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(255, 255, 255, 0.6) 50%,
+      rgba(255, 255, 255, 0.3) 100%
+    );
+    transform: skewX(-20deg);
+    animation: shine 3s infinite;
+    z-index: 1;
+  }
   
+  .btn-inscribirse span {
+    position: relative;
+    z-index: 2;
+  }
+  
+  @keyframes shine {
+    0% {
+      left: -75%;
+    }
+    100% {
+      left: 125%;
+    }
+  }
+
+  @keyframes pulse-glow {
+    0% {
+      box-shadow: 0 0 0 0 rgba(0, 250, 186, 0.5);
+    }
+    70% {
+      box-shadow: 0 0 0 15px rgba(0, 250, 186, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(0, 250, 186, 0);
+    }
+  }
+
+  .hero-slogan {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 20px auto -10px auto;
+    text-align: center;
+    max-width: 90%;
+    animation: fadeInUp 1.5s ease-out;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .foreground-runners {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    pointer-events: none;
+    max-height: 45vh;
+    object-fit: cover;
+  }
+
+  .home-content {
+    padding-top: 140px;
+    text-align: center;
+  }
+
+  .btn-comenzar {
+    margin-top: 30px;
+    padding: 12px 28px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    background-color: #00faba;
+    color: #3b3291;
+    border: none;
+    border-radius: 50px;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0 0 20px rgba(0, 250, 186, 0.3);
+    transition: all 0.3s ease;
+    animation: pulse-glow 2s infinite;
+  }
+
+  .btn-comenzar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 250, 186, 0.6);
+  }
+
+  .btn-comenzar {
+    position: relative;
+    background-color: #00faba;
+    color: #3b3291;
+    font-weight: bold;
+    padding: 12px 26px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    font-size: 1rem;
+    animation: pulse-glow 2s infinite;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    margin: 20px auto;
+    display: inline-block;
+    max-width: fit-content;
+    z-index: 10;
+    box-shadow: 0 0 0 rgba(0, 250, 186, 0.7);
+  }
+
+  /* HOME: estructura principal */
+  .home {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100dvh;
+      text-align: center;
+      position: relative;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(59, 50, 145, 0.7)),
+                  url('../img/nuevo-diseno/runners-trail-mountain.jpg') no-repeat center center / cover;
+      color: white;
+      padding: 0 1rem;
+    }
+  
+  .home-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem; /* Espaciado entre logo, botón, y texto */
+    margin-top: -10rem;
+  }
+
+  /* Logo centrado */
+  .home-content .logo {
+    width: 250px;
+    max-width: 90%;
+  }
+
+  /* Botón Comenzar */
+  .btn-comenzar {
+    background-color: #00faba;
+    color: #3b3291;
+    font-weight: bold;
+    padding: 12px 28px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(0, 250, 186, 0.3);
+    transition: all 0.3s ease;
+    animation: pulse-glow 2s infinite;
+  }
+
+  .btn-comenzar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 250, 186, 0.6);
+  }
+
+  /* Subtítulo */
+  #logo-subtitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    white-space: nowrap; /* evita saltos de línea */
+  }
+  
+  /* Glow */
+  @keyframes pulse-glow {
+    0% { box-shadow: 0 0 0 0 rgba(0, 250, 186, 0.5); }
+    70% { box-shadow: 0 0 0 15px rgba(0, 250, 186, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 250, 186, 0); }
+  }
+
+  .about-container {
+    background: linear-gradient(to bottom right, #3b3291, #5f4bc9);
+    color: white;
+  }
+
+  #about::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2), #3b3291);
+    z-index: 1;
+  }
+
+  #about {
+    position: relative;
+    background-color: #3b3291;
+    z-index: 0;
+  }
