@@ -14,7 +14,6 @@
   <link rel="stylesheet" href="/assets/css/modal.css" />
 
   <!-- Scripts -->
-  <script src="/assets/js/index.js" defer></script>
   <script src="/assets/js/bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
@@ -30,13 +29,19 @@
       <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
       <a href="#"><ion-icon name="logo-tiktok"></ion-icon></a>
       <a href="#"><ion-icon name="mail-outline"></ion-icon></a>
+      <!-- Ícono discreto para organizadores -->
+      <a href="/views/login/login.html" class="admin-login-icon" title="Acceso organizadores">
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </a>
     </div>
   </div>
 
   <!-- NAVBAR -->
   <header class="main-navbar" id="mainNavbar">
     <div class="logo-area">
-      <img src="/assets/img/logo-mmrun-principal.png" alt="MMRun Logo" />
+      <a href="#home">
+        <img src="/assets/img/logo-mmrun-principal.png" alt="MMRun Logo" />
+      </a>
     </div>
 
     <!-- Menu desktop -->
@@ -72,7 +77,7 @@
       <a href="#footer">Descargas</a>
       <a href="#footer">Contacto</a>
     </nav>
-  
+
     <!-- 2. Footer: íconos + contacto -->
     <div class="mobile-footer">
       <div class="mobile-icons">
@@ -86,20 +91,18 @@
         <p><ion-icon name="location-outline"></ion-icon> Club Mari Menuco, Neuquén</p>
       </div>
     </div>
-  
+
     <!-- 3. Botón CTA al final -->
-    <a class="btn-inscribirse" href="./views/form/distancias.html">Inscribirme</a>
+    <a class="btn-inscribirse" href="./views/form/distancias.html"><span>Inscribirme</span></a>
   </div>
 
   <!-- HOME -->
   <section id="home" class="home">
-    <img src="./assets/img/decor-montana-2.png" class="mount2" />
-    <img src="./assets/img/decor-montana-1.png" class="mount1" />
-    <a href="./views/form/distancias.html" class="suscribe-btn">Inscribirse</a>
-    <img id="logo" src="./assets/img/logo-mmrun-principal.png" alt="Logo" class="logo" />
-    <img src="./assets/img/decor-bush-2.png" class="bush2" />
-    <p id="logo-subtitle">Tercera Edición. <span>Septiembre 2024</span></p>
-    <img src="./assets/img/decor-bush-4.png" class="bush1" />
+    <div class="home-content">
+      <img id="logo" src="./assets/img/logo-mmrun-principal.png" alt="Logo" class="logo" />
+      <button id="comenzarBtn" class="btn-comenzar">Comenzar</button>
+      <p id="logo-subtitle">Tercera Edición. <span>Septiembre 2024</span></p>
+    </div>
   </section>
 
   <!-- LA CARRERA -->
@@ -117,7 +120,7 @@
         <p>La carrera se desarrollará dentro de los terrenos del Club Mari Menuco y sus alrededores, respetando todos los protocolos y medidas de seguridad vigentes. <strong>¡Inscríbete ya en Mari Menuco Run!</strong></p>
       </div>
       <div class="column-2">
-        <img src="./assets/img/evento-2024-foto-3.jpg" alt="Foto evento" />
+        <img src="./assets/img/nuevo-diseno/photo-of-man-running.jpeg" alt="Corredor en montaña" />
       </div>
     </div>
     <div class="stats">
@@ -173,41 +176,40 @@
       <span class="close-modal" id="closeDistanciaModal">&times;</span>
 
       <h2 class="modal-title">
-        <ion-icon name="walk-outline"></ion-icon>
-        Elegí tu distancia para inscribirte
+        🏁 Elegí tu distancia para inscribirte
       </h2>
 
       <div class="grid">
         <div class="card-distancia" data-distancia="CF" data-precio="$8.000" data-detalle="Hasta el 31 de julio">
-          <ion-icon name="walk-outline"></ion-icon>
+          <div class="emoji" style="font-size: 2rem;">🥾</div>
           <h2>CF</h2>
           <p class="precio">$8.000</p>
           <p class="detalle">Hasta el 31 de julio</p>
         </div>
 
         <div class="card-distancia" data-distancia="KIDS" data-precio="Gratis" data-detalle="Sin fecha límite">
-          <ion-icon name="happy-outline"></ion-icon>
+          <div class="emoji" style="font-size: 2rem;">🧒</div>
           <h2>KIDS</h2>
           <p class="precio">Gratis</p>
           <p class="detalle">Sin fecha límite</p>
         </div>
 
         <div class="card-distancia" data-distancia="8K" data-precio="$7.000" data-detalle="Hasta el 31 de julio">
-          <ion-icon name="fitness-outline"></ion-icon>
+          <div class="emoji" style="font-size: 2rem;">🏃‍♀️</div>
           <h2>8K</h2>
           <p class="precio">$7.000</p>
           <p class="detalle">Hasta el 31 de julio</p>
         </div>
 
         <div class="card-distancia" data-distancia="15K" data-precio="$8.000" data-detalle="Hasta el 31 de julio">
-          <ion-icon name="pulse-outline"></ion-icon>
+          <div class="emoji" style="font-size: 2rem;">🔥</div>
           <h2>15K</h2>
           <p class="precio">$8.000</p>
           <p class="detalle">Hasta el 31 de julio</p>
         </div>
 
         <div class="card-distancia" data-distancia="25K" data-precio="$9.000" data-detalle="Hasta el 31 de julio">
-          <ion-icon name="trail-sign-outline"></ion-icon>
+          <div class="emoji" style="font-size: 2rem;">⛰️</div>
           <h2>25K</h2>
           <p class="precio">$9.000</p>
           <p class="detalle">Hasta el 31 de julio</p>
@@ -227,37 +229,17 @@
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script>
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobileDropdown');
-      const isOpen = menu.classList.toggle('active');
-      document.body.classList.toggle('menu-open', isOpen);
-    }
+    document.addEventListener("scroll", function () {
+      const home = document.querySelector("#home");
+      const button = document.getElementById("comenzarBtn");
+      const rect = home.getBoundingClientRect();
 
-    document.addEventListener("DOMContentLoaded", function () {
-      const closeBtn = document.getElementById("closeMobileMenu");
-      const mobileMenu = document.getElementById("mobileDropdown");
-
-      if (closeBtn) {
-        closeBtn.addEventListener("click", () => {
-          mobileMenu.classList.remove("active");
-          document.body.classList.remove("menu-open");
-        });
-      }
-    });
-
-    window.addEventListener("scroll", function () {
-      const navbar = document.getElementById("mainNavbar");
-      const topbar = document.querySelector(".topbar");
-
-      if (window.scrollY > 0) {
-        navbar.classList.add("scrolled");
-        topbar.classList.add("hidden");
+      if (rect.bottom < 100 || rect.top < -200) {
+        button.classList.add("hidden");
       } else {
-        navbar.classList.remove("scrolled");
-        topbar.classList.remove("hidden");
+        button.classList.remove("hidden");
       }
     });
   </script>
-
 </body>
 </html>
