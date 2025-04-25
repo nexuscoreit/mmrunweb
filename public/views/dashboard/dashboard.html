@@ -18,8 +18,10 @@
 <body>
   <header class="admin-header">
     <div class="admin-header-content">
-      <img src="/assets/img/logo-mmrun-violeta.png" alt="Logo MMRun" class="mmrun-logo" />
-
+      <a href="/index.html">
+        <img src="/assets/img/logo-mmrun-violeta.png" alt="Logo MMRun" class="mmrun-logo" />
+      </a>
+      
       <div class="user-controls">
         <div class="notification-icon" id="notificationIcon">
           <div class="bell-wrapper" id="bellWrapper">
@@ -130,6 +132,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
   <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
   <script src="/assets/js/dashboard.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="/assets/js/session.js" defer></script>
 
   <script>
     function cerrarSesion() {
