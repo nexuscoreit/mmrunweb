@@ -14,7 +14,7 @@
 
 :root {
   --main-color: #5247b9;
-  --secondary-color: #00faba;
+  --secondary-color: rgba(0, 250, 186, 0.3);
   --lighter-color: #e0e0e7;
   --light-color: #b0b0c0;
   --dark-color: #52505e;
@@ -29,7 +29,24 @@ body {
   font-weight: 400;
   line-height: 1.8;
   color: var(--dark-color);
-  background: var(--secondary-color);
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(59, 50, 145, 0.7)),
+              url('/assets/img/fondo-form.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(59, 50, 145, 0.7)),
+              url('/assets/img/nuevo-diseno/man-running-mountain-cloudy-sky-background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 a {
@@ -59,13 +76,18 @@ img {
   margin: 0 auto;
   padding: 0.1em;
 }
+
 .form-box {
+  width: 90vw;
+  max-width: 1100px;
+  max-height: 80vh;
+  overflow-y: auto;
+  margin: auto;
   display: flex;
-  flex-direction: column;
-  margin-top: 1em;
-  border: 2px solid var(--primary-color);
+  flex-direction: row;
   border-radius: 15px;
   background-color: #faf9ff;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 }
 
 .form-box .progress {
@@ -97,7 +119,6 @@ img {
 }
 
 /* progress steps */
-
 .progress ul.progress-steps {
   display: flex;
   flex-direction: row;
@@ -127,6 +148,7 @@ img {
   border-radius: 50%;
   background-color: var(--lighter-color);
   z-index: 1;
+  color: black;
 }
 
 .progress ul.progress-steps li.active > span {
@@ -150,7 +172,6 @@ img {
 }
 
 /* form */
-
 .form-box form {
   width: 100%;
   padding: 1em 1em;
@@ -164,8 +185,10 @@ form > div {
 }
 
 form > div p {
-  color: var(--light-color);
-  margin-bottom: 2em;
+  color: #4a4a4a;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 1.5em;
 }
 
 form > div > div:not(.checkbox) {
@@ -187,6 +210,7 @@ form label {
   font-size: var(--font-smaller);
   margin-bottom: 0.5em;
   font-weight: 600;
+  color: #333;
 }
 
 form .grouping {
@@ -243,7 +267,6 @@ form > div.active {
 }
 
 /* button */
-
 .btn-group {
   display: flex;
   flex-wrap: wrap;
@@ -418,6 +441,7 @@ form > div.active {
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
 }
+
 @keyframes rotation {
   0% {
     transform: rotate(0deg);
@@ -457,19 +481,18 @@ form > div.active {
   opacity: 0.7;
 }
 
-/* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.9);
 }
 
 /* Modal Content (image) */
@@ -579,6 +602,7 @@ form > div.active {
   padding-top: 15px;
   border-top: 2px solid #eee;
 }
+
 .checkbox-group {
   margin-top: 20px;
 }
@@ -600,6 +624,7 @@ form > div.active {
   color: #007bff;
   text-decoration: underline;
 }
+
 /* Mari Menuco Run Modal Styles */
 .swal2-popup.mmrun-modal {
   background: linear-gradient(to right, #3b3291, #ddabfb);
@@ -626,9 +651,78 @@ form > div.active {
   padding: 10px 20px;
 }
 
+main, .container, .form-box {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
 
+body {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(59, 50, 145, 0.7)),
+              url('/assets/img/nuevo-diseno/man-running-mountain-cloudy-sky-background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+  min-height: 100vh;
+}
 
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 60px;
+}
 
+.form-box {
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
 
+footer {
+  margin-top: auto;
+  z-index: 10;
+}
 
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
 
+#page {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  box-sizing: border-box;
+  margin-top: 40px;
+}
+
+.form-box {
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+}
+
+#page {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  box-sizing: border-box;
+}

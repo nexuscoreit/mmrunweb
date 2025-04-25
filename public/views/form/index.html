@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,9 +7,18 @@
 
   <!-- Ícono -->
   <link rel="icon" type="image/x-icon" href="/assets/img/favicon-mmrun.ico" />
+  <!-- Bootstrap CSS (ya lo tenés) -->
+  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />
+
+  <!-- Navbar / topbar / distancias -->
+  <link rel="stylesheet" href="/assets/css/index.css" />
+  <link rel="stylesheet" href="/assets/css/modal.css" />
 
   <!-- Estilos -->
-  <link rel="stylesheet" href="/assets/css/index.css" />
+  <link rel="stylesheet" href="/assets/css/form.css" />
+  <!-- Bootstrap CSS (opcional pero recomendado si lo usabas) -->
+  <!-- Bootstrap CSS local -->
+  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
 
   <!-- SweetAlert -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -21,194 +29,309 @@
       padding: 2rem;
     }
   </style>
-  
 </head>
 
-<body class="no-overflow">
-  <div id="page" class="site">
-    <div class="container">
-      <div class="form-box">
-        <!-- Progreso -->
-        <div class="progress">
-          <div class="logo">
-            <img src="/assets/img/logo-mmrun-secundario.png" alt="Logo MMRUN">
-          </div>
-          <ul class="progress-steps">
-            <li class="step active"><span>1</span><p>Datos Personales</p></li>
-            <li class="step"><span>2</span><p>Contacto</p></li>
-            <li class="step"><span>3</span><p>Datos de Inscripción</p></li>
-            <li class="step"><span>4</span><p>Resumen</p></li>
-            <li class="step" data-step="5"><span>5</span><p>Pago</p></li>
-            <li class="step"><span>6</span><p>Confirmación</p></li>
-          </ul>
-        </div>
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <span>contacto@mmrun.com.ar</span>
+      <span>Club Mari Menuco, Neuquén</span>
+    </div>
+    <div class="topbar-right">
+      <a href="#"></a>
+      <a href="#"></a>
+      <a href="#"></a>
+      <a href="#"></a>
+    </div>
+  </div>
 
-        <form action="" id="form">
-          <!-- Paso 1: Datos Personales -->
-          <div class="form-one form-step active">
-            <div class="bg-svg"></div>
-            <h2>Datos Personales</h2>
-            <p>Ingresá tu información personal</p>
-            <div><label>Nombre</label><input type="text" name="firstname" class="items" placeholder="Nombre" required /></div>
-            <div><label>Apellido</label><input type="text" name="lastname" class="items" placeholder="Apellido" required /></div>
-            <div><label>DNI</label><input type="text" pattern="[0-9]*" name="dni" placeholder="00000000" class="items" required /></div>
-            <div>
-              <label>Género</label>
-              <select name="runnerGenre" class="items" required>
-                <option value="">Seleccione</option>
-                <option value="Femenino">Femenino</option>
-                <option value="Masculino">Masculino</option>
-              </select>
+  <!-- NAVBAR -->
+  <header class="main-navbar" id="mainNavbar">
+    <div class="logo-area">
+      <a href="/#home">
+        <img src="/assets/img/logo-mmrun-principal.png" alt="MMRun Logo" />
+      </a>
+    </div>    
+    <nav class="menu">
+      <a href="/#home">Inicio</a>
+      <a href="/#about">La Carrera</a>
+      <a href="/#cat-sect">Circuitos</a>
+      <a href="/views/form/distancias.html" class="active">Inscribirse</a>
+      <a href="/#footer">Descargas</a>
+      <a href="/#footer">Contacto</a>
+    </nav>
+    <div class="icons">
+      <a class="btn-inscribirse" href="/views/form/distancias.html">Inscribirme</a>
+      <button class="hamburger-btn mobile-only" onclick="toggleMobileMenu()">Menú</button>
+    </div>
+  </header>
+
+  <!-- MENÚ MOBILE -->
+  <div id="mobileDropdown" class="mobile-dropdown">
+    <button id="closeMobileMenu" class="close-mobile-menu">✖</button>
+    <img src="/assets/img/logo-mmrun-principal.png" alt="Logo MMRun" class="mobile-logo" />
+    <nav class="mobile-nav">
+      <a href="/#home">Inicio</a>
+      <a href="/#about">La Carrera</a>
+      <a href="/#cat-sect">Circuitos</a>
+      <a href="/views/form/distancias.html" class="active">Inscribirse</a>
+      <a href="/#footer">Descargas</a>
+      <a href="/#footer">Contacto</a>
+    </nav>
+    <div class="mobile-footer">
+      <div class="mobile-icons"></div>
+      <div class="mobile-contact">
+        <p>contacto@mmrun.com.ar</p>
+        <p>Club Mari Menuco, Neuquén</p>
+      </div>
+    </div>
+    <a class="btn-inscribirse" href="/views/form/distancias.html">Inscribirme</a>
+  </div>
+
+  <body class="no-overflow" style="display: flex; flex-direction: column; min-height: 100vh;">
+    <div id="page" class="site">
+      <div class="container">
+        <div class="form-box">
+          <!-- Progreso -->
+          <div class="progress">
+            <div class="logo">
+              <img src="/assets/img/logo-mmrun-secundario.png" alt="Logo MMRUN">
             </div>
-            <div class="birth">
-              <label>Fecha de nacimiento</label>
-              <div class="grouping">
-                <input type="number" id="day" class="items" name="day" min="1" max="31" placeholder="DD" required />
-                <input type="number" id="month" class="items" name="month" min="1" max="12" placeholder="MM" required />
-                <input type="number" id="year" class="items" name="year" min="1900" max="2025" placeholder="YYYY" required />
-              </div>
-            </div>
+            <ul class="progress-steps">
+              <li class="step active"><span>1</span><p>Datos Personales</p></li>
+              <li class="step"><span>2</span><p>Contacto</p></li>
+              <li class="step"><span>3</span><p>Datos de Inscripción</p></li>
+              <li class="step"><span>4</span><p>Resumen</p></li>
+              <li class="step" data-step="5"><span>5</span><p>Pago</p></li>
+              <li class="step"><span>6</span><p>Confirmación</p></li>
+            </ul>
           </div>
 
-          <!-- Paso 2: Contacto -->
-          <div class="form-two form-step">
-            <div class="bg-svg"></div>
-            <h2>Contacto</h2>
-            <p>Ingresa tus datos de contacto</p>
-            <div><label>Email</label><input type="email" class="items" name="email" placeholder="email@mail.com" required /></div>
-            <div><label>Teléfono</label><input type="tel" class="items" name="phone" placeholder="299xxxxxxx" required /></div>
-            <div><label>Ciudad</label><input type="text" class="items" name="city" placeholder="Ingresa Ciudad" required /></div>
-          </div>
-
-          <!-- Paso 3: Inscripción -->
-          <div class="form-three form-step">
-            <div class="bg-svg"></div>
-            <h2>Datos de Inscripción</h2>
-            <p>Ingresá tu información de inscripción</p>
-            <div>
-              <label>Distancia</label>
-              <input type="text" id="distanciaElegida" name="distancia" class="items" readonly />
-              <select id="category" name="category" hidden required></select>
-            </div>
-            <div>
-              <label>Talle Camiseta</label>
-              <select name="tshirtSize" class="items" required>
-                <option value="">Seleccione</option>
-                <option value="talle_s">Camiseta Talle S</option>
-                <option value="talle_m">Camiseta Talle M</option>
-                <option value="talle_l">Camiseta Talle L</option>
-                <option value="talle_xl">Camiseta Talle XL</option>
-                <option value="talle_xxl">Camiseta Talle XXL</option>
-              </select>
-            </div>
-            <div class="img-container">
-              <img id="myImg" class="myImg" src="/assets/img/guia-talles.png" alt="Guía de talles" />
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" class="items" name="check-partner" />
-              <label>Tengo un código de descuento</label>
+          <form action="" id="form">
+            <!-- Paso 1: Datos Personales -->
+            <div class="form-one form-step active">
+              <div class="bg-svg"></div>
+              <h2>Datos Personales</h2>
+              <p>Ingresá tu información personal</p>
+              <div><label for="firstname">Nombre:</label><input id="firstname" type="text" name="firstname" class="items" placeholder="Nombre" required /></div>
+              <div><label for="lastname">Apellido:</label><input id="lastname" type="text" name="lastname" class="items" placeholder="Apellido" required /></div>
+              <input id="dni" type="text" name="dni" placeholder="12345678" class="items" required />
               <div>
-                <label>Código de descuento</label>
-                <input type="text" class="items" name="partnerID" disabled placeholder="Ingrese código" />
+                <label for="runnerGenre">Género:</label>
+                <select id="runnerGenre" name="runnerGenre" class="items" required>
+                  <option value="">Seleccione</option>
+                  <option value="Femenino">Femenino</option>
+                  <option value="Masculino">Masculino</option>
+                </select>
+              </div>
+              <div class="birth">
+                <label>Fecha de nacimiento:</label>
+                <div class="grouping">
+                  <label for="day" hidden>Día</label><input type="number" id="day" class="items" name="day" min="1" max="31" placeholder="DD" required />
+                  <label for="month" hidden>Mes</label><input type="number" id="month" class="items" name="month" min="1" max="12" placeholder="MM" required />
+                  <label for="year" hidden>Año</label><input type="number" id="year" class="items" name="year" min="1900" max="2025" placeholder="YYYY" required />
+                </div>
               </div>
             </div>
-          </div>
 
-          <!-- Paso 4: Resumen -->
-          <div class="form-four form-step">
-            <div class="bg-svg"></div>
-            <h2>Resumen</h2>
-            <p>📝 Verificá todos los datos antes de confirmar</p>
-            <div id="payment-status"></div> <!-- Resumen generado por JS -->
-            <p><a href="/views/documents/REGLAMENTO_GENERAL.pdf" target="_blank">Términos y Condiciones</a></p>
-          </div>
+            <!-- Paso 2: Contacto -->
+            <div class="form-two form-step">
+              <div class="bg-svg"></div>
+              <h2>Contacto</h2>
+              <p>Ingresa tus datos de contacto</p>
+              <div><label for="email">Email:</label><input id="email" type="email" class="items" name="email" placeholder="email@mail.com" required /></div>
+              <div><label for="phone">Teléfono:</label><input id="phone" type="tel" class="items" name="phone" placeholder="299xxxxxxx" required /></div>
+              <div><label for="city">Ciudad:</label><input id="city" type="text" class="items" name="city" placeholder="Ingresa Ciudad" required /></div>
+            </div>
 
-          <!-- Paso 5: Pago -->
-          <div class="form-five form-step payment-step">
-            <div class="bg-svg"></div>
-            <h2>Pago</h2>
-            <p>Seleccioná tu método de pago para completar la inscripción.</p>
-            <div>
-              <label>Selecciona un método de pago:</label>
-              <select name="paymentMethod" class="items" required>
-                <option value="">Seleccione</option>
-                <option value="mercadoPago">Mercado Pago</option>
-                <!-- Agregar otros métodos de pago si es necesario -->
-              </select>
-            </div>
-            <div id="mercadoPagoButton">
-              <!-- Aquí iría el botón de pago de Mercado Pago -->
-              <button type="button" class="btn-submit" id="btn-pagar">Pagar ahora</button>
-            </div>
-            <div class="checkbox-group">
-              <div class="checkbox">
-                <input type="checkbox" id="aceptaReglamento" required />
-                <label for="aceptaReglamento">
-                  Acepto el <a href="/views/documents/REGLAMENTO_GENERAL.pdf" target="_blank">reglamento</a>
-                </label>
+            <!-- Paso 3: Inscripción -->
+            <div class="form-three form-step">
+              <div class="bg-svg"></div>
+              <h2>Datos de Inscripción</h2>
+              <p>Ingresá tu información de inscripción</p>
+              <div>
+                <label for="distanciaElegida">Distancia:</label>
+                <input type="text" id="distanciaElegida" name="distancia" class="items" readonly />
+                <select id="category" name="category" hidden required></select>
               </div>
-              <div class="checkbox">
-                <input type="checkbox" id="esMenorEdad" name="menorEdad" />
-                <label for="esMenorEdad">Soy menor de edad</label>
+              <div>
+                <label for="tshirtSize">Talle Camiseta:</label>
+                <select name="tshirtSize" id="tshirtSize" class="items" required>
+                  <option value="">Seleccione</option>
+                  <option value="talle_s">Camiseta Talle S</option>
+                  <option value="talle_m">Camiseta Talle M</option>
+                  <option value="talle_l">Camiseta Talle L</option>
+                  <option value="talle_xl">Camiseta Talle XL</option>
+                  <option value="talle_xxl">Camiseta Talle XXL</option>
+                </select>
               </div>
-            </div>
-          </div>
-
-          <!-- Paso 6: Confirmación -->
-          <div class="form-six form-step">
-            <div class="bg-svg"></div>
-            <h2>Confirmación</h2>
-            <p>💪 Estás a un paso de vivir el espíritu MMRUN 💜</p>
-            <div class="checkbox-group">
-              <div class="checkbox">
-                <input type="checkbox" id="aceptaReglamentoFinal" required />
-                <label for="aceptaReglamentoFinal">
-                  Acepto el <a href="/views/documents/REGLAMENTO_GENERAL.pdf" target="_blank">reglamento</a>
-                </label>
+              <div class="img-container">
+                <img id="myImg" class="myImg" src="/assets/img/form/guia-talles.png" alt="Guía de talles" />
               </div>
               <div class="checkbox">
-                <input type="checkbox" id="esMenorEdadFinal" name="menorEdadFinal" />
-                <label for="esMenorEdadFinal">Soy menor de edad</label>
+                <input type="checkbox" id="check-partner" class="items" name="check-partner" />
+                <label for="check-partner">Tengo un código de descuento</label>
+                <div>
+                  <label for="partnerID">Código de descuento:</label>
+                  <input id="partnerID" type="text" class="items" name="partnerID" disabled placeholder="Ingrese código" />
+                </div>
               </div>
             </div>
-          </div>
 
-          <!-- Navegación -->
-          <div class="btn-group">
-            <button type="button" class="btn-prev" disabled>Anterior</button>
-            <button type="button" class="btn-next">Siguiente</button>
-            <button type="button" class="btn-submit" id="btn-submit">Confirmar</button>
+            <!-- Paso 4: Resumen -->
+            <div class="form-four form-step">
+              <div class="bg-svg"></div>
+              <h2>Resumen</h2>
+              <p>📜 Verificá todos los datos antes de confirmar</p>
+              <div id="payment-status"></div>
+              <p><a href="/views/documents/REGLAMENTO_GENERAL.pdf" target="_blank">Términos y Condiciones</a></p>
+            </div>
+
+            <!-- Paso 5: Pago -->
+            <div class="form-five form-step payment-step">
+              <div class="bg-svg"></div>
+              <h2>Pago</h2>
+              <p>Seleccioná tu método de pago para completar la inscripción.</p>
+              <div>
+                <label for="paymentMethod">Método de pago:</label>
+                <select id="paymentMethod" name="paymentMethod" class="items" required>
+                  <option value="">Seleccione</option>
+                  <option value="mercadoPago">Mercado Pago</option>
+                </select>
+              </div>
+              <div id="mercadoPagoButton">
+                <button type="button" class="btn-submit" id="btn-pagar">Pagar ahora</button>
+              </div>
+              <div class="checkbox-group">
+                <div class="checkbox">
+                  <input type="checkbox" id="aceptaReglamento" required />
+                  <label for="aceptaReglamento">
+                    Acepto el <a href="/views/documents/REGLAMENTO_GENERAL.pdf" target="_blank">reglamento</a>
+                  </label>
+                </div>
+                <div class="checkbox">
+                  <input type="checkbox" id="esMenorEdad" name="menorEdad" />
+                  <label for="esMenorEdad">Soy menor de edad</label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Paso 6: Confirmación -->
+            <div class="form-six form-step">
+              <div class="bg-svg"></div>
+              <h2>Confirmación</h2>
+              <p>💪 Estás a un paso de vivir el espíritu MMRUN 💜</p>
+              <div class="checkbox-group">
+                <div class="checkbox">
+                  <input type="checkbox" id="aceptaReglamentoFinal" required />
+                  <label for="aceptaReglamentoFinal">
+                    Acepto el <a href="/views/documents/REGLAMENTO_GENERAL.pdf" target="_blank">reglamento</a>
+                  </label>
+                </div>
+                <div class="checkbox">
+                  <input type="checkbox" id="esMenorEdadFinal" name="menorEdadFinal" />
+                  <label for="esMenorEdadFinal">Soy menor de edad</label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Navegación -->
+            <div class="btn-group">
+              <button type="button" class="btn-prev" disabled>Anterior</button>
+              <button type="button" class="btn-next">Siguiente</button>
+              <button type="button" class="btn-submit" id="btn-submit">Confirmar</button>
+            </div>
+          </form>
         </div>
-        </form>
+      </div>
+
+      <div class="full-screen no-display" id="spinner">
+        <span class="loader"></span>
       </div>
     </div>
 
-    <div class="full-screen no-display" id="spinner">
-      <span class="loader"></span>
+    <!-- Modal Talles -->
+    <div id="myModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="img01" />
     </div>
-  </div>
 
-  <!-- Modal Talles -->
-  <div id="myModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="img01" />
-  </div>
+    <!-- FOOTER -->
+    <footer id="footer">
+      <div class="logo-container">
+        <img src="/assets/img/logo-mmrun-violeta.png" alt="logo violeta mmrun" />
+        <p>Tercera Edición | <span>Septiembre '24</span></p>
+      </div>
+      <div class="social-media-container">
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+      </div>
+      <div class="social-media-container documents">
+        <h4>Descargas</h4>
+        <a href="/views/documents/REGLAMENTO_GENERAL.pdf" download>Reglamento General</a>
+        <a href="/views/documents/Autorización_para_Menor_de_Edad_y_Deslinde_de_Responsabilidad.pdf" download>Autorización Menores</a>
+        <a href="/views/documents/Deslinde_de_Responsabilidades_para_MariMenucoRun2024.pdf" download>Deslinde</a>
+        <a href="/views/documents/Planilla_de_acompañantes.pdf" download>Planilla</a>
+      </div>
+      <div class="separator"></div>
+      <div class="hvdevs">
+        <p>Una solución tecnológica de <a class="hvdevs-a" href="#">Nexus Core</a></p>
+        <img src="/assets/img/logo-hvdevs.png" alt="Logo HVDevs" class="hvdevs-logo" />
+      </div>
+    </footer>
 
-  <script>
-    const distancia = sessionStorage.getItem("distanciaSeleccionada");
-    if (distancia) {
-      const inputDistancia = document.getElementById("distanciaElegida");
-      const selectCategory = document.getElementById("category");
-      if (inputDistancia) inputDistancia.value = distancia;
-      if (selectCategory) {
-        const opt = document.createElement("option");
-        opt.value = distancia;
-        opt.textContent = distancia;
-        selectCategory.appendChild(opt);
-        selectCategory.value = distancia;
+    <!-- SCRIPTS -->
+    <script src="/assets/js/index.js" defer></script>
+    <script src="/assets/js/modal.js" defer></script>
+    <script src="/assets/js/form.js"></script>
+    <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById('mobileDropdown');
+        const isOpen = menu.classList.toggle('active');
+        document.body.classList.toggle('menu-open', isOpen);
       }
-    }
-  </script>
-  <script src="/assets/js/script.js"></script>
-</body>
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const closeBtn = document.getElementById("closeMobileMenu");
+        const mobileMenu = document.getElementById("mobileDropdown");
+        if (closeBtn) {
+          closeBtn.addEventListener("click", () => {
+            mobileMenu.classList.remove("active");
+            document.body.classList.remove("menu-open");
+          });
+        }
+      });
+
+      window.addEventListener("scroll", function () {
+        const navbar = document.getElementById("mainNavbar");
+        const topbar = document.querySelector(".topbar");
+        if (window.scrollY > 0) {
+          navbar.classList.add("scrolled");
+          topbar.classList.add("hidden");
+        } else {
+          navbar.classList.remove("scrolled");
+          topbar.classList.remove("hidden");
+        }
+      });
+    </script>
+
+    <script>
+      const distancia = sessionStorage.getItem("distanciaSeleccionada");
+      if (distancia) {
+        const inputDistancia = document.getElementById("distanciaElegida");
+        const selectCategory = document.getElementById("category");
+        if (inputDistancia) inputDistancia.value = distancia;
+        if (selectCategory) {
+          const opt = document.createElement("option");
+          opt.value = distancia;
+          opt.textContent = distancia;
+          selectCategory.appendChild(opt);
+          selectCategory.value = distancia;
+        }
+      }
+    </script>
+
+  </body>
 </html>

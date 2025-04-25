@@ -22,6 +22,14 @@ function initForm() {
   setupModal();
   handleQueryParamChange();
 
+  // Normalizar DNI en tiempo real
+  const dniInput = document.getElementById("dni");
+  if (dniInput) {
+    dniInput.addEventListener("input", () => {
+      dniInput.value = dniInput.value.replace(/[^\d]/g, "");
+    });
+  }
+
   const submitBtn = document.getElementById("btn-submit");
   if (submitBtn) {
     submitBtn.addEventListener("click", getFormData);
@@ -213,9 +221,9 @@ function showData() {
     </div>`;
 
   const existing = document.getElementById("payment-status");
-  if (existing) existing.remove();
-  nextEl.insertAdjacentHTML("beforeend", resumenHTML);
-}
+    if (existing) existing.remove();
+    nextEl.insertAdjacentHTML("beforeend", resumenHTML);
+  }
 
 async function getFormData() {
   const spinner = document.getElementById("spinner");
@@ -246,6 +254,17 @@ async function getFormData() {
       Swal.fire({
         title: "Error",
         text: "Por favor completá todos los campos obligatorios.",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
+      return;
+    }
+
+    if (form.dni.value.length < 7 || form.dni.value.length > 8 || isNaN(form.dni.value)) {
+      spinner.classList.add("no-display");
+      Swal.fire({
+        title: "DNI inválido",
+        text: "El DNI debe tener entre 7 y 8 números, sin puntos ni letras.",
         icon: "error",
         confirmButtonText: "Ok",
       });
@@ -370,8 +389,6 @@ function handleQueryParamChange() {
     });
   }
 }
-
-
 
 function setupModal() {
   const modal = document.getElementById("myModal");
