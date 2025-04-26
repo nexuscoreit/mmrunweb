@@ -61,7 +61,7 @@
       <a href="/#footer">Contacto</a>
     </nav>
     <div class="icons">
-      <a class="btn-inscribirse" href="/views/form/distancias.html">Inscribirme</a>
+      <!-- <a class="btn-inscribirse" href="/views/form/distancias.html">Inscribirme</a> -->
       <button class="hamburger-btn mobile-only" onclick="toggleMobileMenu()">Menú</button>
     </div>
   </header>
@@ -115,7 +115,10 @@
               <p>Ingresá tu información personal</p>
               <div><label for="firstname">Nombre:</label><input id="firstname" type="text" name="firstname" class="items" placeholder="Nombre" required /></div>
               <div><label for="lastname">Apellido:</label><input id="lastname" type="text" name="lastname" class="items" placeholder="Apellido" required /></div>
-              <input id="dni" type="text" name="dni" placeholder="12345678" class="items" required />
+              <div>
+                <label for="dni">DNI:</label>
+                <input id="dni" type="text" name="dni" placeholder="12345678" class="items" required />
+              </div>
               <div>
                 <label for="runnerGenre">Género:</label>
                 <select id="runnerGenre" name="runnerGenre" class="items" required>

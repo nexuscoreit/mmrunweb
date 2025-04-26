@@ -137,38 +137,44 @@
 
   <script>
     function cerrarSesion() {
-      localStorage.removeItem("adminLoggedIn");
-      window.location.href = "/views/login/login.html";
+      Swal.fire({
+        title: '¿Cerrar sesión?',
+        text: '¿Seguro que querés salir del panel de administración?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#00c18d', // Verde deportivo
+        cancelButtonColor: '#d33',      // Rojo clásico
+        confirmButtonText: 'Sí, cerrar sesión',
+        cancelButtonText: 'No, quedarme',
+        background: '#fff',
+        allowOutsideClick: false
+      }).then((result) => {
+        if (result.isConfirmed) {
+          localStorage.removeItem("adminLoggedIn");
+          localStorage.removeItem("adminEmail");
+          Swal.fire({
+            title: '¡Hasta pronto!',
+            text: 'Cerrando sesión...',
+            icon: 'success',
+            timer: 1500,
+            showConfirmButton: false,
+            allowOutsideClick: false
+          }).then(() => {
+            window.location.href = "/views/login/login.html";
+          });
+        }
+      });
     }
-
-    function toggleUserMenu() {
-      const menu = document.getElementById("userMenu");
-      menu.classList.toggle("active");
-    }
-
-    document.addEventListener('click', function (event) {
-      const isClickInside = document.querySelector('.user-controls').contains(event.target);
-      if (!isClickInside) {
-        document.getElementById("userMenu").classList.remove("active");
-        document.getElementById("notificationPanel").classList.remove("active");
-      }
-    });
-  </script>
-  <script>
-    function cerrarSesion() {
-      localStorage.removeItem("adminLoggedIn");
-      localStorage.removeItem("adminEmail");
-      window.location.href = "/views/login/login.html";
-    }
-
+    
     document.addEventListener("DOMContentLoaded", () => {
       const username = localStorage.getItem("adminEmail");
       const usernameSpan = document.getElementById("adminUsername");
-
+    
       if (username && usernameSpan) {
         usernameSpan.textContent = username;
       }
     });
+    </script>
   </script>
 </body>
 </html>

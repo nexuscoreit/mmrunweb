@@ -121,6 +121,7 @@
 .card-distancia:hover {
   transform: translateY(-6px) scale(1.03);
   background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
 }
 
 /* Tipografía de tarjeta */
@@ -139,7 +140,8 @@
 
 .card-distancia .detalle {
   font-size: 0.85rem;
-  color: #f0f0f0;
+  color: #4b4b4b; /* Gris oscuro visible en cualquier fondo */
+  font-style: italic;
 }
 
 /* Gratis */

@@ -17,8 +17,6 @@ body {
   align-items: center;
 }
 
-
-
 .login-wrapper {
   display: flex;
   width: 90%;
@@ -30,9 +28,6 @@ body {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
 }
-
-
-
 
 /* IZQUIERDA */
 .login-left {
@@ -46,13 +41,11 @@ body {
   box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.4);
 }
 
-
 .login-left img.mmrun-logo {
   max-width: 340px;
   height: auto;
   margin-bottom: 2rem;
 }
-
 
 .login-left .description-box {
   text-align: center;
@@ -78,8 +71,8 @@ body {
 
 .form-box {
   width: 100%;
-  max-width: 420px;  /* antes era 380px */
-  padding: 3rem;     /* más espacio interno */
+  max-width: 420px;
+  padding: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -109,7 +102,7 @@ input[type="password"] {
 .password-wrapper {
   position: relative;
   width: 100%;
-  height: 48px; /* ✅ altura fija para evitar movimientos */
+  height: 48px;
 }
 
 .password-wrapper input {
@@ -203,4 +196,38 @@ button[type="submit"]:hover {
   .login-left img.mmrun-logo {
     max-width: 180px;
   }
+}
+
+.back-to-site {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.back-to-site a {
+  font-size: 0.9rem;
+  color: #e3e2eb;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.back-to-site a:hover {
+  color: #c2e2de;
+  text-decoration: underline;
+}
+
+.btn-volver {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 18px;
+  background: linear-gradient(to right, #1bac88, #3b3291);
+  color: white;
+  font-weight: bold;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.btn-volver:hover {
+  transform: scale(1.05);
 }

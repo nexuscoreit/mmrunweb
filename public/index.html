@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,20 +17,25 @@
   <!-- Scripts -->
   <script src="/assets/js/bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
+
 <body>
 
   <!-- TOPBAR -->
   <div class="topbar">
     <div class="topbar-left">
       <span><ion-icon name="mail-outline"></ion-icon> contacto@mmrun.com.ar</span>
-      <span><ion-icon name="location-outline"></ion-icon> Club Mari Menuco, Neuquén</span>
+      <span>
+        <ion-icon name="location-outline"></ion-icon>
+        <a href="https://www.google.com/maps/place/Mari+Menuco,+Neuqu%C3%A9n" target="_blank" style="color: inherit; text-decoration: none; cursor: pointer;">
+          Club Mari Menuco, Neuquén
+        </a>
+      </span>
     </div>
     <div class="topbar-right">
       <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
       <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
       <a href="#"><ion-icon name="logo-tiktok"></ion-icon></a>
       <a href="#"><ion-icon name="mail-outline"></ion-icon></a>
-      <!-- Ícono discreto para organizadores -->
       <a href="/views/login/login.html" class="admin-login-icon" title="Acceso organizadores">
         <ion-icon name="person-circle-outline"></ion-icon>
       </a>
@@ -44,7 +50,6 @@
       </a>
     </div>
 
-    <!-- Menu desktop -->
     <nav class="menu">
       <a href="#home" class="active">Inicio</a>
       <a href="#about">La Carrera</a>
@@ -52,14 +57,13 @@
       <a href="./views/form/distancias.html">Inscribirse</a>
       <a href="#footer">Descargas</a>
       <a href="#footer">Contacto</a>
-    </nav>    
+    </nav>
 
-    <!-- Botón inscribirse + menu toggle -->
     <div class="icons">
       <a class="btn-inscribirse" href="./views/form/distancias.html">Inscribirme</a>
       <button class="hamburger-btn mobile-only" onclick="toggleMobileMenu()">
         <ion-icon name="menu-outline" class="menu-icon"></ion-icon> Menú
-      </button>       
+      </button>
     </div>
   </header>
 
@@ -68,7 +72,6 @@
     <button id="closeMobileMenu" class="close-mobile-menu">✖</button>
     <img src="/assets/img/logo-mmrun-principal.png" alt="Logo MMRun" class="mobile-logo" />
 
-    <!-- 1. Opciones de navegación -->
     <nav class="mobile-nav">
       <a href="#home" class="active">Inicio</a>
       <a href="#about">La Carrera</a>
@@ -78,7 +81,6 @@
       <a href="#footer">Contacto</a>
     </nav>
 
-    <!-- 2. Footer: íconos + contacto -->
     <div class="mobile-footer">
       <div class="mobile-icons">
         <ion-icon name="logo-instagram"></ion-icon>
@@ -92,7 +94,6 @@
       </div>
     </div>
 
-    <!-- 3. Botón CTA al final -->
     <a class="btn-inscribirse" href="./views/form/distancias.html"><span>Inscribirme</span></a>
   </div>
 
@@ -124,9 +125,18 @@
       </div>
     </div>
     <div class="stats">
-      <div class="stat"><h1 class="number">500+</h1><p class="detail">Corredores</p></div>
-      <div class="stat"><h1 class="number">4+</h1><p class="detail">Circuitos</p></div>
-      <div class="stat"><h1 class="number">6+</h1><p class="detail">Categorías</p></div>
+      <div class="stat">
+        <h1 class="number">500+</h1>
+        <p class="detail">Corredores</p>
+      </div>
+      <div class="stat">
+        <h1 class="number">4+</h1>
+        <p class="detail">Circuitos</p>
+      </div>
+      <div class="stat">
+        <h1 class="number">6+</h1>
+        <p class="detail">Categorías</p>
+      </div>
     </div>
   </section>
 
@@ -136,7 +146,9 @@
   </section>
 
   <section class="sponsors">
-    <div class="nav-cover"><h1>sponsors</h1></div>
+    <div class="nav-cover">
+      <h1>sponsors</h1>
+    </div>
     <div class="sponsors-container">
       <img src="/assets/img/logo-osde.png" alt="logo sponsor osde mmrun carrera" />
       <img src="./assets/img/decor-global.png" alt="logo sponsor farmacias global mmrun carrera" />
@@ -175,9 +187,7 @@
     <div class="modal-content">
       <span class="close-modal" id="closeDistanciaModal">&times;</span>
 
-      <h2 class="modal-title">
-        🏁 Elegí tu distancia para inscribirte
-      </h2>
+      <h2 class="modal-title">🏁 Elegí tu distancia para inscribirte</h2>
 
       <div class="grid">
         <div class="card-distancia" data-distancia="CF" data-precio="$8.000" data-detalle="Hasta el 31 de julio">
@@ -241,5 +251,7 @@
       }
     });
   </script>
+
 </body>
+
 </html>

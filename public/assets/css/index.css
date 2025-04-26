@@ -943,28 +943,46 @@ footer .hvdevs p a {
     }
 }
 
-/* Topbar */
-.topbar {
+  /* Topbar */
+  .topbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #3b3291;
-    color: white;
+    background: linear-gradient(to right, #5ffadf, #ccfff6); /* degradado suave */
+    color: #1a1a1a;
     font-size: 0.85rem;
     padding: 5px 30px;
   }
-  
+
   .topbar-left span {
     margin-right: 20px;
     display: inline-flex;
     align-items: center;
     gap: 5px;
   }
-  
+
   .topbar-right a {
-    color: white;
+    color: #1a1a1a; /* o #333 para un tono gris oscuro */
     margin-left: 12px;
     font-size: 1.2rem;
+  }
+
+  .topbar-right a:hover {
+    color: #3b3291; /* violeta de la marca */
+    transform: scale(1.1);
+    transition: all 0.2s ease;
+  }
+
+  .topbar-location {
+    color: rgb(36, 33, 33);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+
+  .topbar-location:hover {
+    color: #1100fa;
+    text-decoration: underline;
   }
   
   /* Main navbar */
@@ -977,11 +995,11 @@ footer .hvdevs p a {
     flex-wrap: wrap;
     z-index: 998;
   }
-  
+
   .main-navbar .logo-area img {
     height: 50px;
   }
-  
+
   .main-navbar .menu {
     display: flex;
     flex-wrap: wrap;
@@ -989,7 +1007,7 @@ footer .hvdevs p a {
     justify-content: center;
     flex: 1;
   }
-  
+
   .main-navbar .menu a {
     text-transform: uppercase;
     font-weight: 600;
@@ -1444,3 +1462,23 @@ footer .hvdevs p a {
     background-color: #3b3291;
     z-index: 0;
   }
+
+  #logo-subtitle {
+    font-size: 1.3rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, #00faba, #00c18d, #00faba);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 5s linear infinite;
+  }
+  
+  @keyframes shine {
+    0% {
+      background-position: 200% center;
+    }
+    100% {
+      background-position: -200% center;
+    }
+  }
+  

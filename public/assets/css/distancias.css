@@ -299,8 +299,10 @@ main {
   color: #0e6946;
 }
 
-.card-kids .detalle {
-  color: #1c3f2b;
+.card-distancia .detalle {
+  color: #4a4a4a; /* gris oscuro */
+  font-size: 0.85rem;
+  font-weight: 500;
   font-style: italic;
 }
 
