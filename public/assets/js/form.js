@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initForm();
 });
 
-let categories = [];
+let distances = [];
 let discounts = [];
 let active = 1;
 
@@ -15,7 +15,7 @@ const talles = [
 ];
 
 function initForm() {
-  getCategories();
+  getDistances();
   getDiscounts();
   setupNavigation();
   dateListener();
@@ -36,20 +36,20 @@ function initForm() {
   }
 }
 
-async function getCategories() {
+async function getDistances() {
   try {
-    const res = await fetch("http://localhost:3000/api/categories");
-    categories = await res.json();
-    const select = document.getElementById("category");
+    const res = await fetch("http://localhost:3000/api/distances");
+    distances = await res.json();
+    const select = document.getElementById("distance");
     select.innerHTML = "";
-    categories.forEach(cat => {
+    distances.forEach(cat => {
       const option = document.createElement("option");
       option.value = cat.title;
       option.textContent = `Circuito: ${cat.title} - $${(+cat.precio).toFixed(2)}`;
       select.appendChild(option);
     });
   } catch (e) {
-    console.error("Error al obtener categorías:", e);
+    console.error("Error al obtener distancias:", e);
   }
 }
 
@@ -68,8 +68,8 @@ function setupNavigation() {
   const nextBtn = document.querySelector(".btn-next");
   const prevBtn = document.querySelector(".btn-prev");
   const submitBtn = document.querySelector(".btn-submit");
-  const partnerCheckbox = document.querySelector('input[name="check-partner"]');
-  const partnerNumberInput = document.querySelector('input[name="partnerID"]');
+  const discountCodeCheckbox = document.querySelector('input[name="discountCodeCheckbox"]');
+  const discountCode = document.querySelector('input[name="discountCode"]');
 
   nextBtn.addEventListener("click", () => {
     const currentFormStep = formSteps[active - 1];
@@ -78,8 +78,8 @@ function setupNavigation() {
 
     inputs.forEach((input) => {
       const name = input.getAttribute("name");
-      const isDiscountInput = name === "partnerID";
-      const hasDiscountChecked = partnerCheckbox.checked;
+      const isDiscountInput = name === "discountCode";
+      const hasDiscountChecked = discountCodeCheckbox.checked;
 
       if (!input.value && !(isDiscountInput && !hasDiscountChecked)) {
         input.classList.add("error");
@@ -99,9 +99,9 @@ function setupNavigation() {
       return;
     }
 
-    const selectedCategory = document.getElementById("category")?.value;
-    const category = categories.find(c => c.title === selectedCategory);
-    const isFree = category?.precio === 0;
+    const distanceSelect = document.getElementById("distanceSelect")?.value;
+    const distance = distances.find(c => c.title === distanceSelect);
+    const isFree = distance?.precio === 0;
 
     if (isFree && active === 4) {
       active += 2;
@@ -117,18 +117,18 @@ function setupNavigation() {
     updateProgress(steps, formSteps, prevBtn, nextBtn, submitBtn);
   });
 
-  partnerCheckbox.addEventListener("change", () => {
-    partnerNumberInput.disabled = !partnerCheckbox.checked;
-    if (!partnerCheckbox.checked) partnerNumberInput.value = "";
+  discountCodeCheckbox.addEventListener("change", () => {
+    discountCode.disabled = !discountCodeCheckbox.checked;
+    if (!discountCodeCheckbox.checked) discountCode.value = "";
   });
 
   updateProgress(steps, formSteps, prevBtn, nextBtn, submitBtn);
 }
 
 function updateProgress(steps, formSteps, prevBtn, nextBtn, submitBtn) {
-  const selectedCategory = document.getElementById("category")?.value;
-  const category = categories.find(c => c.title === selectedCategory);
-  const isFree = category?.precio === 0;
+  const distanceSelect = document.getElementById("distanceSelect")?.value;
+  const distance = distances.find(c => c.title === distanceSelect);
+  const isFree = distance?.precio === 0;
 
   const paso5Title = document.getElementById("paso5-title");
   const paso5Desc = document.getElementById("paso5-desc");
@@ -186,19 +186,19 @@ function dateListener() {
 
 function showData() {
   const inputs = document.getElementsByClassName("items");
-  const partnerCheckbox = document.querySelector('input[name="check-partner"]');
-  const partnerInput = document.querySelector('input[name="partnerID"]');
+  const discountCodeCheckbox = document.querySelector('input[name="discountCodeCheckbox"]');
+  const partnerInput = document.querySelector('input[name="discountCode"]');
   const nextEl = document.querySelector(".form-four");
 
   let multiplier = 1;
   const discountCode = partnerInput.value.toUpperCase();
   const matchedDiscount = discounts.find(d => d.discountName === discountCode);
-  if (partnerCheckbox.checked && matchedDiscount) {
+  if (discountCodeCheckbox.checked && matchedDiscount) {
     multiplier -= matchedDiscount.percentage / 100;
   }
 
-  const category = categories.find(c => c.title === inputs[10].value);
-  const precioFinal = category ? (category.precio * multiplier).toFixed(2) : "No asignado";
+  const distance = distances.find(c => c.title === inputs[10].value);
+  const precioFinal = distance ? (distance.precio * multiplier).toFixed(2) : "No asignado";
 
   const resumenHTML = `
     <div id="payment-status" class="resumen-box">
@@ -231,21 +231,21 @@ async function getFormData() {
 
   const form = document.getElementById("form");
   const formData = new FormData(form);
-  const category = categories.find(c => c.title === form.category.value);
-  const isFree = category?.precio === 0;
+  const distance = distances.find(c => c.title === form.distance.value);
+  const isFree = distance?.precio === 0;
 
   const inscripcionBody = {
     nombre: form.firstname.value,
     apellido: form.lastname.value,
     dni: form.dni.value,
-    genero: form.runnerGenre.value,
+    genero: form.gender.value,
     fechaNacimiento: `${String(form.year.value).padStart(4, "0")}-${String(form.month.value).padStart(2, "0")}-${String(form.day.value).padStart(2, "0")}`,
     email: form.email.value,
     telefono: form.phone.value,
     ciudad: form.city.value,
-    categoria: form.category.value,
+    categoria: form.distance.value,
     talle: form.tshirtSize.value,
-    descuento: form["partnerID"]?.value || ""
+    descuento: form["discountCode"]?.value || ""
   };
 
   try {
@@ -408,8 +408,8 @@ function setupModal() {
   };
 }
 
-function isFreeCategorySelected() {
-  const selectedCategory = document.getElementById("category")?.value;
-  const category = categories.find(c => c.title === selectedCategory);
-  return category?.precio === 0;
+function isFreedistanceSelected() {
+  const selecteddistance = document.getElementById("distance")?.value;
+  const distance = distances.find(c => c.title === selecteddistance);
+  return distance?.precio === 0;
 }

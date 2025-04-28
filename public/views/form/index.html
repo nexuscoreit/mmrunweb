@@ -8,7 +8,9 @@
   <!-- Ícono -->
   <link rel="icon" type="image/x-icon" href="/assets/img/favicon-mmrun.ico" />
   <!-- Bootstrap CSS (ya lo tenés) -->
-  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />
+  <!-- <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" /> -->
+  <!-- Bootstrap CSS desde CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Navbar / topbar / distancias -->
   <link rel="stylesheet" href="/assets/css/index.css" />
@@ -18,7 +20,7 @@
   <link rel="stylesheet" href="/assets/css/form.css" />
   <!-- Bootstrap CSS (opcional pero recomendado si lo usabas) -->
   <!-- Bootstrap CSS local -->
-  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css"> -->
 
   <!-- SweetAlert -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -120,8 +122,8 @@
                 <input id="dni" type="text" name="dni" placeholder="12345678" class="items" required />
               </div>
               <div>
-                <label for="runnerGenre">Género:</label>
-                <select id="runnerGenre" name="runnerGenre" class="items" required>
+                <label for="gender">Género:</label>
+                <select id="gender" name="gender" class="items" required>
                   <option value="">Seleccione</option>
                   <option value="Femenino">Femenino</option>
                   <option value="Masculino">Masculino</option>
@@ -153,30 +155,30 @@
               <h2>Datos de Inscripción</h2>
               <p>Ingresá tu información de inscripción</p>
               <div>
-                <label for="distanciaElegida">Distancia:</label>
-                <input type="text" id="distanciaElegida" name="distancia" class="items" readonly />
-                <select id="category" name="category" hidden required></select>
+                <label for="distance">Distancia:</label>
+                <input type="text" id="distance" name="distance" class="items" readonly />
+                <select id="distanceSelect" name="distanceSelect" hidden required></select>
               </div>
               <div>
-                <label for="tshirtSize">Talle Camiseta:</label>
+                <label for="tshirtSize">Talle Remera:</label>
                 <select name="tshirtSize" id="tshirtSize" class="items" required>
                   <option value="">Seleccione</option>
-                  <option value="talle_s">Camiseta Talle S</option>
-                  <option value="talle_m">Camiseta Talle M</option>
-                  <option value="talle_l">Camiseta Talle L</option>
-                  <option value="talle_xl">Camiseta Talle XL</option>
-                  <option value="talle_xxl">Camiseta Talle XXL</option>
+                  <option value="talle_s">S</option>
+                  <option value="talle_m">M</option>
+                  <option value="talle_l">L</option>
+                  <option value="talle_xl">XL</option>
+                  <option value="talle_xxl">XXL</option>
                 </select>
               </div>
               <div class="img-container">
                 <img id="myImg" class="myImg" src="/assets/img/form/guia-talles.png" alt="Guía de talles" />
               </div>
               <div class="checkbox">
-                <input type="checkbox" id="check-partner" class="items" name="check-partner" />
-                <label for="check-partner">Tengo un código de descuento</label>
+                <input type="checkbox" id="discountCodeCheckbox" class="items" name="discountCodeCheckbox" />
+                <label for="discountCodeCheckbox">Tengo un código de descuento</label>
                 <div>
-                  <label for="partnerID">Código de descuento:</label>
-                  <input id="partnerID" type="text" class="items" name="partnerID" disabled placeholder="Ingrese código" />
+                  <label for="discountCode">Código de descuento:</label>
+                  <input id="discountCode" type="text" class="items" name="discountCode" disabled placeholder="Ingrese código" />
                 </div>
               </div>
             </div>
@@ -289,6 +291,8 @@
     <script src="/assets/js/index.js" defer></script>
     <script src="/assets/js/modal.js" defer></script>
     <script src="/assets/js/form.js"></script>
+    <!-- Bootstrap Bundle JS desde CDN (incluye Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       function toggleMobileMenu() {
         const menu = document.getElementById('mobileDropdown');
@@ -323,15 +327,15 @@
     <script>
       const distancia = sessionStorage.getItem("distanciaSeleccionada");
       if (distancia) {
-        const inputDistancia = document.getElementById("distanciaElegida");
-        const selectCategory = document.getElementById("category");
-        if (inputDistancia) inputDistancia.value = distancia;
-        if (selectCategory) {
+        const distance = document.getElementById("distance");
+        const distanceSelect = document.getElementById("distanceSelect");
+        if (distanceSelect) distanceSelect.value = distancia;
+        if (distanceSelect) {
           const opt = document.createElement("option");
           opt.value = distancia;
           opt.textContent = distancia;
-          selectCategory.appendChild(opt);
-          selectCategory.value = distancia;
+          distanceSelect.appendChild(opt);
+          distanceSelect.value = distancia;
         }
       }
     </script>
