@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.classList.remove("menu-open");
     
         // Redirige al formulario
-        window.location.href = "/views/form/index.html";
+        window.location.href = "/views/form/form.html";
       });
     });    
   });
