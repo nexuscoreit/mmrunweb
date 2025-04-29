@@ -1,6 +1,6 @@
 // backend/models/initDB.js
 
-const db = require('./db');
+const db = require('../connection');
 
 // Crear tabla de admins
 db.run(`
@@ -8,6 +8,26 @@ db.run(`
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     email TEXT UNIQUE,
     password TEXT
+  )
+`);
+
+// Crear tabla de inscripciones_temp
+db.run(`
+  CREATE TABLE IF NOT EXISTS inscripciones_temp (
+    id TEXT PRIMARY KEY,
+    nombre TEXT,
+    apellido TEXT,
+    dni TEXT UNIQUE,
+    genero TEXT,
+    fechaNacimiento TEXT,
+    email TEXT,
+    telefono TEXT,
+    ciudad TEXT,
+    categoria TEXT,
+    talle TEXT,
+    descuento TEXT,
+    precio FLOAT,
+    fechaRegistro TEXT DEFAULT CURRENT_TIMESTAMP
   )
 `);
 
