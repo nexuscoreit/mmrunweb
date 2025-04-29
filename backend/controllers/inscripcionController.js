@@ -1,4 +1,4 @@
-const db = require('../models/db');
+const db = require('../database/connection');
 const server = require('../server');
 const io = server.io;
 
