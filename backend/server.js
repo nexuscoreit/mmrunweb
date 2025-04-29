@@ -15,8 +15,8 @@ const io = socketIO(server, {
 const PORT = process.env.PORT || 3000;
 
 // 1. Conexión y creación de tablas
-const db = require('./models/db');
-require('./models/initDB');
+const db = require('./database/connection');
+require('./database/scripts/initDB');
 
 // 2. Middlewares
 app.use(cors());
