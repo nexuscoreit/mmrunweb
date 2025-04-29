@@ -1,5 +1,4 @@
-// backend/models/categoria.js
-const db = require('./db');
+const db = require('../database/connection');
 
 // Crear tabla si no existe
 db.run(`

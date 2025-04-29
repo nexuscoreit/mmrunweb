@@ -1,4 +1,4 @@
-const db = require('./db');
+const db = require('../database/connection');
 const bcrypt = require('bcrypt');
 
 const crearAdmin = async (email, plainPassword, callback) => {

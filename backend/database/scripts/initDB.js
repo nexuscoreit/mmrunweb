@@ -60,11 +60,13 @@ db.run(`
 )
 `);
 
-// Crear tabla de descuentos
+// Crear tabla descuentos
 db.run(`
   CREATE TABLE IF NOT EXISTS descuentos (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    discountName TEXT UNIQUE,
-    percentage INTEGER
-)
+    codigo TEXT UNIQUE,
+    porcentaje INTEGER NOT NULL,      -- Ej: 10 significa 10%
+    usos_restantes INTEGER NOT NULL,  -- Límite de uso
+    fecha_vencimiento TEXT            -- formato: 'YYYY-MM-DD'
+  );
 `);

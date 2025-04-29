@@ -1,14 +1,4 @@
-// backend/models/descuento.js
-const db = require('./db');
-
-// Crear tabla si no existe
-db.run(`
-  CREATE TABLE IF NOT EXISTS descuentos (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    discountName TEXT UNIQUE,
-    percentage INTEGER
-  )
-`);
+const db = require('../database/connection');
 
 const obtenerDescuentos = (callback) => {
   db.all(`SELECT * FROM descuentos`, (err, rows) => {
