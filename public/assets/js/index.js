@@ -20,18 +20,6 @@ let divExpanded;
 let expanded = false;
 let activeCard = false;
 
-// Carga de categorías desde API
-window.onload = async function () {
-  try {
-    const response = await fetch("https://api.mmrun.hvdevs.com/categories", { mode: "cors" });
-    const result = await response.json();
-    circuits.push(...result);
-    addCategories(circuits);
-  } catch (error) {
-    console.error("Error al cargar las categorías:", error);
-  }
-};
-
 function register() {
   window.open("https://mmrun.hvdevs.com/registro", "_blank")?.focus();
 }

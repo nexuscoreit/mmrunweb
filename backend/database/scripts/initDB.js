@@ -55,6 +55,7 @@ db.run(`
     telefono TEXT,
     ciudad TEXT,
     distancia_id INTEGER NOT NULL,
+    distancia TEXT,
     talle TEXT,
     descuento TEXT,                        -- código usado (ej: "HOLA10")
     precio REAL NOT NULL,                  -- precio final calculado

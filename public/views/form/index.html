@@ -155,7 +155,6 @@
               <div>
                 <label for="distanciaElegida">Distancia:</label>
                 <input type="text" id="distanciaElegida" name="distancia" class="items" readonly />
-                <select id="category" name="category" hidden required></select>
               </div>
               <div>
                 <label for="tshirtSize">Talle Camiseta:</label>
@@ -286,8 +285,7 @@
     </footer>
 
     <!-- SCRIPTS -->
-    <script src="/assets/js/index.js" defer></script>
-    <script src="/assets/js/modal.js" defer></script>
+    <script src="/assets/js/index.js"></script>
     <script src="/assets/js/form.js"></script>
     <script>
       function toggleMobileMenu() {
@@ -318,22 +316,6 @@
           topbar.classList.remove("hidden");
         }
       });
-    </script>
-
-    <script>
-      const distancia = sessionStorage.getItem("distanciaSeleccionada");
-      if (distancia) {
-        const inputDistancia = document.getElementById("distanciaElegida");
-        const selectCategory = document.getElementById("category");
-        if (inputDistancia) inputDistancia.value = distancia;
-        if (selectCategory) {
-          const opt = document.createElement("option");
-          opt.value = distancia;
-          opt.textContent = distancia;
-          selectCategory.appendChild(opt);
-          selectCategory.value = distancia;
-        }
-      }
     </script>
 
   </body>
