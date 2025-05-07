@@ -1,40 +1,48 @@
 const db = require('../database/connection');
+const {discountUse} = require('../models/discount');
+const {saveTempInscription, saveInscription} = require('../models/inscripcion');
 const server = require('../server');
 const io = server.io;
 
-async function guardarInscripcion(req, res, io) {
-  try {
-    const nuevaInscripcion = { ...req.body, fechaRegistro: new Date().toISOString() };
+const saveTempInscriptionCtrl = (req, res) => {
+  const inscripcion = req.body;
 
-    const result = await db.run(`
-      INSERT INTO inscripciones (
-        nombre, apellido, dni, genero, fechaNacimiento, email,
-        telefono, ciudad, categoria, talle, descuento, fechaRegistro
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `, [
-      nuevaInscripcion.nombre,
-      nuevaInscripcion.apellido,
-      nuevaInscripcion.dni,
-      nuevaInscripcion.genero,
-      nuevaInscripcion.fechaNacimiento,
-      nuevaInscripcion.email,
-      nuevaInscripcion.telefono,
-      nuevaInscripcion.ciudad,
-      nuevaInscripcion.categoria,
-      nuevaInscripcion.talle,
-      nuevaInscripcion.descuento || '',
-      nuevaInscripcion.fechaRegistro
-    ]);
-    console.log("🔥 Emitiendo inscripción por socket:", nuevaInscripcion);
-
-    io.emit("nueva-inscripcion", nuevaInscripcion); // ✅ esto envía al admin en vivo
-
-    res.status(201).json({ mensaje: "Inscripción registrada", id: result.lastID });
-
-  } catch (error) {
-    console.error("Error al guardar inscripción:", error);
-    res.status(500).json({ error: "Error interno del servidor" });
+  if (!inscripcion.nombre || !inscripcion.apellido || !inscripcion.dni || !inscripcion.email || !inscripcion.distancia_id || !inscripcion.precio) {
+    return res.status(400).json({ error: "Faltan datos obligatorios" });
   }
+
+  saveTempInscription(inscripcion, (err, lastID) => {
+    if (err) {
+      console.error("Error guardando inscripto temporal:", err.message);
+      return res.status(500).json({ error: "Error al guardar inscripción temporal" });
+    }
+
+    res.status(201).json({ message: "Inscripción temporal guardada", temp_id: lastID });
+  });
+};
+
+async function saveInscriptionCtrl(req, res, io) {
+    try {
+      const nuevaInscripcion = {
+        ...req.body,
+        fechaRegistro: new Date().toISOString()
+      };
+  
+      saveInscription(nuevaInscripcion, (err, lastID) => {
+        if (err) {
+          console.error("Error al guardar inscripción:", err);
+          return res.status(500).json({ error: "Error al guardar inscripción" });
+        }
+  
+        console.log("🔥 Emitiendo inscripción por socket:", nuevaInscripcion);
+        io.emit("nueva-inscripcion", nuevaInscripcion);
+  
+        res.status(201).json({ mensaje: "Inscripción registrada", id: lastID });
+      });
+    } catch (error) {
+      console.error("Error interno:", error);
+      res.status(500).json({ error: "Error interno del servidor" });
+    }
 }
 
 
@@ -51,7 +59,4 @@ const listarInscriptos = (req, res) => {
   });
 };
 
-module.exports = {
-  guardarInscripcion,
-  listarInscriptos
-};
+module.exports = { saveTempInscriptionCtrl, saveInscriptionCtrl, listarInscriptos};

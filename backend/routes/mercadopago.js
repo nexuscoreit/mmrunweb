@@ -1,14 +1,9 @@
 // backend/routes/mercadopago.js
 const express = require("express");
 const router = express.Router();
+const {createPreference, successPayment} = require("../controllers/mercadopagoController")
 
-router.post("/create-preference", (req, res) => {
-  console.log("📩 Simulando preferencia de MercadoPago");
-  console.log("Body recibido:", req.body);
-
-  res.json({
-    init_point: "http://localhost:3000/form/index.html?status=approved&runner_id=1"
-  });
-});
+router.post("/create-preference", createPreference);
+router.get("/success", successPayment);
 
 module.exports = router;

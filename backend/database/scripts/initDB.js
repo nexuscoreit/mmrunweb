@@ -57,7 +57,7 @@ db.run(`
     distancia_id INTEGER NOT NULL,
     distancia TEXT,
     talle TEXT,
-    descuento TEXT,                        -- código usado (ej: "HOLA10")
+    codigoDescuento TEXT,                        -- código usado (ej: "HOLA10")
     precio REAL NOT NULL,                  -- precio final calculado
     fechaRegistro TEXT DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (distancia_id) REFERENCES distancias(id)
@@ -77,8 +77,9 @@ db.run(`
     telefono TEXT,
     ciudad TEXT,
     distancia_id INTEGER NOT NULL,
+    distancia TEXT NOT NULL,
     talle TEXT,
-    descuento TEXT,
+    codigoDescuento TEXT,
     precio REAL NOT NULL,
     fechaRegistro TEXT DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (distancia_id) REFERENCES distancias(id)

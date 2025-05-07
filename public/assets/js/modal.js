@@ -2,11 +2,10 @@ document.addEventListener("DOMContentLoaded", async() => {
     const modal = document.getElementById("distanciaModal");
     if (!modal) {
       console.warn("No se encontró el modal con id #distanciaModal");
-      return; // corta la ejecución para evitar errores
+      return;
     }
     const grid = modal.querySelector(".grid");
     const closeBtn = document.getElementById("closeDistanciaModal");
-
 
     // Abrir modal desde cualquier botón "Inscribirse"
     document.querySelectorAll(".btn-inscribirse").forEach((btn) => {
@@ -30,7 +29,6 @@ document.addEventListener("DOMContentLoaded", async() => {
       }
     });
   
-    // 🔽 FUNCION PARA ASIGNAR EMOJIS SEGÚN LA DISTANCIA
     function obtenerEmoji(distancia) {
       const mapaEmojis = {
         "Caminata Solidaria": "🥾",

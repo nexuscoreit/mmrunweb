@@ -4,6 +4,8 @@ let precioFinal = 0;
 let distanciaId = null;
 let distanciaNombre = null;
 let active = 1;
+let inputCheckCode;
+let inputDiscountCode;
 
 const talles = [
   { id: "talle_s", value: "Camiseta Talle S" },
@@ -25,10 +27,13 @@ document.addEventListener("DOMContentLoaded", async() => {
     return;
   }
 
+  checkCode = document.querySelector('input[name="checkCode"]');
+  code = document.querySelector('input[name="code"]');
+
   await getPriceDistance();
   await getDiscounts();
 
-  initForm();            
+  initForm();
 });
 
 function initForm() {
@@ -62,7 +67,7 @@ async function getPriceDistance() {
     distanciaId = data.distancia_id;
     precioBase = parseFloat(data.precio);
     precioFinal = precioBase;
-
+    //NO EXISTE PRECIOFINAL ID
     const precioSpan = document.getElementById("precioFinal");
     if (precioSpan) {
       precioSpan.textContent = precioBase === 0 ? "Gratis" : `$${precioBase.toLocaleString()}`;
@@ -90,8 +95,9 @@ function setupNavigation() {
   const nextBtn = document.querySelector(".btn-next");
   const prevBtn = document.querySelector(".btn-prev");
   const submitBtn = document.querySelector(".btn-submit");
-  const partnerCheckbox = document.querySelector('input[name="check-partner"]');
-  const partnerNumberInput = document.querySelector('input[name="partnerID"]');
+  // const checkCode = document.querySelector('input[name="checkCode"]');
+  // const code = document.querySelector('input[name="code"]');
+  const statusDiv = document.getElementById("discountStatus");
 
   nextBtn.addEventListener("click", () => {
     const currentFormStep = formSteps[active - 1];
@@ -100,10 +106,10 @@ function setupNavigation() {
 
     inputs.forEach((input) => {
       const name = input.getAttribute("name");
-      const isDiscountInput = name === "partnerID";
-      const hasDiscountChecked = partnerCheckbox.checked;
+      const isCode = name === "code";
+      const isCheckCode = checkCode.checked;
 
-      if (!input.value && !(isDiscountInput && !hasDiscountChecked)) {
+      if (!input.value && !(isCode && !isCheckCode)) {
         input.classList.add("error");
         valid = false;
       } else {
@@ -137,12 +143,24 @@ function setupNavigation() {
     updateProgress(steps, formSteps, prevBtn, nextBtn, submitBtn);
   });
 
-  partnerCheckbox.addEventListener("change", () => {
-    partnerNumberInput.disabled = !partnerCheckbox.checked;
-    if (!partnerCheckbox.checked) partnerNumberInput.value = "";
+  checkCode.addEventListener("change", () => {
+    code.disabled = !checkCode.checked;
+    if (!checkCode.checked) code.value = "";
   });
 
   updateProgress(steps, formSteps, prevBtn, nextBtn, submitBtn);
+
+  inputCheckCode.addEventListener("change", () => {
+    inputDiscountCode.disabled = !inputCheckCode.checked;
+    if (!inputCheckCode.checked) {
+      inputDiscountCode.value = "";
+      validarCodigoDescuento(); // limpiar estado visual
+    }
+  });
+  
+  // Validar al salir del input o al escribir
+  inputDiscountCode.addEventListener("blur", validarCodigoDescuento);
+  inputDiscountCode.addEventListener("input", validarCodigoDescuento);
 }
 
 function updateProgress(steps, formSteps, prevBtn, nextBtn, submitBtn) {
@@ -202,11 +220,32 @@ function dateListener() {
   moveFocus(year, document.querySelector(".btn-next"), 4);
 }
 
+function validarCodigoDescuento() {
+  const codigo = inputDiscountCode.value.trim().toUpperCase();
+  const statusDiv = document.getElementById("discountStatus");
+
+  if (!codigo) {
+    statusDiv.textContent = "";
+    statusDiv.className = "";
+    return;
+  }
+
+  const descuento = discounts.find(d => d.codigo === codigo);
+
+  if (descuento) {
+    statusDiv.textContent = `Código válido: ${descuento.porcentaje}% de descuento`;
+    statusDiv.className = "descuento-valido";
+  } else {
+    statusDiv.textContent = "Código inválido o sin cupo disponible";
+    statusDiv.className = "descuento-invalido";
+  }
+}
+
 //OK
 function showData() {
   const inputs = document.getElementsByClassName("items");
-  const partnerCheckbox = document.querySelector('input[name="check-partner"]');
-  const partnerInput = document.querySelector('input[name="partnerID"]');
+  // const checkCode = document.querySelector('input[name="checkCode"]');
+  // const code = document.querySelector('input[name="code"]');
   const nextEl = document.querySelector(".form-four");
 
   // Usamos variables globales
@@ -215,11 +254,11 @@ function showData() {
 
   // Aplicar descuento si corresponde
   let descuentoAplicado = "No aplica";
-  if (partnerCheckbox.checked) {
-    const codigo = partnerInput.value.toUpperCase();
-    const descuento = discounts.find(d => d.discountName === codigo);
+  if (checkCode.checked) {
+    const codigo = code.value.toUpperCase();
+    const descuento = discounts.find(d => d.codigo === codigo);
     if (descuento) {
-      const porcentaje = descuento.percentage;
+      const porcentaje = descuento.porcentaje;
       total = (precioBase * (1 - porcentaje / 100)).toFixed(2);
       descuentoAplicado = `${codigo} (-${porcentaje}%)`;
     }
@@ -282,18 +321,16 @@ async function getFormData() {
   }
 
   // Calcular precio con descuento
-  const descuentoInput = form["partnerID"]?.value?.toUpperCase();
-  const descuento = discounts.find(d => d.discountName === descuentoInput);
-  const descuentoAplicado = descuento ? descuento.percentage : 0;
-
-  precioFinal = (precioBase * (1 - descuentoAplicado / 100)).toFixed(2);
+  const code = form["code"]?.value?.toUpperCase();
+  const descuento = discounts.find(d => d.codigo === code);
+  const descuentoAplicado = descuento ? descuento.percentaje : 0;
 
   // Armar objeto con los datos del inscripto
   const inscripcionBody = {
     nombre: form.firstname.value,
     apellido: form.lastname.value,
     dni: form.dni.value,
-    genero: form.runnerGenre.value,
+    genero: form.gender.value,
     fechaNacimiento: `${form.year.value}-${form.month.value.padStart(2, "0")}-${form.day.value.padStart(2, "0")}`,
     email: form.email.value,
     telefono: form.phone.value,
@@ -301,19 +338,20 @@ async function getFormData() {
     distancia_id: distanciaId,
     distancia: distanciaNombre,
     talle: form.tshirtSize.value,
-    descuento: descuentoInput || "",
-    precio: precioFinal
+    codigoDescuento: code || "", //CODIGO O DTO
+    precio: precioBase
   };
 
+  console.log(inscripcionBody);
   try {
-    // Guardar temporalmente antes del pago
-    const tempRes = await fetch("http://localhost:3000/api/inscripciones/inscripciones-temp", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(inscripcionBody)
-    });
+    // Guardar temporalmente antes del pago - YA LO HAGO EN MPCONTROLLER
+    // const tempRes = await fetch("http://localhost:3000/api/inscripciones/inscripciones-temp", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(inscripcionBody)
+    // });
 
-    if (!tempRes.ok) throw new Error("Error al guardar inscripción temporal");
+    // if (!tempRes.ok) throw new Error("Error al guardar inscripción temporal");
 
     // Crear preferencia de Mercado Pago
     const mpRes = await fetch("http://localhost:3000/api/mercadopago/create-preference", {
