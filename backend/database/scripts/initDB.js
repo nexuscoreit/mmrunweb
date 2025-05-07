@@ -82,6 +82,8 @@ db.run(`
     codigoDescuento TEXT,
     precio REAL NOT NULL,
     fechaRegistro TEXT DEFAULT CURRENT_TIMESTAMP,
+    mpPayerId TEXT,
+    mpPayerEmail TEXT,
     FOREIGN KEY (distancia_id) REFERENCES distancias(id)
   );
 `);

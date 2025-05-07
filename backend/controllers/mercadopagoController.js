@@ -5,9 +5,6 @@ const {getDiscountByCode, discountUse} = require("../models/discount");
 const {getTempInscriptionById, deleteTempInscriptionById, saveInscription, saveTempInscription} = require("../models/inscripcion");
 const { v4: uuidv4 } = require('uuid'); // para generar IDs únicos
 
-// Inicializar l tu access token - mercadopago@1.5.14
-//mercadopago.configure({access_token: process.env.MP_ACCESS_TOKEN});
-
 const cuentasMercadoPago = [
  { nombre: "Franco", token: process.env.MP_TOKEN_FRANCO },
  { nombre: "Yahir", token: process.env.MP_TOKEN_YAHIR },
@@ -22,7 +19,7 @@ const createPreference = async (req, res) => {
   getDiscountByCode(datos.codigoDescuento, (err, descuento) => {
     const porcentaje = descuento ? descuento.porcentaje : 0;
     const precioFinal = +(precioBase * (1 - porcentaje / 100)).toFixed(2);
-    console.log(precioFinal);
+ 
     const inscripcionTemp = {
       id: id ,
       ...req.body,
@@ -42,11 +39,12 @@ const createPreference = async (req, res) => {
           return res.status(500).send("Error al obtener el total de inscriptos");
         }
 
+        //const totalInscriptos = 201;
         const totalInscriptos = row.total;
         const indiceCuenta = Math.floor(totalInscriptos / 200) % cuentasMercadoPago.length;
         const cuentaActual = cuentasMercadoPago[indiceCuenta];
 
-        console.log("Usando la cuenta de:", cuentaActual.nombre);
+        console.log("Usando la cuenta de:", cuentaActual.nombre, cuentaActual.token);
 
         // Configurar MercadoPago SDK
         mercadopago.configure({
@@ -91,6 +89,9 @@ const successPayment = async (req, res) => {
       const pago = await mercadopago.payment.findById(paymentId);
   
       if (pago.body.status === "approved") {
+        const payerId = pago.body.payer?.id || null;
+        const payerEmail = pago.body.payer?.email || null;
+
         getTempInscriptionById(externalRef, (err, tempData) => {
           if (err || !tempData) return res.status(404).send("Inscripción temporal no encontrada");
   
@@ -108,11 +109,12 @@ const successPayment = async (req, res) => {
             distancia: tempData.distancia,
             talle: tempData.talle,
             codigoDescuento: tempData.codigoDescuento,
-            precio: tempData.precio
+            precio: tempData.precio,
+            mpPayerId: payerId,
+            mpPayerEmail: payerEmail,
           };
           console.log("tempinsc", inscripto);
           saveInscription(inscripto, (err2) => {
-            console.error("Error al guardar inscripción:", err2);
             if (err2) return res.status(500).send("Error al guardar inscripción definitiva");
   
             if (inscripto.codigoDescuento) {

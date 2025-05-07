@@ -45,9 +45,9 @@ function deleteTempInscriptionById(id, callback) {
 function saveInscription(inscripcion, callback) {
   const sql = `
     INSERT INTO inscripciones (
-      id, nombre, apellido, dni, genero, fechaNacimiento, email,
-      telefono, ciudad, distancia_id, distancia, talle, codigoDescuento, precio
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      id, nombre, apellido, dni, genero, fechaNacimiento, email, telefono, 
+      ciudad, distancia_id, distancia, talle, codigoDescuento, precio, mpPayerId, mpPayerEmail
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `;
 
   const params = [
@@ -64,7 +64,9 @@ function saveInscription(inscripcion, callback) {
     inscripcion.distancia,
     inscripcion.talle,
     inscripcion.codigoDescuento || '',
-    inscripcion.precio
+    inscripcion.precio,
+    mpPayerId,
+    mpPayerEmail
   ];
   console.log("inscripto", params);
   db.run(sql, params, function (err) {
