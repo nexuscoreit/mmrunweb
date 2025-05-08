@@ -65,8 +65,8 @@ function saveInscription(inscripcion, callback) {
     inscripcion.talle,
     inscripcion.codigoDescuento || '',
     inscripcion.precio,
-    mpPayerId,
-    mpPayerEmail
+    inscripcion.mpPayerId,
+    inscripcion.mpPayerEmail
   ];
   console.log("inscripto", params);
   db.run(sql, params, function (err) {
