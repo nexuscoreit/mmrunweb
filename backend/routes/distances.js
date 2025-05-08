@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const { getDistances, getPriceByName } = require('../controllers/distancesController') 
+const { getDistancesCtlr, getPriceByNameCtlr } = require('../controllers/distancesController') 
 
-router.get("/", getDistances);
-router.get("/:nombre/precio", getPriceByName);
+router.get("/", getDistancesCtlr);
+router.get("/:nombre/precio", getPriceByNameCtlr);
 
 module.exports = router;

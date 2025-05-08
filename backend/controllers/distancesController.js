@@ -1,38 +1,19 @@
 const db = require("../database/connection");
+const {getDistancesPrice} = require("../models/distance");
+const {getLocalDate} = require("../utils/dateUtils");
 
-const getDistances = (req, res) => {
-  const today = new Date().toISOString().split("T")[0];
-
-  const sql = `
-    SELECT d.id, d.nombre, d.descripcion, d.con_remera,
-           p.precio, p.fecha_fin
-    FROM distancias d
-    LEFT JOIN periodos_precio p ON d.id = p.distancia_id
-    WHERE date(?) BETWEEN p.fecha_inicio AND p.fecha_fin
-    ORDER BY d.id
-  `;
-console.log(sql)
-  db.all(sql, [today], (err, rows) => {
-    if (err) {
-      console.error("Error consultando distancias:", err.message);
-      return res.status(500).json({ error: "Error interno del servidor" });
-    }
-
-    const distancias = rows.map((row) => ({
-      id: row.id,
-      nombre: row.nombre,
-      descripcion: row.descripcion,
-      con_remera: row.con_remera,
-      precio: row.precio,
-      detalle: `Hasta el ${new Date(row.fecha_fin).toLocaleDateString("es-AR")}`
-    }));
-
-    console.log(distancias)
-    res.json(distancias);
-  });
+const getDistancesCtlr = async(req, res) => {
+  try {
+    const hoy = req.query.fecha || getLocalDate(); // 'YYYY-MM-DD'
+    const distancias = await getDistancesPrice(hoy);
+    res.status(200).json(distancias);
+  } catch (error) {
+    console.error('Error al obtener distancias:', error);
+    res.status(500).json({ error: 'Error al obtener distancias con precio vigente' });
+  }
 };
 
-const getPriceByName = (req, res) => {
+const getPriceByNameCtlr = (req, res) => {
   const { nombre } = req.params;
   const today = new Date().toISOString().split("T")[0];
 
@@ -64,6 +45,6 @@ const getPriceByName = (req, res) => {
 };
 
 module.exports = {
-    getDistances,
-    getPriceByName
+    getDistancesCtlr,
+    getPriceByNameCtlr
 };
