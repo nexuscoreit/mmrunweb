@@ -74,6 +74,16 @@ function saveInscription(inscripcion, callback) {
   });
 }
 
+function getTotalInscriptions() {
+  return new Promise((resolve, reject) => {
+    const query = `SELECT COUNT(*) as total FROM inscripciones`;
+    db.get(query, (err, row) => {
+      if (err) reject(err);
+      else resolve(row.total);
+    });
+  });
+}
+
 const crearInscripcion = (data, callback) => {
   const {
     nombre, apellido, dni, genero, fechaNacimiento,
@@ -104,4 +114,4 @@ const existeDNI = (dni, callback) => {
   });
 };
 
-module.exports = { saveTempInscription, getTempInscriptionById, deleteTempInscriptionById, saveInscription, crearInscripcion, existeDNI };
+module.exports = { saveTempInscription, getTempInscriptionById, deleteTempInscriptionById, saveInscription, getTotalInscriptions, crearInscripcion, existeDNI };

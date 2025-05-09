@@ -2,7 +2,8 @@ require('dotenv').config();
 const mercadopago = require('mercadopago'); //mercadopago@1.5.14
 const db = require("../database/connection");
 const {getDiscountByCode, discountUse} = require("../models/discount");
-const {getTempInscriptionById, deleteTempInscriptionById, saveInscription, saveTempInscription} = require("../models/inscripcion");
+const {saveTempInscription, getTempInscriptionById, deleteTempInscriptionById, saveInscription, getTotalInscriptions} = require("../models/inscripcion");
+const {sendConfirmEmail} = require("../utils/mailerUtils.js")
 const { v4: uuidv4 } = require('uuid'); // para generar IDs únicos
 
 const cuentasMercadoPago = [
@@ -16,70 +17,71 @@ const createPreference = async (req, res) => {
   const id = uuidv4();
   const precioBase = parseFloat(datos.precio);
 
-  getDiscountByCode(datos.codigoDescuento, (err, descuento) => {
+  try {
+    const descuento = await new Promise((resolve, reject) => {
+      getDiscountByCode(datos.codigoDescuento, (err, data) => {
+        if (err) reject(err);
+        else resolve(data);
+      });
+    });
+
     const porcentaje = descuento ? descuento.porcentaje : 0;
     const precioFinal = +(precioBase * (1 - porcentaje / 100)).toFixed(2);
- 
+
     const inscripcionTemp = {
-      id: id ,
-      ...req.body,
+      id,
+      ...datos,
       precio: precioFinal
     };
 
-    saveTempInscription(inscripcionTemp, (err) => {
-      if (err) {
-        console.error("Error al guardar inscripción temporal:", err.message);
-        return res.status(500).json({ error: "Error al guardar inscripción temporal" });
-      }
+    //Verificar si ya se alcanzaron los 800 inscriptos
+    const totalInscriptos = await getTotalInscriptions();
+    if (totalInscriptos >= 800) {
+      return res.status(400).json({ error: "Cupos completos. No se permiten más inscripciones." });
+    }
 
-      // Obtener total de inscriptos definitivos para seleccionar cuenta MP
-      db.get("SELECT COUNT(*) AS total FROM inscripciones", (err, row) => {
-        if (err) {
-          console.error("Error al contar inscriptos:", err);
-          return res.status(500).send("Error al obtener el total de inscriptos");
-        }
-
-        //const totalInscriptos = 201;
-        const totalInscriptos = row.total;
-        const indiceCuenta = Math.floor(totalInscriptos / 200) % cuentasMercadoPago.length;
-        const cuentaActual = cuentasMercadoPago[indiceCuenta];
-
-        console.log("Usando la cuenta de:", cuentaActual.nombre, cuentaActual.token);
-
-        // Configurar MercadoPago SDK
-        mercadopago.configure({
-          access_token: cuentaActual.token
-        });
-
-        const preference = {
-          items: [
-            {
-              title: `Inscripción ${datos.distancia}${porcentaje ? ` - ${porcentaje}% OFF` : ""}`,
-              unit_price: precioFinal,
-              currency_id: "ARS",
-              quantity: 1
-            }
-          ],
-          payer: { dni: datos.dni },
-          back_urls: {
-            success: "https://a5e2-186-0-134-3.ngrok-free.app/api/mercadopago/success",
-            failure: "https://a5e2-186-0-134-3.ngrok-free.app/api/mercadopago/failure",
-            pending: "https://a5e2-186-0-134-3.ngrok-free.app/api/mercadopago/pending"
-          },
-          auto_return: "approved",
-          external_reference: id
-        };
-
-        mercadopago.preferences.create(preference)
-          .then((mpResponse) => res.json({ init_point: mpResponse.body.init_point }))
-          .catch((err) => {
-            console.error("Error al crear preferencia:", err);
-            res.status(500).json({ error: "Error al crear la preferencia de pago" });
-          });
+    //Guardar inscripción temporal
+    await new Promise((resolve, reject) => {
+      saveTempInscription(inscripcionTemp, (err) => {
+        if (err) reject(err);
+        else resolve();
       });
     });
-  });
+
+    //Seleccionar la cuenta según el total actual
+    const indiceCuenta = Math.floor((totalInscriptos - 1) / 200) % cuentasMercadoPago.length;
+    const cuentaActual = cuentasMercadoPago[indiceCuenta];
+
+    mercadopago.configure({ access_token: cuentaActual.token });
+
+    const preference = {
+      items: [
+        {
+          title: `Inscripción ${datos.distancia}${porcentaje ? ` - ${porcentaje}% OFF` : ""}`,
+          unit_price: precioFinal,
+          currency_id: "ARS",
+          quantity: 1
+        }
+      ],
+      payer: { dni: datos.dni },
+      back_urls: {
+        success: "https://a5e2-186-0-134-3.ngrok-free.app/api/mercadopago/success",
+        failure: "https://a5e2-186-0-134-3.ngrok-free.app/api/mercadopago/failure",
+        pending: "https://a5e2-186-0-134-3.ngrok-free.app/api/mercadopago/pending"
+      },
+      auto_return: "approved",
+      external_reference: id
+    };
+
+    const mpResponse = await mercadopago.preferences.create(preference);
+    res.json({ init_point: mpResponse.body.init_point });
+
+  } catch (error) {
+    console.error("Error en createPreference:", error);
+    res.status(500).json({ error: "Error al procesar la inscripción." });
+  }
 };
+
 
 const successPayment = async (req, res) => {
     const paymentId = req.query.payment_id;
@@ -113,10 +115,12 @@ const successPayment = async (req, res) => {
             mpPayerId: payerId,
             mpPayerEmail: payerEmail,
           };
-          console.log("tempinsc", inscripto);
+         
           saveInscription(inscripto, (err2) => {
             if (err2) return res.status(500).send("Error al guardar inscripción definitiva");
   
+            sendConfirmEmail(inscripto);
+
             if (inscripto.codigoDescuento) {
               discountUse(inscripto.codigoDescuento, () => {});
             }

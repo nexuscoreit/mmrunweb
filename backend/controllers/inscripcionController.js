@@ -45,7 +45,6 @@ async function saveInscriptionCtrl(req, res, io) {
     }
 }
 
-
 const listarInscriptos = (req, res) => {
   const sql = `SELECT * FROM inscripciones ORDER BY fechaRegistro DESC`;
 
@@ -59,4 +58,17 @@ const listarInscriptos = (req, res) => {
   });
 };
 
-module.exports = { saveTempInscriptionCtrl, saveInscriptionCtrl, listarInscriptos};
+
+const checkCupoCtrl = async (req, res) => {
+  try {
+    const total = await getTotalInscription();
+    const cuposDisponibles = 800 - total;
+
+    res.status(200).json({ cuposDisponibles });
+  } catch (error) {
+    console.error("Error al consultar cupos:", error);
+    res.status(500).json({ message: "Error interno del servidor." });
+  }
+};
+
+module.exports = { saveTempInscriptionCtrl, saveInscriptionCtrl, listarInscriptos, checkCupoCtrl};

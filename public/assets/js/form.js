@@ -67,7 +67,7 @@ async function getPriceDistance() {
     distanciaId = data.distancia_id;
     precioBase = parseFloat(data.precio);
     precioFinal = precioBase;
-    //NO EXISTE PRECIOFINAL ID
+    //NO EXISTE "precioFinal"
     const precioSpan = document.getElementById("precioFinal");
     if (precioSpan) {
       precioSpan.textContent = precioBase === 0 ? "Gratis" : `$${precioBase.toLocaleString()}`;

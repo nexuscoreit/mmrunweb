@@ -7,7 +7,6 @@ const getValidDiscountsCtlr = (req, res) => {
         return res.status(500).json({ error: "Error interno del servidor" });
       }
       res.json(rows);
-      console.log(rows);
     });
 };
 

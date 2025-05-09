@@ -13,7 +13,7 @@ const preciosPorDistancia = {
 
 // Periodos (ordenados)
 const periodos = [
-  { inicio: '2025-05-15', fin: '2025-06-14' },
+  { inicio: '2025-05-08', fin: '2025-06-14' },
   { inicio: '2025-06-15', fin: '2025-07-14' },
   { inicio: '2025-07-15', fin: '2025-09-27' }
 ];

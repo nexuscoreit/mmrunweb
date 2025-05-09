@@ -2,7 +2,7 @@ const db = require('../database/connection');
 
 function getDiscountByCode(codigo, callback) {
   const today = new Date().toISOString().split("T")[0];
-  console.log(codigo);
+
   const sql = `
     SELECT * FROM codigos_descuento
     WHERE codigo = ?
