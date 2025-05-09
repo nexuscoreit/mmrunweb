@@ -4,8 +4,8 @@ let precioFinal = 0;
 let distanciaId = null;
 let distanciaNombre = null;
 let active = 1;
-let inputCheckCode;
-let inputDiscountCode;
+let checkCode;
+let discountCode;
 
 const talles = [
   { id: "talle_s", value: "Camiseta Talle S" },
@@ -67,7 +67,7 @@ async function getPriceDistance() {
     distanciaId = data.distancia_id;
     precioBase = parseFloat(data.precio);
     precioFinal = precioBase;
-    //NO EXISTE "precioFinal"
+    //NO EXISTE "precioFinal
     const precioSpan = document.getElementById("precioFinal");
     if (precioSpan) {
       precioSpan.textContent = precioBase === 0 ? "Gratis" : `$${precioBase.toLocaleString()}`;
@@ -150,17 +150,17 @@ function setupNavigation() {
 
   updateProgress(steps, formSteps, prevBtn, nextBtn, submitBtn);
 
-  inputCheckCode.addEventListener("change", () => {
-    inputDiscountCode.disabled = !inputCheckCode.checked;
-    if (!inputCheckCode.checked) {
-      inputDiscountCode.value = "";
-      validarCodigoDescuento(); // limpiar estado visual
+  checkCode.addEventListener("change", () => {
+    discountCode.disabled = !checkCode.checked;
+    if (!checkCode.checked) {
+      discountCode.value = "";
+      // validarCodigoDescuento(); // limpiar estado visual
     }
   });
   
   // Validar al salir del input o al escribir
-  inputDiscountCode.addEventListener("blur", validarCodigoDescuento);
-  inputDiscountCode.addEventListener("input", validarCodigoDescuento);
+  // discountCode.addEventListener("blur", validarCodigoDescuento);
+  // discountCode.addEventListener("input", validarCodigoDescuento);
 }
 
 function updateProgress(steps, formSteps, prevBtn, nextBtn, submitBtn) {
@@ -220,26 +220,26 @@ function dateListener() {
   moveFocus(year, document.querySelector(".btn-next"), 4);
 }
 
-function validarCodigoDescuento() {
-  const codigo = inputDiscountCode.value.trim().toUpperCase();
-  const statusDiv = document.getElementById("discountStatus");
+// function validarCodigoDescuento() {
+//   const codigo = discountCode.value.trim().toUpperCase();
+//   const statusDiv = document.getElementById("discountStatus");
 
-  if (!codigo) {
-    statusDiv.textContent = "";
-    statusDiv.className = "";
-    return;
-  }
+//   if (!codigo) {
+//     statusDiv.textContent = "";
+//     statusDiv.className = "";
+//     return;
+//   }
 
-  const descuento = discounts.find(d => d.codigo === codigo);
+//   const descuento = discounts.find(d => d.codigo === codigo);
 
-  if (descuento) {
-    statusDiv.textContent = `Código válido: ${descuento.porcentaje}% de descuento`;
-    statusDiv.className = "descuento-valido";
-  } else {
-    statusDiv.textContent = "Código inválido o sin cupo disponible";
-    statusDiv.className = "descuento-invalido";
-  }
-}
+//   if (descuento) {
+//     statusDiv.textContent = `Código válido: ${descuento.porcentaje}% de descuento`;
+//     statusDiv.className = "descuento-valido";
+//   } else {
+//     statusDiv.textContent = "Código inválido o sin cupo disponible";
+//     statusDiv.className = "descuento-invalido";
+//   }
+// }
 
 //OK
 function showData() {
