@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inscripción | MMRUN24</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/assets/img/favicon-mmrun.ico" />
+
+  <!-- Estilos compartidos -->
+  <link rel="stylesheet" href="/assets/css/index.css" />
+  <link rel="stylesheet" href="/assets/css/modal.css" />
+
+  <!-- Estilo específico del formulario -->
+  <link rel="stylesheet" href="/assets/css/form.css" />
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Flatpickr para selector de fecha -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+  
+  <!-- SweetAlert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Choices.js (para mejorar select) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+  <!-- Ajustes visuales específicos -->
+  <style>
+    .swal2-popup.mmrun-confirm-modal {
+      border-radius: 16px;
+      padding: 2rem;
+    }
+    .hamburger-icon {
+      font-size: 1.8rem;
+      color: white;
+    }
+    #btn-submit {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body class="no-overflow" style="display: flex; flex-direction: column; min-height: 100vh;">
+    <!-- Componentes reutilizables -->
+    <div id="topbar-container"></div>
+    <div id="mobile-menu-container"></div>
+
+    <p class="back-to-site">
+      <a href="/index.html" class="btn-volver">← Volver al sitio web</a>
+    </p>
+
+    <div id="page" class="site">
+      <div class="container">
+        <div class="form-box">
+          <!-- Progreso -->
+          <div class="progress">
+            <div class="logo">
+              <img src="/assets/img/logo-mmrun-secundario.png" alt="Logo MMRUN">
+            </div>
+            <ul class="progress-steps">
+              <li class="step active"><span>1</span><p data-full="Datos Personales" data-short="Datos Pers."></p></li>
+              <li class="step"><span>2</span><p data-full="Contacto" data-short="Contacto"></p></li>
+              <li class="step"><span>3</span><p data-full="Datos de Inscripción" data-short="Inscrip."></p></li>
+              <li class="step"><span>4</span><p data-full="Resumen" data-short="Resumen"></p></li>
+              <li class="step" data-step="5"><span>5</span><p data-full="Pago" data-short="Pago"></p></li>
+            </ul>            
+          </div>
+
+          <form action="" id="form">
+            <div class="form-one form-step active">
+              <div class="bg-svg"></div>
+              <h2>Datos Personales</h2>
+              <p>Ingresá tu información personal</p>
+            
+              <div class="form-row">
+                <div class="form-field first-field">
+                  <label for="firstname">Nombre:</label>
+                  <input id="firstname" type="text" name="firstname" class="items" placeholder="Nombre" required />
+                </div>
+                <div class="form-field">
+                  <label for="lastname">Apellido:</label>
+                  <input id="lastname" type="text" name="lastname" class="items" placeholder="Apellido" required />
+                </div>
+              </div>
+            
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="dni">DNI:</label>
+                  <input 
+                  id="dni"
+                  type="text"
+                  name="dni"
+                  placeholder="12345678"
+                  class="items"
+                  pattern="\d{7,8}"
+                  maxlength="8"
+                  inputmode="numeric"
+                  required />
+                </div>
+                <div class="form-field">
+                  <label for="runnerGenre">Género:</label>
+                  <select id="runnerGenre" name="runnerGenre" class="items" required>
+                    <option value="">Seleccione</option>
+                    <option value="Femenino">Femenino</option>
+                    <option value="Masculino">Masculino</option>
+                  </select>
+                </div>
+              </div>
+            
+              <div class="form-row full-width">
+                <div class="form-field" style="width: 100%;">
+                  <label for="birthdate">Fecha de nacimiento:</label>
+                  <div class="date-input-wrapper">
+                    <input type="date" id="birthdate" name="birthdate" class="items" placeholder="Seleccioná tu fecha" required />
+                    <span class="calendar-icon">
+                      <ion-icon name="calendar-outline"></ion-icon>
+                    </span>
+                  </div>
+                </div>
+              </div>                           
+            </div>
+
+            <!-- Paso 2: Contacto -->
+            <div class="form-two form-step">
+              <div class="bg-svg"></div>
+              <h2>Contacto</h2>
+              <p>Ingresa tus datos de contacto</p>
+              <div><label for="email">Email:</label><input id="email" type="email" class="items" name="email" placeholder="email@mail.com" required /></div>
+              <div><label for="phone">Teléfono:</label><input id="phone" type="tel" class="items" name="phone" placeholder="299xxxxxxx" required /></div>
+              <div class="form-field">
+                <label for="city">Ciudad:</label>
+                <input list="ciudades" id="city" name="city" class="items" placeholder="Selecciona Ciudad" required />
+                <datalist id="ciudades">
+                  <option value="Córdoba"></option>
+                  <option value="Buenos Aires"></option>
+                  <option value="Rosario"></option>
+                  <option value="Mendoza"></option>
+                  <option value="Neuquén"></option>
+                  <option value="Salta"></option>
+                  <option value="Tucumán"></option>
+                </datalist>
+              </div>
+            </div>
+
+            <!-- Paso 3: Inscripción -->
+            <div class="form-three form-step">
+              <div class="bg-svg"></div>
+              <h2>Datos de Inscripción</h2>
+              <p>Ingresá tu información de inscripción</p>
+              <div>
+                <label for="distanciaElegida">Distancia:</label>
+                <input type="text" id="distanciaElegida" name="distancia" class="items" readonly />
+                <select id="category" name="category" hidden required></select>
+              </div>
+              <div>
+                <label for="tshirtSize">Talle Remera:</label>
+                <select name="tshirtSize" id="tshirtSize" class="items" required>
+                  <option value="">Seleccione</option>
+                  <option value="talle_s">Remera Talle S</option>
+                  <option value="talle_m">Remera Talle M</option>
+                  <option value="talle_l">Remera Talle L</option>
+                  <option value="talle_xl">Remera Talle XL</option>
+                  <option value="talle_xxl">Remera Talle XXL</option>
+                </select>
+              </div>
+              <div class="img-container-talles">
+                <img src="/assets/img/form/guia-talles.png" alt="Guía de talles" />
+              </div>
+              
+              <div class="descuento-wrapper">
+                <div class="form-check">
+                  <input type="checkbox" id="check-partner" class="form-check-input" name="check-partner" />
+                  <label for="check-partner" class="form-check-label">Tengo un código de descuento</label>
+                </div>
+                <div class="form-field">
+                  <label for="partnerID">Código de descuento:</label>
+                  <input id="partnerID" type="text" class="items" name="partnerID" disabled placeholder="Ingrese código" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Paso 4: Resumen -->
+            <div class="form-four form-step">
+              <div class="bg-svg"></div>
+
+              <!-- Título principal -->
+              <h2 class="resumen-title">Resumen de Inscripción</h2>
+              <p>Por favor, revisá la información antes de confirmar.</p>
+
+              <!-- Contenedor para el resumen -->
+              <div id="payment-status" class="resumen-box">
+                <!-- El contenido del resumen se generará dinámicamente desde el script -->
+              </div>              
+            </div>
+
+            <!-- Paso 5: Pago -->
+            <div class="form-five form-step payment-step">
+              <div class="bg-svg"></div>
+              <h2 id="paso5-title">Pago</h2>
+              <p id="paso5-desc">Seleccioná tu método de pago para completar la inscripción.</p>
+
+              <!-- Estos IDs son necesarios para el script -->
+              <div id="metodoPagoGroup" style="display: none;"></div>
+
+              <!-- Botón Mercado Pago -->
+              <div id="mercadoPagoButton">
+                <button type="button" class="btn-mercado-pago" id="btn-pagar" disabled>
+                  <img src="/assets/img/mercado-pago/mercado-pago-logo.jpg" alt="MercadoPago" />
+                  <span>Pagar con Mercado Pago</span>
+                </button>
+              </div>
+            </div>
+
+          <!-- Navegación -->
+          <div class="btn-group">
+            <button type="button" class="btn-prev" disabled>Anterior</button>
+            <button type="button" class="btn-next" id="btnSiguiente">Siguiente</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="full-screen no-display" id="spinner">
+      <span class="loader"></span>
+    </div>
+  </div>
+
+  <!-- Modal Talles -->
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01" />
+  </div>
+
+  <!-- Footer reutilizable -->
+  <div id="footer-container"></div>
+
+    <!-- Scripts -->  
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="/assets/js/index.js" defer></script>
+  <script type="module" src="/assets/js/main.js"></script>
+  <script src="/assets/js/modal.js" defer></script>
+  <script src="/assets/js/form.js" defer></script>
+
+  <!-- Lógica interna -->
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileDropdown');
+      const isOpen = menu.classList.toggle('active');
+      document.body.classList.toggle('menu-open', isOpen);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const closeBtn = document.getElementById("closeMobileMenu");
+      const mobileMenu = document.getElementById("mobileDropdown");
+      const termsCheckbox = document.getElementById("aceptaReglamento");
+      const payButton = document.getElementById("btn-pagar");
+
+      if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+          mobileMenu.classList.remove("active");
+          document.body.classList.remove("menu-open");
+        });
+      }
+
+      if (termsCheckbox && payButton) {
+        termsCheckbox.addEventListener("change", () => {
+          payButton.disabled = !termsCheckbox.checked;
+        });
+      }
+    });
+
+    window.addEventListener("scroll", function () {
+      const navbar = document.getElementById("mainNavbar");
+      const topbar = document.querySelector(".topbar");
+      if (window.scrollY > 0) {
+        navbar.classList.add("scrolled");
+        topbar.classList.add("hidden");
+      } else {
+        navbar.classList.remove("scrolled");
+        topbar.classList.remove("hidden");
+      }
+    });
+  </script>
+
+  <script>
+    const distancia = sessionStorage.getItem("distanciaSeleccionada");
+    if (distancia) {
+      const inputDistancia = document.getElementById("distanciaElegida");
+      const selectCategory = document.getElementById("category");
+      if (inputDistancia) inputDistancia.value = distancia;
+      if (selectCategory) {
+        const opt = document.createElement("option");
+        opt.value = distancia;
+        opt.textContent = distancia;
+        selectCategory.appendChild(opt);
+        selectCategory.value = distancia;
+      }
+    }
+  </script>
+
+  <script>
+    flatpickr("#birthdate", {
+      dateFormat: "d/m/Y",
+      maxDate: "today",
+      locale: "es",
+      altInput: true,
+      altFormat: "d \\de F \\de Y"
+    });
+  </script>
+
+  <script>
+    document.getElementById("dni").addEventListener("input", function () {
+      this.value = this.value.replace(/\D/g, "");
+      if (this.value.length > 8) {
+        this.value = this.value.slice(0, 8);
+      }
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const ids = ["runnerGenre", "tshirtSize"];
+      ids.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          new Choices(el, {
+            searchEnabled: false,
+            itemSelectText: "",
+            shouldSort: false
+          });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -138,42 +138,70 @@
   <script>
     function cerrarSesion() {
       Swal.fire({
-        title: '¿Cerrar sesión?',
-        text: '¿Seguro que querés salir del panel de administración?',
+        title: '<span style="font-size: 1.3rem; font-weight: 600; color: #ffffff;">¿Cerrar sesión?</span>',
+        html: `
+          <p style="font-size: 0.95rem; color: #dcdcdc; margin-top: 8px;">
+            ¿Seguro que querés salir del panel de administración?
+          </p>
+        `,
         icon: 'warning',
+        background: '#1b1f29',
         showCancelButton: true,
-        confirmButtonColor: '#00c18d', // Verde deportivo
-        cancelButtonColor: '#d33',      // Rojo clásico
+        confirmButtonColor: '#00c18d',
+        cancelButtonColor: '#d33',
         confirmButtonText: 'Sí, cerrar sesión',
         cancelButtonText: 'No, quedarme',
-        background: '#fff',
-        allowOutsideClick: false
-      }).then((result) => {
-        if (result.isConfirmed) {
-          localStorage.removeItem("adminLoggedIn");
-          localStorage.removeItem("adminEmail");
-          Swal.fire({
-            title: '¡Hasta pronto!',
-            text: 'Cerrando sesión...',
-            icon: 'success',
-            timer: 1500,
-            showConfirmButton: false,
-            allowOutsideClick: false
-          }).then(() => {
-            window.location.href = "/views/login/login.html";
-          });
+        allowOutsideClick: false,
+        customClass: {
+          popup: 'swal2-popup-logout'
+        }
+        }).then((result) => {
+          if (result.isConfirmed) {
+            localStorage.removeItem("adminLoggedIn");
+            localStorage.removeItem("adminEmail");
+
+            Swal.fire({
+              title: '<span style="color: #ffffff;">¡Hasta pronto!</span>',
+              html: `
+                <div style="margin-top: 15px;">
+                  <div id="progress-bar" style="height: 12px; width: 100%; background: #333; border-radius: 30px; overflow: hidden;">
+                    <div id="bar-fill" style="height: 100%; width: 0%; background: linear-gradient(to right, #00faba, #5247b9); transition: width 0.3s;"></div>
+                  </div>
+                  <p style="margin-top: 8px; font-size: 0.9rem; color: #dcdcdc;">Cerrando sesión...</p>
+                </div>
+              `,
+              icon: 'success',
+              background: '#1b1f29',
+              showConfirmButton: false,
+              allowOutsideClick: false,
+              timer: 2000,
+              customClass: {
+                popup: 'swal2-popup-logout'
+              },
+              didOpen: () => {
+                const bar = Swal.getHtmlContainer().querySelector("#bar-fill");
+                let progress = 0;
+                const interval = setInterval(() => {
+                  progress += 5;
+                  if (bar) bar.style.width = `${progress}%`;
+                  if (progress >= 100) clearInterval(interval);
+                }, 30);
+              }
+            }).then(() => {
+              window.location.href = "/views/login/login.html";
+            });
+          }
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const username = localStorage.getItem("adminEmail");
+        const usernameSpan = document.getElementById("adminUsername");
+      
+        if (username && usernameSpan) {
+          usernameSpan.textContent = username;
         }
       });
-    }
-    
-    document.addEventListener("DOMContentLoaded", () => {
-      const username = localStorage.getItem("adminEmail");
-      const usernameSpan = document.getElementById("adminUsername");
-    
-      if (username && usernameSpan) {
-        usernameSpan.textContent = username;
-      }
-    });
     </script>
   </script>
 </body>

@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (bar) bar.style.width = `${progress}%`;
             if (progress >= 100) {
               clearInterval(interval);
-              window.location.href = "/views/form/index.html";
+              window.location.href = "/views/form/form.html";
             }
           }, 40);
         }
@@ -91,7 +91,7 @@ if (navbarBtn) {
           if (bar) bar.style.width = `${progress}%`;
           if (progress >= 100) {
             clearInterval(interval);
-            window.location.href = "/views/form/index.html";
+            window.location.href = "/views/form/form.html";
           }
         }, 40);
       }
