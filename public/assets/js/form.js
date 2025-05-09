@@ -7,18 +7,18 @@ let discounts = [];
 let active = 1;
 
 const talles = [
-  { id: "talle_s", value: "Camiseta Talle S" },
-  { id: "talle_m", value: "Camiseta Talle M" },
-  { id: "talle_l", value: "Camiseta Talle L" },
-  { id: "talle_xl", value: "Camiseta Talle XL" },
-  { id: "talle_xxl", value: "Camiseta Talle XXL" },
+  { id: "talle_s", value: "Remera Talle S" },
+  { id: "talle_m", value: "Remera Talle M" },
+  { id: "talle_l", value: "Remera Talle L" },
+  { id: "talle_xl", value: "Remera Talle XL" },
+  { id: "talle_xxl", value: "Remera Talle XXL" },
 ];
 
 function initForm() {
   getCategories();
   getDiscounts();
   setupNavigation();
-  dateListener();
+  // dateListener();
   setupModal();
   handleQueryParamChange();
 
@@ -79,13 +79,34 @@ function setupNavigation() {
     inputs.forEach((input) => {
       const name = input.getAttribute("name");
       const isDiscountInput = name === "partnerID";
-      const hasDiscountChecked = partnerCheckbox.checked;
+      const hasDiscountChecked = partnerCheckbox?.checked;
+      const isEmpty = !input.value || input.value.trim() === "";
 
-      if (!input.value && !(isDiscountInput && !hasDiscountChecked)) {
-        input.classList.add("error");
+      // Eliminar mensaje previo si existe
+      const prevMsg = input.parentNode.querySelector(".error-msg");
+      if (prevMsg) prevMsg.remove();
+
+      if (isEmpty && !(isDiscountInput && !hasDiscountChecked)) {
+        showError(input);
         valid = false;
+
+        // ⚠️ Event Listener para inputs de texto
+        input.addEventListener("input", () => {
+          if (input.value.trim()) {
+            hideError(input);
+          }
+        });
+
+        // ⚠️ Event Listener específico para selects
+        if (input.tagName.toLowerCase() === "select") {
+          input.addEventListener("change", () => {
+            if (input.value !== "") {
+              hideError(input);
+            }
+          });
+        }
       } else {
-        input.classList.remove("error");
+        hideError(input);
       }
     });
 
@@ -99,16 +120,7 @@ function setupNavigation() {
       return;
     }
 
-    const selectedCategory = document.getElementById("category")?.value;
-    const category = categories.find(c => c.title === selectedCategory);
-    const isFree = category?.precio === 0;
-
-    if (isFree && active === 4) {
-      active += 2;
-    } else {
-      active++;
-    }
-
+    active++;
     updateProgress(steps, formSteps, prevBtn, nextBtn, submitBtn);
   });
 
@@ -125,6 +137,46 @@ function setupNavigation() {
   updateProgress(steps, formSteps, prevBtn, nextBtn, submitBtn);
 }
 
+function showError(input) {
+  input.classList.add("error");
+
+  // Eliminar mensaje previo si existe
+  const prevMsg = input.parentNode.querySelector(".error-msg");
+  if (prevMsg) prevMsg.remove();
+
+  const errorMsg = document.createElement("div");
+  errorMsg.classList.add("error-msg");
+  errorMsg.textContent = "Este campo es obligatorio";
+
+  // Verificar si el campo es un select
+  if (input.tagName.toLowerCase() === "select") {
+    // Verificar si el contenedor del select es .form-group
+    const parentGroup = input.closest(".form-group");
+    if (parentGroup) {
+      parentGroup.appendChild(errorMsg);
+    } else {
+      // Si no encuentra el form-group, lo coloca después del contenedor
+      input.parentNode.appendChild(errorMsg);
+    }
+  } else {
+    // Para otros campos, añadir el mensaje dentro del contenedor
+    input.parentNode.appendChild(errorMsg);
+  }
+}
+
+function hideError(input) {
+  input.classList.remove("error");
+  const parentGroup = input.closest(".form-group");
+  if (parentGroup) {
+    const prevMsg = parentGroup.querySelector(".error-msg");
+    if (prevMsg) prevMsg.remove();
+  } else {
+    const prevMsg = input.parentNode.querySelector(".error-msg");
+    if (prevMsg) prevMsg.remove();
+  }
+}
+
+
 function updateProgress(steps, formSteps, prevBtn, nextBtn, submitBtn) {
   const selectedCategory = document.getElementById("category")?.value;
   const category = categories.find(c => c.title === selectedCategory);
@@ -135,6 +187,7 @@ function updateProgress(steps, formSteps, prevBtn, nextBtn, submitBtn) {
   const metodoPagoGroup = document.getElementById("metodoPagoGroup");
   const mercadoPagoButton = document.getElementById("mercadoPagoButton");
 
+  // Control de título y descripción en el paso 5 (pago)
   if (paso5Title && paso5Desc && metodoPagoGroup && mercadoPagoButton) {
     if (isFree) {
       paso5Title.textContent = "Términos y Condiciones";
@@ -149,39 +202,72 @@ function updateProgress(steps, formSteps, prevBtn, nextBtn, submitBtn) {
     }
   }
 
+  // Actualizar pasos y contenido del formulario
   steps.forEach((step, i) => {
-    const stepNumber = step.getAttribute("data-step") || (i + 1).toString();
-    const isPaymentStep = stepNumber === "5";
-    const showStep = (!isFree || !isPaymentStep) && i === active - 1;
-
-    step.classList.toggle("active", showStep);
-    formSteps[i].classList.toggle("active", showStep);
+    step.classList.toggle("active", i === active - 1);
   });
 
+  formSteps.forEach((formStep, i) => {
+    if (i === active - 1) {
+      formStep.style.display = "block";
+      // Mostrar el resumen al llegar al paso 4
+      if (active === 4) showData();
+    } else {
+      formStep.style.display = "none";
+    }
+  });
+
+  // Deshabilitar el botón "Anterior" en el primer paso
   prevBtn.disabled = active === 1;
 
-  if (isFree) {
-    nextBtn.disabled = active >= steps.length - 1;
-    submitBtn.style.display = active === steps.length - 1 ? "inline-block" : "none";
+  // Controlar la visibilidad del botón "Siguiente" y "Confirmar" en el paso 5
+  if (active === 5) {
+    // Ocultar el botón "Siguiente" en el paso 5
+    nextBtn.style.display = "none";
+
+    // Crear el botón "Confirmar" solo si no existe
+    let confirmBtn = document.getElementById("btn-confirm");
+    if (!confirmBtn) {
+      confirmBtn = document.createElement("button");
+      confirmBtn.textContent = "Confirmar";
+      confirmBtn.id = "btn-confirm";
+      confirmBtn.className = "btn-confirm";
+      confirmBtn.addEventListener("click", () => {
+        Swal.fire({
+          title: "¡Confirmado!",
+          text: "La inscripción ha sido completada exitosamente.",
+          icon: "success",
+          confirmButtonText: "Ok"
+        });
+      });
+      nextBtn.parentNode.appendChild(confirmBtn);
+    }
+
+    // Mostrar el botón "Confirmar"
+    confirmBtn.style.display = "inline-block";
   } else {
-    nextBtn.disabled = active >= steps.length;
-    submitBtn.style.display = active === steps.length ? "inline-block" : "none";
+    // Mostrar el botón "Siguiente" en otros pasos
+    nextBtn.style.display = "inline-block";
+
+    // Ocultar el botón "Confirmar" si existe
+    const confirmBtn = document.getElementById("btn-confirm");
+    if (confirmBtn) {
+      confirmBtn.style.display = "none";
+    }
   }
 
-  if (active === 4) showData();
-}
-
-function dateListener() {
-  const day = document.getElementById("day");
-  const month = document.getElementById("month");
-  const year = document.getElementById("year");
-
-  const moveFocus = (from, to, len) =>
-    from.addEventListener("input", () => from.value.length === len && to.focus());
-
-  moveFocus(day, month, 2);
-  moveFocus(month, year, 2);
-  moveFocus(year, document.querySelector(".btn-next"), 4);
+  // Controlar el botón "Enviar" en el último paso
+  if (isFree) {
+    nextBtn.disabled = active >= steps.length - 1;
+    if (submitBtn) {
+      submitBtn.style.display = active === steps.length - 1 ? "inline-block" : "none";
+    }
+  } else {
+    nextBtn.disabled = active >= steps.length;
+    if (submitBtn) {
+      submitBtn.style.display = active === steps.length ? "inline-block" : "none";
+    }
+  }
 }
 
 function showData() {
@@ -197,33 +283,50 @@ function showData() {
     multiplier -= matchedDiscount.percentage / 100;
   }
 
-  const category = categories.find(c => c.title === inputs[10].value);
+  // Obtener el talle seleccionado correctamente
+  const tshirtSelect = document.getElementById("tshirtSize");
+  const selectedTshirt = tshirtSelect.options[tshirtSelect.selectedIndex]?.text || "No asignado";
+
+  // Verificar si se obtuvieron categorías correctamente
+  const category = categories.find(c => c.title === inputs[10]?.value);
   const precioFinal = category ? (category.precio * multiplier).toFixed(2) : "No asignado";
 
+  // Verificar si ya existe el contenedor y eliminarlo si es necesario
+  const existing = document.getElementById("payment-status");
+  if (existing) existing.remove();
+
+  // Crear el bloque del resumen
   const resumenHTML = `
     <div id="payment-status" class="resumen-box">
       <h3 class="resumen-title">🧾 Resumen de inscripción</h3>
       <div class="resumen-section">
-        <div><strong>Nombre:</strong> ${inputs[0].value}</div>
-        <div><strong>Apellido:</strong> ${inputs[1].value}</div>
-        <div><strong>DNI:</strong> ${inputs[2].value}</div>
-        <div><strong>Email:</strong> ${inputs[7].value}</div>
-        <div><strong>Teléfono:</strong> ${inputs[8].value}</div>
-        <div><strong>Ciudad:</strong> ${inputs[9].value}</div>
-        <div><strong>Circuito:</strong> ${inputs[10].value}</div>
-        <div><strong>Talle camiseta:</strong> ${(() => {
-          const talle = talles.find(t => t.id === inputs[11].value);
-          return talle ? talle.value : "No asignado";
-        })()}</div>
-        <div><strong>Código de descuento:</strong> ${inputs[12].checked ? inputs[13].value : "No aplica"}</div>
-        <div><strong>Total:</strong> $${precioFinal}</div>
+        <p><strong>Nombre:</strong> ${inputs[0]?.value || "No asignado"}</p>
+        <p><strong>Apellido:</strong> ${inputs[1]?.value || "No asignado"}</p>
+        <p><strong>DNI:</strong> ${inputs[2]?.value || "No asignado"}</p>
+        <p><strong>Email:</strong> ${inputs[7]?.value || "No asignado"}</p>
+        <p><strong>Teléfono:</strong> ${inputs[8]?.value || "No asignado"}</p>
+        <p><strong>Ciudad:</strong> ${inputs[9]?.value || "No asignado"}</p>
+        <p><strong>Circuito:</strong> ${inputs[10]?.value || "No asignado"}</p>
+        <p><strong>Talle camiseta:</strong> ${selectedTshirt}</p>
+        <p><strong>Código de descuento:</strong> ${inputs[12]?.checked ? inputs[13]?.value : "No aplica"}</p>
+        <p><strong>Total:</strong> $${precioFinal}</p>
+      </div>
+      <!-- Checkbox de aceptación alineado -->
+      <div class="checkbox-group centered-checkbox">
+        <label class="checkbox-inline">
+          <input type="checkbox" id="aceptaReglamento" required />
+          <span>Acepto los <a href="/views/documents/REGLAMENTO_GENERAL.pdf" target="_blank">términos y condiciones</a></span>
+        </label>
       </div>
     </div>`;
 
-  const existing = document.getElementById("payment-status");
-    if (existing) existing.remove();
+  // Insertar el resumen en el contenedor
+  if (nextEl) {
     nextEl.insertAdjacentHTML("beforeend", resumenHTML);
+  } else {
+    console.error("No se encontró el contenedor para el resumen.");
   }
+}
 
 async function getFormData() {
   const spinner = document.getElementById("spinner");
@@ -413,3 +516,45 @@ function isFreeCategorySelected() {
   const category = categories.find(c => c.title === selectedCategory);
   return category?.precio === 0;
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const termsCheckbox = document.getElementById("aceptaReglamento");
+  const payButton = document.getElementById("btn-pagar");
+
+  if (termsCheckbox && payButton) {
+    termsCheckbox.addEventListener("change", () => {
+      payButton.disabled = !termsCheckbox.checked;
+    });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("form");
+  const birthdateInput = document.getElementById("birthdate");
+
+  form.addEventListener("submit", function (e) {
+    const birthdate = new Date(birthdateInput.value);
+    const today = new Date();
+
+    if (birthdate > today) {
+      e.preventDefault();
+      Swal.fire({
+        icon: 'error',
+        title: 'Fecha inválida',
+        text: 'La fecha de nacimiento no puede ser futura.',
+      });
+    }
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const checkbox = document.getElementById("check-partner");
+  const inputCode = document.getElementById("partnerID");
+
+  checkbox.addEventListener("change", () => {
+    inputCode.disabled = !checkbox.checked;
+    if (!checkbox.checked) inputCode.value = "";
+  });
+});
+
+  

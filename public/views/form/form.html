@@ -5,23 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inscripción | MMRUN24</title>
 
-  <!-- Ícono -->
+  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/assets/img/favicon-mmrun.ico" />
 
-  <!-- Navbar / topbar / distancias -->
+  <!-- Estilos compartidos -->
   <link rel="stylesheet" href="/assets/css/index.css" />
   <link rel="stylesheet" href="/assets/css/modal.css" />
 
-  <!-- Estilos -->
+  <!-- Estilo específico del formulario -->
   <link rel="stylesheet" href="/assets/css/form.css" />
 
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Flatpickr para selector de fecha -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
-
+  
   <!-- SweetAlert -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+  <!-- Choices.js (para mejorar select) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+  <!-- Ajustes visuales específicos -->
   <style>
     .swal2-popup.mmrun-confirm-modal {
       border-radius: 16px;
@@ -38,65 +47,14 @@
 </head>
 
 <body class="no-overflow" style="display: flex; flex-direction: column; min-height: 100vh;">
-  <!-- TOPBAR -->
-  <div class="topbar">
-    <div class="topbar-left">
-      <span>contacto@mmrun.com.ar</span>
-      <span>Club Mari Menuco, Neuquén</span>
-    </div>
-    <div class="topbar-right">
-      <a href="#"></a>
-      <a href="#"></a>
-      <a href="#"></a>
-      <a href="#"></a>
-    </div>
-  </div>
+    <!-- Componentes reutilizables -->
+    <div id="topbar-container"></div>
+    <div id="mobile-menu-container"></div>
 
-  <!-- NAVBAR -->
-  <header class="main-navbar" id="mainNavbar">
-    <div class="logo-area">
-      <a href="/#home">
-        <img src="/assets/img/logo-mmrun-principal.png" alt="MMRun Logo" />
-      </a>
-    </div>
-    <nav class="menu">
-      <a href="/#home">Inicio</a>
-      <a href="/#about">La Carrera</a>
-      <a href="/#cat-sect">Circuitos</a>
-      <a href="/views/form/distancias.html" class="active">Inscribirse</a>
-      <a href="/#footer">Descargas</a>
-      <a href="/#footer">Contacto</a>
-    </nav>
-    <div class="icons">
-      <button class="hamburger-btn mobile-only" onclick="toggleMobileMenu()" aria-label="Abrir menú">
-        <span class="hamburger-icon">☰</span>
-      </button>
-    </div>
-  </header>
+    <p class="back-to-site">
+      <a href="/index.html" class="btn-volver">← Volver al sitio web</a>
+    </p>
 
-  <!-- MENÚ MOBILE -->
-  <div id="mobileDropdown" class="mobile-dropdown">
-    <button id="closeMobileMenu" class="close-mobile-menu">✖</button>
-    <img src="/assets/img/logo-mmrun-principal.png" alt="Logo MMRun" class="mobile-logo" />
-    <nav class="mobile-nav">
-      <a href="/#home">Inicio</a>
-      <a href="/#about">La Carrera</a>
-      <a href="/#cat-sect">Circuitos</a>
-      <a href="/views/form/distancias.html" class="active">Inscribirse</a>
-      <a href="/#footer">Descargas</a>
-      <a href="/#footer">Contacto</a>
-    </nav>
-    <div class="mobile-footer">
-      <div class="mobile-icons"></div>
-      <div class="mobile-contact">
-        <p>contacto@mmrun.com.ar</p>
-        <p>Club Mari Menuco, Neuquén</p>
-      </div>
-    </div>
-    <a class="btn-inscribirse" href="/views/form/distancias.html">Inscribirme</a>
-  </div>
-
-  <body class="no-overflow" style="display: flex; flex-direction: column; min-height: 100vh;">
     <div id="page" class="site">
       <div class="container">
         <div class="form-box">
@@ -106,12 +64,12 @@
               <img src="/assets/img/logo-mmrun-secundario.png" alt="Logo MMRUN">
             </div>
             <ul class="progress-steps">
-              <li class="step active"><span>1</span><p>Datos Personales</p></li>
-              <li class="step"><span>2</span><p>Contacto</p></li>
-              <li class="step"><span>3</span><p>Datos de Inscripción</p></li>
-              <li class="step"><span>4</span><p>Resumen</p></li>
-              <li class="step" data-step="5"><span>5</span><p>Pago</p></li>
-            </ul>
+              <li class="step active"><span>1</span><p data-full="Datos Personales" data-short="Datos Pers."></p></li>
+              <li class="step"><span>2</span><p data-full="Contacto" data-short="Contacto"></p></li>
+              <li class="step"><span>3</span><p data-full="Datos de Inscripción" data-short="Inscrip."></p></li>
+              <li class="step"><span>4</span><p data-full="Resumen" data-short="Resumen"></p></li>
+              <li class="step" data-step="5"><span>5</span><p data-full="Pago" data-short="Pago"></p></li>
+            </ul>            
           </div>
 
           <form action="" id="form">
@@ -144,7 +102,7 @@
                   maxlength="8"
                   inputmode="numeric"
                   required />
-                                </div>
+                </div>
                 <div class="form-field">
                   <label for="runnerGenre">Género:</label>
                   <select id="runnerGenre" name="runnerGenre" class="items" required>
@@ -158,9 +116,14 @@
               <div class="form-row full-width">
                 <div class="form-field" style="width: 100%;">
                   <label for="birthdate">Fecha de nacimiento:</label>
-                  <input type="text" id="birthdate" name="birthdate" class="items" placeholder="Seleccioná tu fecha" required />
+                  <div class="date-input-wrapper">
+                    <input type="date" id="birthdate" name="birthdate" class="items" placeholder="Seleccioná tu fecha" required />
+                    <span class="calendar-icon">
+                      <ion-icon name="calendar-outline"></ion-icon>
+                    </span>
+                  </div>
                 </div>
-              </div>              
+              </div>                           
             </div>
 
             <!-- Paso 2: Contacto -->
@@ -196,23 +159,26 @@
                 <select id="category" name="category" hidden required></select>
               </div>
               <div>
-                <label for="tshirtSize">Talle Camiseta:</label>
+                <label for="tshirtSize">Talle Remera:</label>
                 <select name="tshirtSize" id="tshirtSize" class="items" required>
                   <option value="">Seleccione</option>
-                  <option value="talle_s">Camiseta Talle S</option>
-                  <option value="talle_m">Camiseta Talle M</option>
-                  <option value="talle_l">Camiseta Talle L</option>
-                  <option value="talle_xl">Camiseta Talle XL</option>
-                  <option value="talle_xxl">Camiseta Talle XXL</option>
+                  <option value="talle_s">Remera Talle S</option>
+                  <option value="talle_m">Remera Talle M</option>
+                  <option value="talle_l">Remera Talle L</option>
+                  <option value="talle_xl">Remera Talle XL</option>
+                  <option value="talle_xxl">Remera Talle XXL</option>
                 </select>
               </div>
-              <div class="img-container">
-                <img id="myImg" class="myImg" src="/assets/img/form/guia-talles.png" alt="Guía de talles" />
+              <div class="img-container-talles">
+                <img src="/assets/img/form/guia-talles.png" alt="Guía de talles" />
               </div>
-              <div class="checkbox">
-                <input type="checkbox" id="check-partner" class="items" name="check-partner" />
-                <label for="check-partner">Tengo un código de descuento</label>
-                <div>
+              
+              <div class="descuento-wrapper">
+                <div class="form-check">
+                  <input type="checkbox" id="check-partner" class="form-check-input" name="check-partner" />
+                  <label for="check-partner" class="form-check-label">Tengo un código de descuento</label>
+                </div>
+                <div class="form-field">
                   <label for="partnerID">Código de descuento:</label>
                   <input id="partnerID" type="text" class="items" name="partnerID" disabled placeholder="Ingrese código" />
                 </div>
@@ -222,10 +188,15 @@
             <!-- Paso 4: Resumen -->
             <div class="form-four form-step">
               <div class="bg-svg"></div>
-              <h2>Resumen</h2>
-              <p>📜 Verificá todos los datos antes de confirmar</p>
-              <div id="payment-status"></div>
-              <p><a href="/views/documents/REGLAMENTO_GENERAL.pdf" target="_blank">Términos y Condiciones</a></p>
+
+              <!-- Título principal -->
+              <h2 class="resumen-title">Resumen de Inscripción</h2>
+              <p>Por favor, revisá la información antes de confirmar.</p>
+
+              <!-- Contenedor para el resumen -->
+              <div id="payment-status" class="resumen-box">
+                <!-- El contenido del resumen se generará dinámicamente desde el script -->
+              </div>              
             </div>
 
             <!-- Paso 5: Pago -->
@@ -237,23 +208,10 @@
               <!-- Estos IDs son necesarios para el script -->
               <div id="metodoPagoGroup" style="display: none;"></div>
 
-              <!-- Grupo de checkboxes -->
-              <div class="checkbox-group custom-checkboxes">
-                <label class="checkbox-alineado">
-                  <input type="checkbox" id="aceptaReglamento" required />
-                  <span>Acepto los <a href="/views/documents/REGLAMENTO_GENERAL.pdf" target="_blank">términos y condiciones</a></span>
-                </label>
-
-                <label class="checkbox-alineado">
-                  <input type="checkbox" id="esMenorEdad" name="menorEdad" />
-                  <span>Soy menor de edad</span>
-                </label>
-              </div>
-
               <!-- Botón Mercado Pago -->
               <div id="mercadoPagoButton">
                 <button type="button" class="btn-mercado-pago" id="btn-pagar" disabled>
-                  <img src="/assets/img/nuevo-diseno/mercado-pago/mercado-pago-logo.jpg" alt="MercadoPago" />
+                  <img src="/assets/img/mercado-pago/mercado-pago-logo.jpg" alt="MercadoPago" />
                   <span>Pagar con Mercado Pago</span>
                 </button>
               </div>
@@ -262,7 +220,7 @@
           <!-- Navegación -->
           <div class="btn-group">
             <button type="button" class="btn-prev" disabled>Anterior</button>
-            <button type="button" class="btn-next">Siguiente</button>
+            <button type="button" class="btn-next" id="btnSiguiente">Siguiente</button>
           </div>
         </form>
       </div>
@@ -279,27 +237,18 @@
     <img class="modal-content" id="img01" />
   </div>
 
-  <!-- FOOTER -->
-  <footer id="footer">
-    <div class="logo-container">
-      <img src="/assets/img/logo-mmrun-violeta.png" alt="logo violeta mmrun" />
-      <p>Tercera Edición | <span>Septiembre '24</span></p>
-    </div>
-    <div class="social-media-container">
-      <a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a>
-    </div>
-    <div class="separator"></div>
-    <div class="hvdevs">
-      <p>Una solución tecnológica de <a class="hvdevs-a" href="#">Nexus Core</a></p>
-      <!-- <img src="/assets/img/logo-hvdevs.png" alt="Logo HVDevs" class="hvdevs-logo" /> -->
-    </div>
-  </footer>
+  <!-- Footer reutilizable -->
+  <div id="footer-container"></div>
 
-  <!-- Scripts -->
+    <!-- Scripts -->  
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script src="/assets/js/index.js" defer></script>
+  <script type="module" src="/assets/js/main.js"></script>
   <script src="/assets/js/modal.js" defer></script>
-  <script src="/assets/js/form.js"></script>
+  <script src="/assets/js/form.js" defer></script>
 
+  <!-- Lógica interna -->
   <script>
     function toggleMobileMenu() {
       const menu = document.getElementById('mobileDropdown');
@@ -339,47 +288,57 @@
       }
     });
   </script>
-    <script>
-      const distancia = sessionStorage.getItem("distanciaSeleccionada");
-      if (distancia) {
-        const inputDistancia = document.getElementById("distanciaElegida");
-        const selectCategory = document.getElementById("category");
-        if (inputDistancia) inputDistancia.value = distancia;
-        if (selectCategory) {
-          const opt = document.createElement("option");
-          opt.value = distancia;
-          opt.textContent = distancia;
-          selectCategory.appendChild(opt);
-          selectCategory.value = distancia;
-        }
+
+  <script>
+    const distancia = sessionStorage.getItem("distanciaSeleccionada");
+    if (distancia) {
+      const inputDistancia = document.getElementById("distanciaElegida");
+      const selectCategory = document.getElementById("category");
+      if (inputDistancia) inputDistancia.value = distancia;
+      if (selectCategory) {
+        const opt = document.createElement("option");
+        opt.value = distancia;
+        opt.textContent = distancia;
+        selectCategory.appendChild(opt);
+        selectCategory.value = distancia;
       }
-    </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        flatpickr("#birthdate", {
-          dateFormat: "d/m/Y",
-          maxDate: "today",
-          locale: "es",
-          altInput: true,
-          altFormat: "d \\de F \\de Y"
-        });
+    }
+  </script>
+
+  <script>
+    flatpickr("#birthdate", {
+      dateFormat: "d/m/Y",
+      maxDate: "today",
+      locale: "es",
+      altInput: true,
+      altFormat: "d \\de F \\de Y"
+    });
+  </script>
+
+  <script>
+    document.getElementById("dni").addEventListener("input", function () {
+      this.value = this.value.replace(/\D/g, "");
+      if (this.value.length > 8) {
+        this.value = this.value.slice(0, 8);
+      }
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const ids = ["runnerGenre", "tshirtSize"];
+      ids.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          new Choices(el, {
+            searchEnabled: false,
+            itemSelectText: "",
+            shouldSort: false
+          });
+        }
       });
-    </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const dniInput = document.getElementById("dni");
-    
-        dniInput.addEventListener("input", function () {
-          // Eliminar todo lo que no sea dígito
-          this.value = this.value.replace(/\D/g, "");
-    
-          // Limitar a 8 caracteres
-          if (this.value.length > 8) {
-            this.value = this.value.slice(0, 8);
-          }
-        });
-      });
-    </script>
-    
-  </body>
+    });
+  </script>
+
+</body>
 </html>

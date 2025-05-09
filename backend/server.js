@@ -26,6 +26,9 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 app.use('/assets', express.static(path.join(__dirname, '../assets')));
 
+// Permitir cargar los componentes HTML desde el frontend
+app.use('/views/components', express.static(path.join(__dirname, '../views/components')));
+
 // 3. Rutas de API (pasamos IO dinámicamente solo acá)
 const inscripcionesRoutes = require('./routes/inscripciones')(io);
 const categoriesRoutes = require('./routes/categories');

@@ -1,99 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MMRun'25</title>
   <meta name="description" content="Mari Menuco Run 2024: Participá de la carrera en Club Mari Menuco, Neuquén. 5K, 10K, 20K, 30K y más." />
 
-  <!-- Favicon del sitio -->
+  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/assets/img/favicon-mmrun.ico" />
 
-  <!-- Iconos de Font Awesome (versión 6.5.0) -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <!-- Hojas de estilo personalizadas -->
+  <!-- Estilos -->
   <link rel="stylesheet" href="/assets/css/index.css" />
   <link rel="stylesheet" href="/assets/css/modal.css" />
 
-  <!-- Librería SweetAlert2 para alertas modernas -->
+  <!-- SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-
 <body>
-  <div class="topbar">
-    <div class="topbar-left">
-      <ion-icon name="megaphone-outline" class="icon-anuncio"></ion-icon>
-      <span class="edicion" id="typeWriter">Tercera Edición. Septiembre 2025</span>
-    </div>
-    <div class="topbar-icons">
-      <a href="mailto:contacto@mmrun.com.ar" title="Correo"><i class="fa-solid fa-envelope"></i></a>
-      <a href="https://maps.google.com" title="Ubicación"><i class="fa-solid fa-location-dot"></i></a>
-      <a href="https://instagram.com" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-      <a href="/organizers" title="Acceso organizadores"><i class="fa-solid fa-user"></i></a>
-    </div>
-  </div>
 
-  <header class="main-navbar" id="mainNavbar">
-    <div class="logo-area">
-      <a href="#home"><img src="/assets/img/logo-mmrun-principal.png" alt="MMRun Logo" /></a>
-    </div>
-    <nav class="menu">
-      <a href="#home">Inicio</a>
-      <a href="#about">La Carrera</a>
-      <a href="#cat-sect">Circuitos</a>
-      <a href="#sponsors">Sponsors</a>
-      <div class="dropdown">
-        <button class="dropdown-toggle">Descargas <ion-icon name="chevron-down-outline"></ion-icon></button>
-        <ul class="dropdown-menu">
-          <li><a href="/docs/reglamento.pdf" target="_blank">Reglamento</a></li>
-          <li><a href="/docs/plano-circuito.pdf" target="_blank">Plano del circuito</a></li>
-          <li><a href="/docs/kit-corredor.pdf" target="_blank">Kit del corredor</a></li>
-        </ul>
-      </div>
-    </nav>
-    <div class="icons btn-desktop-only">
-      <a href="#inscripcion" class="btn-fire-navbar">
-        <div class="runner-icon-wrapper">
-          <lottie-player src="/assets/img/nuevo-diseno/gifs/runner.json" background="transparent" speed="4" style="width: 38px; height: 38px;" loop autoplay></lottie-player>
-        </div>
-        <span>¡QUIERO PARTICIPAR!</span>
-      </a>
-    </div>
-    <button class="hamburger-btn" id="openMenuBtn">
-      <ion-icon name="menu-outline" class="menu-icon"></ion-icon>
-      Menú
-    </button>
-  </header>
-
-  <!-- MENU DESPLEGABLE MOBILE -->
-  <div id="mobileDropdown" class="mobile-dropdown">
-    <button id="closeMobileMenu" class="close-mobile-menu">✖</button>
-    <div class="mobile-logo-container">
-      <img src="/assets/img/logo-mmrun-principal.png" alt="Logo MMRun" class="mobile-logo" />
-    </div>
-    <div class="mobile-nav-wrapper">
-      <nav class="mobile-nav">
-        <a href="#home">Inicio</a>
-        <a href="#about">La Carrera</a>
-        <a href="#cat-sect">Circuitos</a>
-        <a href="#sponsors">Sponsors</a>
-      </nav>
-    </div>
-    <div class="mobile-inscripcion-btn">
-      <a href="#inscripcion" class="btn-fire-navbar-mobile">
-        <ion-icon name="walk-outline"></ion-icon>
-        <span>¡QUIERO PARTICIPAR!</span>
-      </a>
-    </div>
-    <div class="mobile-footer">
-      <div class="mobile-contact">
-        <p><ion-icon name="mail-outline"></ion-icon> contacto@mmrun.com.ar</p>
-        <p><ion-icon name="location-outline"></ion-icon> Club Mari Menuco, Neuquén</p>
-      </div>
-    </div>
-  </div>
+  <!-- Componentes dinámicos -->
+  <div id="topbar-container"></div>
+  <div id="navbar-container"></div>
+  <div id="mobile-menu-container"></div>
 
   <!-- HOME -->
   <section id="home" class="home">
@@ -101,36 +32,17 @@
     
     <div class="home-content">
       <img id="logo" src="./assets/img/logo-mmrun-principal.png" alt="Logo Mari Menuco" class="logo" />
-      
-      <button class="btn-fire btn-fire-home" id="comenzarBtn">
-        <div class="btn-content">
-          <div class="runner-icon-wrapper">
-            <lottie-player
-              src="/assets/img/nuevo-diseno/gifs/runner.json"
-              background="transparent"
-              speed="4"
-              style="width: 26px; height: 26px"
-              loop
-              autoplay>
-            </lottie-player>
-          </div>
-          <span class="btn-fire-text">¡QUIERO CORRER!</span>
-        </div>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div id="btnParticiparContainer"></div>
+
       <div class="scroll-hint-container">
         <p id="verInfo" class="scroll-hint">
-          <span>Enterate más sobre la <span class="gradient-text">Mari Menuco Run</span></span>
-          <br>
+          <span>Enterate más sobre la <span class="gradient-text">Mari Menuco Run</span></span><br>
           <span class="arrow-down">⬇</span>
         </p>
       </div>
     </div>
   </section>
-  
+
   <!-- LA CARRERA -->
   <section id="about" class="about">
     <div class="container-about">
@@ -149,7 +61,7 @@
           <img src="./assets/img/sections/about/montaje1.jpg" alt="Corredor en montaña">
         </div>
       </div>
-  
+
       <div class="about-stats">
         <div class="stat">
           <h1 class="number" data-target="500">0</h1>
@@ -170,9 +82,9 @@
   <!-- CIRCUITOS -->
   <section id="cat-sect" class="categories">
     <h1 class="cat-title">Circuitos</h1>
-    <!-- Aquí se insertan dinámicamente los circuitos con JS -->
   </section>
-  
+
+  <!-- SPONSORS -->
   <section id="sponsors" class="sponsors-bar">
     <h2 class="sponsors-title">Sponsors</h2>
     <div class="sponsors-row">
@@ -188,127 +100,17 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer id="footer">
-    <div class="logo-container">
-      <img src="./assets/img/logo-mmrun-violeta.png" alt="logo violeta mmrun" />
-      <p>Tercera Edición | <span>Septiembre '24</span></p>
-    </div>
-    <div class="social-media-container">
-      <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
-      <a href="#"><ion-icon name="mail"></ion-icon></a>
-    </div>
-    <div class="social-media-container documents">
-      <a href="./documents/REGLAMENTO_GENERAL.pdf" download><ion-icon name="document-text"></ion-icon> Reglamento General</a>
-      <a href="./documents/Autorización_para_Menor_de_Edad_y_Deslinde_de_Responsabilidad.pdf" download><ion-icon name="document-text"></ion-icon> Autorización Menores</a>
-      <a href="./documents/Deslinde_de_Responsabilidades_para_MariMenucoRun2024.pdf" download><ion-icon name="document-text"></ion-icon> Deslinde</a>
-      <a href="./documents/Planilla_de_acompañantes.pdf" download><ion-icon name="document-text"></ion-icon> Planilla</a>
-    </div>
-    <div class="separator"></div>
-    <div class="hvdevs">
-      <p>Una solución tecnológica de <a class="hvdevs-a" href="#">Nexus Core</a> <span><ion-icon name="rocket-outline"></ion-icon></span></p>
-      <img src="./assets/img/logo-hvdevs.png" alt="Logo HVDevs" class="hvdevs-logo" />
-    </div>
-  </footer>
+  <!-- Modal de distancias y footer -->
+  <div id="distancia-modal-container"></div>
+  <div id="footer-container"></div>
 
-  <!-- MODAL DE DISTANCIAS -->
-  <div id="distanciaModal" class="modal">
-    <div class="modal-content">
-      <span class="close-modal" id="closeDistanciaModal">&times;</span>
-
-      <h2 class="modal-title">🏁 Elegí tu distancia para inscribirte</h2>
-
-      <div class="grid">
-        <div class="card-distancia" data-distancia="CF" data-precio="$8.000" data-detalle="Hasta el 31 de julio">
-          <div class="emoji" style="font-size: 2rem;">🥾</div>
-          <h2>CF</h2>
-          <p class="precio">$8.000</p>
-          <p class="detalle">Hasta el 31 de julio</p>
-        </div>
-
-        <div class="card-distancia" data-distancia="KIDS" data-precio="Gratis" data-detalle="Sin fecha límite">
-          <div class="emoji" style="font-size: 2rem;">🧒</div>
-          <h2>KIDS</h2>
-          <p class="precio">Gratis</p>
-          <p class="detalle">Sin fecha límite</p>
-        </div>
-
-        <div class="card-distancia" data-distancia="8K" data-precio="$7.000" data-detalle="Hasta el 31 de julio">
-          <div class="emoji" style="font-size: 2rem;">🏃‍♀️</div>
-          <h2>8K</h2>
-          <p class="precio">$7.000</p>
-          <p class="detalle">Hasta el 31 de julio</p>
-        </div>
-
-        <div class="card-distancia" data-distancia="15K" data-precio="$8.000" data-detalle="Hasta el 31 de julio">
-          <div class="emoji" style="font-size: 2rem;">🔥</div>
-          <h2>15K</h2>
-          <p class="precio">$8.000</p>
-          <p class="detalle">Hasta el 31 de julio</p>
-        </div>
-
-        <div class="card-distancia" data-distancia="25K" data-precio="$9.000" data-detalle="Hasta el 31 de julio">
-          <div class="emoji" style="font-size: 2rem;">⛰️</div>
-          <h2>25K</h2>
-          <p class="precio">$9.000</p>
-          <p class="detalle">Hasta el 31 de julio</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SCRIPTS -->
-  <script src="/assets/js/index.js" defer></script>
-  <script src="/assets/js/modal.js" defer></script>
+  <!-- Scripts externos -->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>  
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
-  <script>
-    document.addEventListener("scroll", function () {
-      const home = document.querySelector("#home");
-      const button = document.getElementById("comenzarBtn");
-      const rect = home.getBoundingClientRect();
-
-      if (rect.bottom < 100 || rect.top < -200) {
-        button.classList.add("hidden");
-      } else {
-        button.classList.remove("hidden");
-      }
-    });
-  </script>
-<script>
-  const counters = document.querySelectorAll('.number');
-
-  const animateCount = () => {
-    counters.forEach(counter => {
-      const update = () => {
-        const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText;
-        const step = Math.ceil(target / 60);
-        if (count < target) {
-          counter.innerText = count + step;
-          setTimeout(update, 20);
-        } else {
-          counter.innerText = target + "+";
-        }
-      };
-      update();
-    });
-  };
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCount();
-        observer.disconnect();
-      }
-    });
-  }, { threshold: 0.5 });
-
-  observer.observe(document.querySelector('.about-stats'));
-</script>
-
+  <!-- Scripts principales -->
+  <script src="/assets/js/index.js"></script>
+  <script type="module" src="/assets/js/main.js"></script>
 </body>
-
 </html>

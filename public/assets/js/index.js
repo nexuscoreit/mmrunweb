@@ -1,112 +1,57 @@
-// index.js
-
-// Variables globales y selectores DOM
-const screenSize = window.innerWidth;
+// Lógica de categorías (exclusiva de Home)
 const circuits = [];
-const home = document.getElementById("home");
-const header = document.getElementById("header");
-const nav = document.getElementById("nav");
-const menubutton = document.getElementById("mbtn");
-const mcloseIcon = document.getElementById("mclose");
-const mopenIcon = document.getElementById("mbars");
-const mobileMenu = document.getElementById("mmenu");
-const suscribeBtn = document.querySelector(".suscribe-btn");
-const logo = document.getElementById("logo");
-const subtitle = document.getElementById("logo-subtitle");
-const categorySection = document.getElementById("cat-sect");
-
-let menuOpen = false;
-let divExpanded;
 let expanded = false;
-let activeCard = false;
+let divExpanded = null;
 
-// Carga de categorías desde API
-window.onload = async function () {
+window.addEventListener("load", async () => {
   try {
-    const response = await fetch("https://api.mmrun.hvdevs.com/categories", { mode: "cors" });
-    const result = await response.json();
-    circuits.push(...result);
-    addCategories(circuits);
-  } catch (error) {
-    console.error("Error al cargar las categorías:", error);
+    const res = await fetch("https://api.mmrun.hvdevs.com/categories", { mode: "cors" });
+    const data = await res.json();
+    circuits.push(...data);
+    renderCategories(circuits);
+  } catch (err) {
+    console.error("Error al cargar las categorías:", err);
   }
+});
+
+const openRegistration = () => {
+  window.open("https://mmrun.hvdevs.com/registro", "_blank")?.focus();
 };
 
-function register() {
-  window.open("https://mmrun.hvdevs.com/registro", "_blank")?.focus();
-}
+function renderCategories(array) {
+  const container = document.getElementById("cat-sect");
+  if (!container) return;
 
-if (screenSize < 450) {
-  nav?.classList.add("mobile");
-} else {
-  menubutton?.classList.add("desktop");
-  suscribeBtn?.classList.add("desktop");
-}
-
-function openMenu() {
-  menuOpen = !menuOpen;
-  menubutton?.classList.toggle("active", menuOpen);
-  mopenIcon?.classList.toggle("inactive", menuOpen);
-  mcloseIcon?.classList.toggle("inactive", !menuOpen);
-  mobileMenu?.classList.toggle("active", menuOpen);
-}
-
-document.addEventListener("scroll", () => {
-    const scrollY = window.scrollY;
-  
-    if (menuOpen) openMenu();
-
-  });
-  document.addEventListener("scroll", () => {
-    const scrollY = window.scrollY;
-    const btn = document.getElementById("comenzarBtn");
-    const subtitle = document.getElementById("logo-subtitle");
-  
-    if (!btn || !subtitle) return;
-  
-    if (scrollY > 100) {
-      btn.classList.add("hidden");
-      subtitle.classList.add("move-up");
-    } else {
-      btn.classList.remove("hidden");
-      subtitle.classList.remove("move-up");
-    }
-  });
-
-function addCategories(array) {
-  array.forEach((e, i) => {
+  array.forEach((item, i) => {
     const category = document.createElement("div");
     category.classList.add("category");
-    category.id = "category" + i;
+    category.id = `category${i}`;
 
     const km = document.createElement("div");
     km.classList.add("km");
-    km.id = "km" + i;
-
-    const title = document.createElement("h1");
-    title.textContent = e.title;
-    km.appendChild(title);
+    km.id = `km${i}`;
+    km.innerHTML = `<h1>${item.title}</h1>`;
     category.appendChild(km);
 
-    const catInfoCont = document.createElement("div");
-    catInfoCont.classList.add("cat-info-container");
-    catInfoCont.id = "cat-info" + i;
+    const infoContainer = document.createElement("div");
+    infoContainer.classList.add("cat-info-container");
+    infoContainer.id = `cat-info${i}`;
 
     const ul = document.createElement("ul");
-    ul.id = "ul" + i;
+    ul.id = `ul${i}`;
     ul.style.display = "none";
 
-    const liData = [
-      { text: "Largada", value: e.largada },
-      { text: "Kit Corredor", value: e.kit_corredor },
-      { text: "Categorias", value: e.categories },
-      { text: "Circuito", value: e.circuito },
-      { text: "Precio", value: "$ " + e.precio + ".00", isPrice: true },
+    const details = [
+      { label: "Largada", value: item.largada },
+      { label: "Kit Corredor", value: item.kit_corredor },
+      { label: "Categorias", value: item.categories },
+      { label: "Circuito", value: item.circuito },
+      { label: "Precio", value: `$ ${item.precio}.00`, isPrice: true },
     ];
 
-    liData.forEach(({ text, value, isPrice }) => {
+    details.forEach(({ label, value, isPrice }) => {
       const li = document.createElement("li");
-      li.textContent = text;
+      li.textContent = label;
       if (isPrice) li.classList.add("price");
       const p = document.createElement("p");
       p.textContent = value;
@@ -114,142 +59,70 @@ function addCategories(array) {
       ul.appendChild(li);
     });
 
-    const suscBtn = document.createElement("div");
-    suscBtn.classList.add("suscribe-btn");
-    suscBtn.id = "suscBtn" + i;
-    suscBtn.textContent = "Inscribirse";
-    suscBtn.style.display = "none";
-    suscBtn.onclick = register;
+    const button = document.createElement("div");
+    button.classList.add("suscribe-btn");
+    button.id = `suscBtn${i}`;
+    button.textContent = "Inscribirse";
+    button.style.display = "none";
+    button.onclick = openRegistration;
 
-    catInfoCont.appendChild(ul);
-    catInfoCont.appendChild(suscBtn);
+    infoContainer.appendChild(ul);
+    infoContainer.appendChild(button);
 
-    category.appendChild(catInfoCont);
-    categorySection?.appendChild(category);
+    category.appendChild(infoContainer);
+    container.appendChild(category);
 
-    category.onclick = () => expandCat(i);
+    category.onclick = () => toggleCategory(i);
   });
 }
 
-function expandCat(numb) {
-  const cate = document.getElementById("category" + numb);
-  const km = document.getElementById("km" + numb);
-  const u = document.getElementById("ul" + numb);
-  const btn = document.getElementById("suscBtn" + numb);
+function toggleCategory(index) {
+  const cate = document.getElementById(`category${index}`);
+  const km = document.getElementById(`km${index}`);
+  const ul = document.getElementById(`ul${index}`);
+  const btn = document.getElementById(`suscBtn${index}`);
 
-  divExpanded = numb;
+  divExpanded = index;
 
   if (!expanded) {
-    circuits.forEach((_, i) => collapseCat(i));
+    circuits.forEach((_, i) => collapseCategory(i));
     cate.style.height = "100%";
-    window.scrollTo(0, screenSize > 600 ? 1700 : 1645);
-    u.style.display = "flex";
+    window.scrollTo(0, window.innerWidth > 600 ? 1700 : 1645);
+    ul.style.display = "flex";
     btn.style.display = "flex";
     km.style.top = "10%";
 
-    if (screenSize > 600) {
+    if (window.innerWidth > 600) {
       expanded = true;
       cate.style.width = "60%";
     }
   } else {
     expanded = false;
-    collapseCat(numb);
+    collapseCategory(index);
   }
 }
 
-function collapseCat(numb) {
-  const cate = document.getElementById("category" + numb);
-  const km = document.getElementById("km" + numb);
-  const u = document.getElementById("ul" + numb);
-  const btn = document.getElementById("suscBtn" + numb);
+function collapseCategory(index) {
+  const cate = document.getElementById(`category${index}`);
+  const km = document.getElementById(`km${index}`);
+  const ul = document.getElementById(`ul${index}`);
+  const btn = document.getElementById(`suscBtn${index}`);
 
   expanded = false;
-  activeCard = false;
+  cate.style.height = window.innerWidth > 600 ? "200px" : "100px";
+  cate.style.width = window.innerWidth > 600 ? "50%" : "";
+  cate.style.margin = window.innerWidth > 600 ? "auto 0" : "";
 
-  cate.style.height = "100px";
   km.style.top = "50%";
-  u.style.display = "none";
+  ul.style.display = "none";
   btn.style.display = "none";
-
-  if (screenSize > 600) {
-    cate.style.height = "200px";
-    cate.style.width = "50%";
-    cate.style.margin = "auto 0";
-  }
 }
 
-function handleResponsiveMenu() {
-  const screenWidth = window.innerWidth;
-  if (!nav || !menubutton || !mobileMenu) return;
-
-  if (screenWidth < 1024) {
-    nav.style.display = "none";
-    menubutton.style.display = "flex";
-    mobileMenu.classList.remove("active");
-  } else {
-    nav.style.display = "flex";
-    menubutton.style.display = "none";
-    mobileMenu.classList.remove("active");
-  }
-}
-
-window.addEventListener("DOMContentLoaded", handleResponsiveMenu);
-window.addEventListener("resize", handleResponsiveMenu);
-
+// Botón "Enterate más"
 document.addEventListener("DOMContentLoaded", () => {
-  const mobileLinks = document.querySelectorAll(".mobile-nav a");
-  const closeBtn = document.getElementById("closeMobileMenu");
-  const mobileMenu = document.getElementById("mobileDropdown");
-
-  mobileLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      mobileMenu?.classList.remove("active");
-      document.body.classList.remove("menu-open");
-      mobileLinks.forEach((l) => l.classList.remove("active"));
-      link.classList.add("active");
-    });
+  const verInfoBtn = document.getElementById("verInfo");
+  verInfoBtn?.addEventListener("click", () => {
+    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
   });
-
-  if (closeBtn && mobileMenu) {
-    closeBtn.addEventListener("click", () => {
-      mobileMenu.classList.remove("active");
-      document.body.classList.remove("menu-open");
-    });
-  }
 });
 
-function toggleMobileMenu() {
-  const menu = document.getElementById("mobileDropdown");
-  const isOpen = menu?.classList.toggle("active");
-  document.body.classList.toggle("menu-open", isOpen);
-}
-
-// Fijar navbar arriba al hacer scroll
-window.addEventListener("scroll", () => {
-    const navbar = document.getElementById("mainNavbar");
-    const topbar = document.querySelector(".topbar");
-  
-    if (window.scrollY > 0) {
-      navbar?.classList.add("scrolled");
-      topbar?.classList.add("hidden");
-    } else {
-      navbar?.classList.remove("scrolled");
-      topbar?.classList.remove("hidden");
-    }
-  });
-  
-  document.addEventListener("scroll", function () {
-    const home = document.querySelector("#home");
-    const button = document.querySelector(".btn-comenzar");
-    const subtitle = document.querySelector("#logo-subtitle");
-    const rect = home.getBoundingClientRect();
-  
-    if (rect.bottom < 100 || rect.top < -200) {
-      button.classList.add("hidden");
-      subtitle.classList.add("move-up");
-    } else {
-      button.classList.remove("hidden");
-      subtitle.classList.remove("move-up");
-    }
-  });
-  

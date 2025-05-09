@@ -10,6 +10,10 @@
     font-family: "Montserrat", sans-serif;
 }
 
+body {
+  cursor: url('/assets/img/cursor/cursor.cur'), auto;
+}
+
 /* mobile */
 header {
     display: flex;
@@ -353,11 +357,19 @@ section.categories .category:hover {
 }
 
 footer {
-    height: 25%;
     width: 100%;
-    background: #00FABA;
-    padding-top: 0.5em;
-}
+    background: linear-gradient(to bottom, #00faba 0%, #eaf8ff 50%, #d5ccf8 100%);
+    padding: 2rem 1rem;
+    color: #3b3291;
+    font-size: 0.95rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: relative;
+    z-index: 2;
+    border-top: 4px solid #3b3291;
+  }
 
 footer .social-media-container {
     margin: 12px 0px;
@@ -431,9 +443,8 @@ footer .hvdevs {
     width: 100%;
     height: 40px;
     font-size: 1.2em;
-    color: #00FABA;
+    color: #124b3c;
     text-align: center;
-    background: #3b3291;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -668,7 +679,6 @@ footer .hvdevs p a {
         text-align: center;
         font-style: italic;
         text-transform: uppercase;
-        color: #3b3291;
         font-weight: 800;
     }
 
@@ -676,23 +686,17 @@ footer .hvdevs p a {
         margin-top: 8px;
         width: 20%;
         height: 90%;
-        background: #00FABA;
         justify-content: flex-end;
         padding: 8px 0;
     }
 
     footer .hvdevs p {
-        color: #3b3291;
         font-size: 1em;
         font-weight: 400;
     }
 
     footer .hvdevs p a {
         display: none;
-    }
-
-    footer .hvdevs p span {
-        color: #3b3291;
     }
 
     footer .hvdevs p span.rocket {
@@ -956,7 +960,6 @@ footer .hvdevs p a {
 .main-navbar .menu {
   display: flex;
   flex-wrap: wrap;
-  gap: 26px;
   justify-content: center;
   flex: 1;
 }
@@ -987,14 +990,17 @@ footer .hvdevs p a {
 }
   
 .main-navbar .btn-inscribirse {
-  background: #00faba;
-  color: #3b3291;
   padding: 6px 14px;
   border-radius: 20px;
   text-transform: uppercase;
   font-weight: 700;
   font-size: 0.85rem;
   text-decoration: none;
+}
+@media (max-width: 768px) {
+  .main-navbar .btn-inscribirse {
+    display: none;
+  }
 }
 
 /* Oculta el menú desktop y los iconos en mobile */
@@ -1003,7 +1009,7 @@ footer .hvdevs p a {
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: #00faba;
+      background: linear-gradient(135deg, #00faba, #3b82f6);      
       color: #3b3291;
       border: none;
       padding: 10px 20px;
@@ -1024,7 +1030,7 @@ footer .hvdevs p a {
     }
 
     .hamburger-btn .menu-icon {
-      color: #3b3291 !important;
+      color: #35917a !important;
       font-size: 1.4rem;
       vertical-align: middle;
     }
@@ -1160,7 +1166,7 @@ footer .hvdevs p a {
     }
   }
   
-  /* Desktop - mostrar menú normal y ocultar button */
+/* Desktop - mostrar menú normal y ocultar button */
 @media (min-width: 1024px) {
   .hamburger-btn,
   .mobile-dropdown {
@@ -1178,7 +1184,6 @@ footer .hvdevs p a {
   display: none;
 }
 
-/* Ajusta el header al top cuando se hace scroll */
 .main-navbar.scrolled {
   position: fixed;
   top: 0;
@@ -1797,6 +1802,12 @@ footer .hvdevs p a {
   animation: blink 1.2s infinite;
 }
 
+@media (min-width: 768px) {
+  .arrow-down {
+    cursor: pointer;
+  }
+}
+
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
@@ -1901,7 +1912,7 @@ footer .hvdevs p a {
     padding: 12px 18px;
     font-size: 0.95rem;
     gap: 10px;
-    min-width: unset; /* Muy importante para que no fuerce 280px */
+    min-width: unset;
   }
 
   .btn-fire .runner-icon-wrapper,
@@ -1973,8 +1984,7 @@ footer .hvdevs p a {
     display: flex !important;
     align-items: center;
     gap: 0.4rem;
-    background: #00f5a0;
-    color: #000;
+    color: rgb(238, 231, 231);
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 20px;
@@ -1990,7 +2000,7 @@ footer .hvdevs p a {
 @media (min-width: 769px) {
   .main-navbar .menu {
     display: flex !important;
-    gap: 3rem;
+    /* gap: 3rem; */
   }
 
   .main-navbar .hamburger-btn {
@@ -2001,3 +2011,4 @@ footer .hvdevs p a {
     display: flex !important;
   }
 }
+

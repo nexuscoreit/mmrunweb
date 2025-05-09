@@ -24,30 +24,27 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
       localStorage.setItem("adminEmail", email);
 
       Swal.fire({
-        title: "¡Bienvenido!",
+        title: '<span style="font-size: 1.4rem; font-weight: 600; color: #ffffff;">Bienvenido</span>',
         html: `
-          <p style="font-size: 1.1rem; margin-bottom: 10px;">
-            Accediste correctamente al panel de administración.
-          </p>
-          <p style="font-size: 0.95rem; color: #3b3291;">
-            ¡Comencemos a gestionar tu evento!
-          </p>
-          <div style="margin-top: 20px;">
-            <div id="progress-bar" style="height: 12px; width: 100%; background: #e0e0e0; border-radius: 30px; overflow: hidden;">
+          <div style="margin-top: 6px;">
+            <p style="font-size: 0.95rem; color: #dcdcdc; margin-bottom: 20px;">
+              Acceso concedido. Redirigiendo...
+            </p>
+            <div id="progress-bar" style="height: 10px; width: 100%; background: rgba(255,255,255,0.2); border-radius: 40px; overflow: hidden;">
               <div id="bar-fill" style="height: 100%; width: 0%; background: linear-gradient(to right, #00faba, #5247b9); transition: width 0.3s;"></div>
             </div>
-            <p style="margin-top: 8px; font-size: 0.9rem;">Redirigiendo...</p>
           </div>
         `,
         icon: "success",
+        background: "#1b1f29", // fondo oscuro profesional
+        width: 380,             // más angosto y horizontal
+        padding: "1.5rem 2rem",
         showConfirmButton: false,
         allowOutsideClick: false,
         allowEscapeKey: false,
         customClass: {
           popup: "swal2-popup-login-success"
         },
-        width: 400,
-        padding: '2rem',
         didOpen: () => {
           const bar = Swal.getHtmlContainer().querySelector("#bar-fill");
           let progress = 0;
