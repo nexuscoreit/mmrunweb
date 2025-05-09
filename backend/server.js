@@ -15,8 +15,8 @@ const io = socketIO(server, {
 const PORT = process.env.PORT || 3000;
 
 // 1. Conexión y creación de tablas
-const db = require('./models/db');
-require('./models/initDB');
+const db = require('./database/connection');
+require('./database/scripts/initDB');
 
 // 2. Middlewares
 app.use(cors());
@@ -27,15 +27,15 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use('/assets', express.static(path.join(__dirname, '../assets')));
 
 // 3. Rutas de API (pasamos IO dinámicamente solo acá)
+const distancesRouter = require('./routes/distances');
 const inscripcionesRoutes = require('./routes/inscripciones')(io);
-const categoriesRoutes = require('./routes/categories');
 const discountsRoutes = require('./routes/discounts');
 const mercadopagoRoutes = require('./routes/mercadopago');
 const authRoutes = require('./routes/auth');
 
+app.use('/api/distancias', distancesRouter);
 app.use('/api/inscripciones', inscripcionesRoutes);
-app.use('/api/categories', categoriesRoutes);
-app.use('/api/discounts', discountsRoutes);
+app.use('/api/descuentos', discountsRoutes);
 app.use('/api/mercadopago', mercadopagoRoutes);
 app.use('/api/auth', authRoutes);
 

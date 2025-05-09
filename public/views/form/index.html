@@ -120,8 +120,8 @@
                 <input id="dni" type="text" name="dni" placeholder="12345678" class="items" required />
               </div>
               <div>
-                <label for="runnerGenre">Género:</label>
-                <select id="runnerGenre" name="runnerGenre" class="items" required>
+                <label for="gender">Género:</label>
+                <select id="gender" name="gender" class="items" required>
                   <option value="">Seleccione</option>
                   <option value="Femenino">Femenino</option>
                   <option value="Masculino">Masculino</option>
@@ -155,7 +155,6 @@
               <div>
                 <label for="distanciaElegida">Distancia:</label>
                 <input type="text" id="distanciaElegida" name="distancia" class="items" readonly />
-                <select id="category" name="category" hidden required></select>
               </div>
               <div>
                 <label for="tshirtSize">Talle Camiseta:</label>
@@ -172,11 +171,12 @@
                 <img id="myImg" class="myImg" src="/assets/img/form/guia-talles.png" alt="Guía de talles" />
               </div>
               <div class="checkbox">
-                <input type="checkbox" id="check-partner" class="items" name="check-partner" />
-                <label for="check-partner">Tengo un código de descuento</label>
+                <input type="checkbox" id="checkCode" class="items" name="checkCode" />
+                <label for="checkCode">Tengo un código de descuento</label>
                 <div>
-                  <label for="partnerID">Código de descuento:</label>
-                  <input id="partnerID" type="text" class="items" name="partnerID" disabled placeholder="Ingrese código" />
+                  <label for="code">Código de descuento:</label>
+                  <input id="code" type="text" class="items" name="code" disabled placeholder="Ingrese el código" />
+                  <div id="discountStatus" class="code-status"></div>
                 </div>
               </div>
             </div>
@@ -286,8 +286,7 @@
     </footer>
 
     <!-- SCRIPTS -->
-    <script src="/assets/js/index.js" defer></script>
-    <script src="/assets/js/modal.js" defer></script>
+    <script src="/assets/js/index.js"></script>
     <script src="/assets/js/form.js"></script>
     <script>
       function toggleMobileMenu() {
@@ -318,22 +317,6 @@
           topbar.classList.remove("hidden");
         }
       });
-    </script>
-
-    <script>
-      const distancia = sessionStorage.getItem("distanciaSeleccionada");
-      if (distancia) {
-        const inputDistancia = document.getElementById("distanciaElegida");
-        const selectCategory = document.getElementById("category");
-        if (inputDistancia) inputDistancia.value = distancia;
-        if (selectCategory) {
-          const opt = document.createElement("option");
-          opt.value = distancia;
-          opt.textContent = distancia;
-          selectCategory.appendChild(opt);
-          selectCategory.value = distancia;
-        }
-      }
     </script>
 
   </body>

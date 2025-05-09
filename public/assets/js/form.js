@@ -1,10 +1,11 @@
-document.addEventListener("DOMContentLoaded", () => {
-  initForm();
-});
-
-let categories = [];
-let discounts = [];
+let descuentos = [];
+let precioBase = 0;
+let precioFinal = 0;
+let distanciaId = null;
+let distanciaNombre = null;
 let active = 1;
+let checkCode;
+let discountCode;
 
 const talles = [
   { id: "talle_s", value: "Camiseta Talle S" },
@@ -14,9 +15,28 @@ const talles = [
   { id: "talle_xxl", value: "Camiseta Talle XXL" },
 ];
 
+document.addEventListener("DOMContentLoaded", async() => {
+  distanciaNombre = sessionStorage.getItem("distanciaSeleccionada");
+
+  const inputDistancia = document.getElementById("distanciaElegida");
+  if (inputDistancia) inputDistancia.value = distanciaNombre;
+
+  if (!distanciaNombre) {
+    alert("No se seleccionó una distancia. Volvé al inicio.");
+    window.location.href = "/";
+    return;
+  }
+
+  checkCode = document.querySelector('input[name="checkCode"]');
+  code = document.querySelector('input[name="code"]');
+
+  await getPriceDistance();
+  await getDiscounts();
+
+  initForm();
+});
+
 function initForm() {
-  getCategories();
-  getDiscounts();
   setupNavigation();
   dateListener();
   setupModal();
@@ -36,26 +56,33 @@ function initForm() {
   }
 }
 
-async function getCategories() {
+//Obtener precio y id
+async function getPriceDistance() {
   try {
-    const res = await fetch("http://localhost:3000/api/categories");
-    categories = await res.json();
-    const select = document.getElementById("category");
-    select.innerHTML = "";
-    categories.forEach(cat => {
-      const option = document.createElement("option");
-      option.value = cat.title;
-      option.textContent = `Circuito: ${cat.title} - $${(+cat.precio).toFixed(2)}`;
-      select.appendChild(option);
-    });
-  } catch (e) {
-    console.error("Error al obtener categorías:", e);
+    const res = await fetch(`/api/distancias/${encodeURIComponent(distanciaNombre)}/precio`);
+    const data = await res.json();
+
+    if (!res.ok) throw new Error(data.error || "Error al consultar precio");
+
+    distanciaId = data.distancia_id;
+    precioBase = parseFloat(data.precio);
+    precioFinal = precioBase;
+    //NO EXISTE "precioFinal
+    const precioSpan = document.getElementById("precioFinal");
+    if (precioSpan) {
+      precioSpan.textContent = precioBase === 0 ? "Gratis" : `$${precioBase.toLocaleString()}`;
+    }
+
+  } catch (error) {
+    console.error("Error obteniendo distancia:", error);
+    alert("No se pudo obtener el precio. Volvé a intentarlo más tarde.");
   }
 }
 
+
 async function getDiscounts() {
   try {
-    const res = await fetch("http://localhost:3000/api/discounts");
+    const res = await fetch("http://localhost:3000/api/descuentos");
     discounts = await res.json();
   } catch (e) {
     console.error("Error al obtener descuentos:", e);
@@ -68,8 +95,9 @@ function setupNavigation() {
   const nextBtn = document.querySelector(".btn-next");
   const prevBtn = document.querySelector(".btn-prev");
   const submitBtn = document.querySelector(".btn-submit");
-  const partnerCheckbox = document.querySelector('input[name="check-partner"]');
-  const partnerNumberInput = document.querySelector('input[name="partnerID"]');
+  // const checkCode = document.querySelector('input[name="checkCode"]');
+  // const code = document.querySelector('input[name="code"]');
+  const statusDiv = document.getElementById("discountStatus");
 
   nextBtn.addEventListener("click", () => {
     const currentFormStep = formSteps[active - 1];
@@ -78,10 +106,10 @@ function setupNavigation() {
 
     inputs.forEach((input) => {
       const name = input.getAttribute("name");
-      const isDiscountInput = name === "partnerID";
-      const hasDiscountChecked = partnerCheckbox.checked;
+      const isCode = name === "code";
+      const isCheckCode = checkCode.checked;
 
-      if (!input.value && !(isDiscountInput && !hasDiscountChecked)) {
+      if (!input.value && !(isCode && !isCheckCode)) {
         input.classList.add("error");
         valid = false;
       } else {
@@ -99,9 +127,7 @@ function setupNavigation() {
       return;
     }
 
-    const selectedCategory = document.getElementById("category")?.value;
-    const category = categories.find(c => c.title === selectedCategory);
-    const isFree = category?.precio === 0;
+    const isFree = precioBase === 0;
 
     if (isFree && active === 4) {
       active += 2;
@@ -117,18 +143,28 @@ function setupNavigation() {
     updateProgress(steps, formSteps, prevBtn, nextBtn, submitBtn);
   });
 
-  partnerCheckbox.addEventListener("change", () => {
-    partnerNumberInput.disabled = !partnerCheckbox.checked;
-    if (!partnerCheckbox.checked) partnerNumberInput.value = "";
+  checkCode.addEventListener("change", () => {
+    code.disabled = !checkCode.checked;
+    if (!checkCode.checked) code.value = "";
   });
 
   updateProgress(steps, formSteps, prevBtn, nextBtn, submitBtn);
+
+  checkCode.addEventListener("change", () => {
+    discountCode.disabled = !checkCode.checked;
+    if (!checkCode.checked) {
+      discountCode.value = "";
+      // validarCodigoDescuento(); // limpiar estado visual
+    }
+  });
+  
+  // Validar al salir del input o al escribir
+  // discountCode.addEventListener("blur", validarCodigoDescuento);
+  // discountCode.addEventListener("input", validarCodigoDescuento);
 }
 
 function updateProgress(steps, formSteps, prevBtn, nextBtn, submitBtn) {
-  const selectedCategory = document.getElementById("category")?.value;
-  const category = categories.find(c => c.title === selectedCategory);
-  const isFree = category?.precio === 0;
+  const isFree = precioBase === 0;
 
   const paso5Title = document.getElementById("paso5-title");
   const paso5Desc = document.getElementById("paso5-desc");
@@ -184,21 +220,51 @@ function dateListener() {
   moveFocus(year, document.querySelector(".btn-next"), 4);
 }
 
+// function validarCodigoDescuento() {
+//   const codigo = discountCode.value.trim().toUpperCase();
+//   const statusDiv = document.getElementById("discountStatus");
+
+//   if (!codigo) {
+//     statusDiv.textContent = "";
+//     statusDiv.className = "";
+//     return;
+//   }
+
+//   const descuento = discounts.find(d => d.codigo === codigo);
+
+//   if (descuento) {
+//     statusDiv.textContent = `Código válido: ${descuento.porcentaje}% de descuento`;
+//     statusDiv.className = "descuento-valido";
+//   } else {
+//     statusDiv.textContent = "Código inválido o sin cupo disponible";
+//     statusDiv.className = "descuento-invalido";
+//   }
+// }
+
+//OK
 function showData() {
   const inputs = document.getElementsByClassName("items");
-  const partnerCheckbox = document.querySelector('input[name="check-partner"]');
-  const partnerInput = document.querySelector('input[name="partnerID"]');
+  // const checkCode = document.querySelector('input[name="checkCode"]');
+  // const code = document.querySelector('input[name="code"]');
   const nextEl = document.querySelector(".form-four");
 
-  let multiplier = 1;
-  const discountCode = partnerInput.value.toUpperCase();
-  const matchedDiscount = discounts.find(d => d.discountName === discountCode);
-  if (partnerCheckbox.checked && matchedDiscount) {
-    multiplier -= matchedDiscount.percentage / 100;
+  // Usamos variables globales
+  const distancia = distanciaNombre || "No asignada";
+  let total = precioBase;
+
+  // Aplicar descuento si corresponde
+  let descuentoAplicado = "No aplica";
+  if (checkCode.checked) {
+    const codigo = code.value.toUpperCase();
+    const descuento = discounts.find(d => d.codigo === codigo);
+    if (descuento) {
+      const porcentaje = descuento.porcentaje;
+      total = (precioBase * (1 - porcentaje / 100)).toFixed(2);
+      descuentoAplicado = `${codigo} (-${porcentaje}%)`;
+    }
   }
 
-  const category = categories.find(c => c.title === inputs[10].value);
-  const precioFinal = category ? (category.precio * multiplier).toFixed(2) : "No asignado";
+  const talle = talles.find(t => t.id === inputs[11].value)?.value || "No asignado";
 
   const resumenHTML = `
     <div id="payment-status" class="resumen-box">
@@ -210,131 +276,110 @@ function showData() {
         <div><strong>Email:</strong> ${inputs[7].value}</div>
         <div><strong>Teléfono:</strong> ${inputs[8].value}</div>
         <div><strong>Ciudad:</strong> ${inputs[9].value}</div>
-        <div><strong>Circuito:</strong> ${inputs[10].value}</div>
-        <div><strong>Talle camiseta:</strong> ${(() => {
-          const talle = talles.find(t => t.id === inputs[11].value);
-          return talle ? talle.value : "No asignado";
-        })()}</div>
-        <div><strong>Código de descuento:</strong> ${inputs[12].checked ? inputs[13].value : "No aplica"}</div>
-        <div><strong>Total:</strong> $${precioFinal}</div>
+        <div><strong>Distancia:</strong> ${distancia}</div>
+        <div><strong>Talle camiseta:</strong> ${talle}</div>
+        <div><strong>Código de descuento:</strong> ${descuentoAplicado}</div>
+        <div><strong>Total:</strong> $${total}</div>
       </div>
-    </div>`;
+    </div>
+  `;
 
   const existing = document.getElementById("payment-status");
-    if (existing) existing.remove();
-    nextEl.insertAdjacentHTML("beforeend", resumenHTML);
-  }
+  if (existing) existing.remove();
+
+  nextEl.insertAdjacentHTML("beforeend", resumenHTML);
+}
+
 
 async function getFormData() {
   const spinner = document.getElementById("spinner");
   spinner.classList.remove("no-display");
 
   const form = document.getElementById("form");
-  const formData = new FormData(form);
-  const category = categories.find(c => c.title === form.category.value);
-  const isFree = category?.precio === 0;
 
+  // Validaciones
+  if (!form.firstname.value || !form.lastname.value || !form.dni.value || !form.email.value) {
+    spinner.classList.add("no-display");
+    Swal.fire({
+      title: "Error",
+      text: "Por favor completá todos los campos obligatorios.",
+      icon: "error",
+      confirmButtonText: "Ok",
+    });
+    return;
+  }
+
+  if (form.dni.value.length < 7 || form.dni.value.length > 8 || isNaN(form.dni.value)) {
+    spinner.classList.add("no-display");
+    Swal.fire({
+      title: "DNI inválido",
+      text: "El DNI debe tener entre 7 y 8 números, sin puntos ni letras.",
+      icon: "error",
+      confirmButtonText: "Ok",
+    });
+    return;
+  }
+
+  // Calcular precio con descuento
+  const code = form["code"]?.value?.toUpperCase();
+  const descuento = discounts.find(d => d.codigo === code);
+  const descuentoAplicado = descuento ? descuento.percentaje : 0;
+
+  // Armar objeto con los datos del inscripto
   const inscripcionBody = {
     nombre: form.firstname.value,
     apellido: form.lastname.value,
     dni: form.dni.value,
-    genero: form.runnerGenre.value,
-    fechaNacimiento: `${String(form.year.value).padStart(4, "0")}-${String(form.month.value).padStart(2, "0")}-${String(form.day.value).padStart(2, "0")}`,
+    genero: form.gender.value,
+    fechaNacimiento: `${form.year.value}-${form.month.value.padStart(2, "0")}-${form.day.value.padStart(2, "0")}`,
     email: form.email.value,
     telefono: form.phone.value,
     ciudad: form.city.value,
-    categoria: form.category.value,
+    distancia_id: distanciaId,
+    distancia: distanciaNombre,
     talle: form.tshirtSize.value,
-    descuento: form["partnerID"]?.value || ""
+    codigoDescuento: code || "", //CODIGO O DTO
+    precio: precioBase
   };
 
+  console.log(inscripcionBody);
   try {
-    if (!form.firstname.value || !form.lastname.value || !form.dni.value || !form.email.value) {
-      spinner.classList.add("no-display");
-      Swal.fire({
-        title: "Error",
-        text: "Por favor completá todos los campos obligatorios.",
-        icon: "error",
-        confirmButtonText: "Ok",
-      });
-      return;
-    }
+    // Guardar temporalmente antes del pago - YA LO HAGO EN MPCONTROLLER
+    // const tempRes = await fetch("http://localhost:3000/api/inscripciones/inscripciones-temp", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(inscripcionBody)
+    // });
 
-    if (form.dni.value.length < 7 || form.dni.value.length > 8 || isNaN(form.dni.value)) {
-      spinner.classList.add("no-display");
-      Swal.fire({
-        title: "DNI inválido",
-        text: "El DNI debe tener entre 7 y 8 números, sin puntos ni letras.",
-        icon: "error",
-        confirmButtonText: "Ok",
-      });
-      return;
-    }
+    // if (!tempRes.ok) throw new Error("Error al guardar inscripción temporal");
 
-    await fetch("http://localhost:3000/api/inscripciones", {
+    // Crear preferencia de Mercado Pago
+    const mpRes = await fetch("http://localhost:3000/api/mercadopago/create-preference", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(inscripcionBody)
     });
 
-    if (isFree) {
-      spinner.classList.add("no-display");
+    if (!mpRes.ok) throw new Error("Error al generar la preferencia de pago");
 
-      Swal.fire({
-        title: "🎉 ¡Inscripción completada!",
-        html: `
-          <p>Tu inscripción en <strong>KIDS</strong> fue registrada con éxito.</p>
-          <p style="font-style: italic; color: #00FABA;">
-            ¡Nos vemos en la línea de largada!
-          </p>
-          <div style="margin-top: 15px;">
-            <div id="progress-bar" style="height: 14px; width: 100%; background: #ccc; border-radius: 20px; overflow: hidden;">
-              <div id="bar-fill" style="height: 100%; width: 0%; background: linear-gradient(to right, #00faba, #5247b9); transition: width 0.3s;"></div>
-            </div>
-            <p style="margin-top: 5px; font-size: 0.9em;">Redireccionando a la página principal...</p>
-          </div>
-        `,
-        icon: "success",
-        showConfirmButton: false,
-        allowOutsideClick: false,
-        allowEscapeKey: false
-      });
-
-      let progress = 0;
-      const interval = setInterval(() => {
-        const bar = document.getElementById("bar-fill");
-        if (bar) {
-          progress += 2;
-          bar.style.width = `${progress}%`;
-        }
-        if (progress >= 100) {
-          clearInterval(interval);
-          window.location.href = "/";
-        }
-      }, 60);
-
-      return;
-    }
-
-    const response = await fetch("http://localhost:3000/api/mercadopago/create-preference", {
-      method: "POST",
-      body: formData
-    });
-
-    const data = await response.json();
+    const data = await mpRes.json();
     spinner.classList.add("no-display");
+
+    // Redirigir a pago
     window.location.href = data.init_point;
 
   } catch (err) {
+    console.error(err);
     spinner.classList.add("no-display");
     Swal.fire({
       title: "Error",
-      text: "Algo salió mal con la inscripción",
+      text: "Algo salió mal al procesar la inscripción.",
       icon: "error",
       confirmButtonText: "Ok",
     });
   }
 }
+
 
 function handleQueryParamChange() {
   const params = new URLSearchParams(window.location.search);
@@ -406,10 +451,4 @@ function setupModal() {
   closeBtn.onclick = () => {
     modal.style.display = "none";
   };
-}
-
-function isFreeCategorySelected() {
-  const selectedCategory = document.getElementById("category")?.value;
-  const category = categories.find(c => c.title === selectedCategory);
-  return category?.precio === 0;
 }

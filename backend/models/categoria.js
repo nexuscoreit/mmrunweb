@@ -1,14 +1,4 @@
-// backend/models/categoria.js
-const db = require('./db');
-
-// Crear tabla si no existe
-db.run(`
-  CREATE TABLE IF NOT EXISTS categorias (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    title TEXT UNIQUE,
-    precio REAL
-  )
-`);
+const db = require('../database/connection');
 
 const obtenerCategorias = (callback) => {
   db.all(`SELECT * FROM categorias`, (err, rows) => {

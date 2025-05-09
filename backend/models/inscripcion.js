@@ -1,24 +1,88 @@
-// backend/models/inscripcion.js
-const db = require('./db');
+const db = require('../database/connection');
 
-db.run(`
-  CREATE TABLE IF NOT EXISTS inscripciones (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nombre TEXT,
-    apellido TEXT,
-    dni TEXT UNIQUE,
-    genero TEXT,
-    fechaNacimiento TEXT,
-    email TEXT,
-    telefono TEXT,
-    ciudad TEXT,
-    categoria TEXT,
-    talle TEXT,
-    descuento TEXT,
-    pagado INTEGER DEFAULT 0,
-    fechaRegistro TEXT DEFAULT CURRENT_TIMESTAMP
-  )
-`);
+function saveTempInscription(inscripcion, callback) {
+  const sql = `
+    INSERT INTO inscripciones_temp (
+      id, nombre, apellido, dni, genero, fechaNacimiento, email, telefono,
+      ciudad, distancia_id, distancia, talle, codigoDescuento, precio
+    )
+    VALUES (
+      ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+    )
+  `;
+
+  const params = [
+    inscripcion.id,
+    inscripcion.nombre,
+    inscripcion.apellido,
+    inscripcion.dni,
+    inscripcion.genero,
+    inscripcion.fechaNacimiento,
+    inscripcion.email,
+    inscripcion.telefono,
+    inscripcion.ciudad,
+    inscripcion.distancia_id,
+    inscripcion.distancia,
+    inscripcion.talle,
+    inscripcion.codigoDescuento,
+    inscripcion.precio
+  ];
+
+  console.log(params);
+  db.run(sql, params, function (err) {
+    callback(err, this.lastID);
+  });
+}
+
+function getTempInscriptionById(id, callback) {
+  db.get(`SELECT * FROM inscripciones_temp WHERE id = ?`, [id], callback);
+}
+
+function deleteTempInscriptionById(id, callback) {
+  db.run(`DELETE FROM inscripciones_temp WHERE id = ?`, [id], callback);
+}
+
+function saveInscription(inscripcion, callback) {
+  const sql = `
+    INSERT INTO inscripciones (
+      id, nombre, apellido, dni, genero, fechaNacimiento, email, telefono, 
+      ciudad, distancia_id, distancia, talle, codigoDescuento, precio, mpPayerId, mpPayerEmail
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `;
+
+  const params = [
+    inscripcion.id,
+    inscripcion.nombre,
+    inscripcion.apellido,
+    inscripcion.dni,
+    inscripcion.genero,
+    inscripcion.fechaNacimiento,
+    inscripcion.email,
+    inscripcion.telefono,
+    inscripcion.ciudad,
+    inscripcion.distancia_id,
+    inscripcion.distancia,
+    inscripcion.talle,
+    inscripcion.codigoDescuento || '',
+    inscripcion.precio,
+    inscripcion.mpPayerId,
+    inscripcion.mpPayerEmail
+  ];
+  console.log("inscripto", params);
+  db.run(sql, params, function (err) {
+    callback(err, this.lastID);
+  });
+}
+
+function getTotalInscriptions() {
+  return new Promise((resolve, reject) => {
+    const query = `SELECT COUNT(*) as total FROM inscripciones`;
+    db.get(query, (err, row) => {
+      if (err) reject(err);
+      else resolve(row.total);
+    });
+  });
+}
 
 const crearInscripcion = (data, callback) => {
   const {
@@ -50,7 +114,4 @@ const existeDNI = (dni, callback) => {
   });
 };
 
-module.exports = {
-  crearInscripcion,
-  existeDNI
-};
+module.exports = { saveTempInscription, getTempInscriptionById, deleteTempInscriptionById, saveInscription, getTotalInscriptions, crearInscripcion, existeDNI };
