@@ -37,6 +37,8 @@ document.addEventListener("DOMContentLoaded", async() => {
 });
 
 function initForm() {
+  getDistances();
+  getDiscounts();
   setupNavigation();
   dateListener();
   setupModal();

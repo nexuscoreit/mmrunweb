@@ -24,7 +24,7 @@ app.use(express.json());
 
 // Servir archivos estáticos del frontend
 app.use(express.static(path.join(__dirname, '../public')));
-app.use('/assets', express.static(path.join(__dirname, '../assets')));
+app.use('/assets', express.static(path.join(__dirname, '../public/assets')));
 
 // 3. Rutas de API (pasamos IO dinámicamente solo acá)
 const distancesRouter = require('./routes/distances');
